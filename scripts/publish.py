@@ -103,10 +103,8 @@ def build_text(post: dict, for_threads: bool) -> str:
         parts.append("[광고] " + DISCLOSURE)
     parts.append(post["caption"].strip())
     if post.get("link"):
-        if for_threads:
-            parts.append(f"👉 소개한 제품 보기\n{post['link']}")
-        else:
-            parts.append("👉 소개한 제품 링크는 스레드(@daily_j83)에 있어요")
+        # 링크는 게시물에 넣지 않고 프로필 링크(링크 모음 페이지)에만 둔다
+        parts.append("👉 글에 나온 제품은 프로필 링크에 모아 뒀어요")
     hashtags = [t.lstrip("#") for t in post.get("hashtags", [])]
     if post.get("link"):
         hashtags = ["광고"] + [t for t in hashtags if t != "광고"]  # #광고는 맨 앞
