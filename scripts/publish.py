@@ -16,6 +16,8 @@ from pathlib import Path
 
 import requests
 
+from check import problems
+
 ROOT = Path(__file__).resolve().parent.parent
 LOG = ROOT / "published.json"
 IG_API = "https://graph.instagram.com/v23.0"
@@ -34,14 +36,33 @@ def save_log(log: dict):
     LOG.write_text(json.dumps(log, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+SKIPPED = ROOT / "skipped.txt"  # 검수에 걸려 건너뛴 원고 (워크플로가 보고 실패 메일을 보냄)
+
+
 def next_post() -> Path | None:
-    """content 폴더에서 파일 이름 순서대로, 두 곳 모두 올라가지 않은 첫 원고"""
+    """content 폴더에서 파일 이름 순서대로, 두 곳 모두 올라가지 않았고 검수를 통과한 첫 원고.
+    검수에 걸린 원고는 건너뛰고 skipped.txt 에 이유를 적는다."""
     log = load_log()
+    skipped = []
+    found = None
     for p in sorted((ROOT / "content").glob("*.json")):
         rec = log.get(p.stem, {})
-        if not (rec.get("instagram") and rec.get("threads")):
-            return p
-    return None
+        if rec.get("instagram") and rec.get("threads"):
+            continue
+        if rec.get("instagram") or rec.get("threads"):
+            found = p  # 한쪽만 올라간 원고는 마저 올린다 (이미 검수 통과해서 발행된 것)
+            break
+        probs = problems(json.loads(p.read_text(encoding="utf-8")))
+        if probs:
+            skipped.append(f"{p.stem}: " + " / ".join(probs))
+            continue
+        found = p
+        break
+    if skipped:
+        SKIPPED.write_text("\n".join(skipped) + "\n", encoding="utf-8")
+        for s in skipped:
+            print(f"::warning::검수에 걸려 건너뜀 — {s}", file=sys.stderr)
+    return found
 
 
 # ---------- 공통 ----------

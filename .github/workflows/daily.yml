@@ -84,3 +84,12 @@ jobs:
           git add published.json
           git commit -m "발행 기록: ${{ steps.pick.outputs.stem }}" || true
           git push
+
+      - name: 검수에 걸린 원고 알림
+        if: always()
+        run: |
+          if [ -f skipped.txt ]; then
+            echo "::error::발행 전 검수에 걸려 건너뛴 원고가 있어요. 고친 뒤 다시 검수해 주세요."
+            cat skipped.txt
+            exit 1
+          fi
