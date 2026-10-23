@@ -1,0 +1,22 @@
+name: 토큰 자동 갱신
+
+on:
+  schedule:
+    - cron: "41 0 * * 1"   # 한국 시간 매주 월요일 오전 9시 41분
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - uses: actions/checkout@v4
+      - name: 인스타·스레드 토큰 연장
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: python scripts/refresh_tokens.py
