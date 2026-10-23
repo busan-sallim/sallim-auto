@@ -41,5 +41,11 @@
     "common_practice": "통과",
     "note": "수정 없이 통과",
     "hash": "d985c07c54edbb9f"
+  },
+  "final_check": {
+    "date": "2026-10-24",
+    "by": "claude",
+    "note": "카드 7장 직접 확인: 내용·맞춤법·계절·글자 넘침 이상 없음",
+    "hash": "d985c07c54edbb9f"
   }
 }

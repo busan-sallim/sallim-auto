@@ -18,6 +18,9 @@ SOFT = "#6B655C"  # 보조 글씨(연한 먹색)
 BRAND = "부산여자 살림코칭"
 DISCLOSURE = "이 게시물은 쿠팡 파트너스 활동의 일환으로,\n이에 따른 일정액의 수수료를 제공받습니다."
 
+COVER_TITLE_Y = 420       # 표지 제목 시작 높이
+COVER_TITLE_Y_LINK = 480  # 쿠팡 링크 글은 위에 수수료 문구가 들어가서 조금 내림
+
 ROOT = Path(__file__).resolve().parent.parent
 FONT_DIR = ROOT / "fonts"
 
@@ -93,10 +96,15 @@ def cover(post: dict, total: int) -> Image.Image:
     d.rectangle((90, 150, 250, 162), fill=MUSTARD)
     tag = post.get("tag", "오늘의 살림")
     d.text((90, 190), tag, font=font("Bold", 44), fill=INK)
+    # 쿠팡 링크 글: 공정위 지침대로 표지(첫 장) 위쪽에 수수료 문구를 잘 보이게
+    if post.get("link"):
+        fd = font("Bold", 30)
+        d.rectangle((90, 268, 98, 352), fill=MUSTARD)
+        draw_lines(d, DISCLOSURE.split("\n"), fd, 118, 270, INK, 12)
     # 큰 제목
     ft = font("Black", 108)
     lines = wrap(d, post["title"], ft, W - 180)
-    y = 420
+    y = COVER_TITLE_Y_LINK if post.get("link") else COVER_TITLE_Y
     y = draw_lines(d, lines, ft, 90, y, INK, 22)
     # 부제
     if post.get("subtitle"):

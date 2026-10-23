@@ -85,11 +85,16 @@ jobs:
           git commit -m "발행 기록: ${{ steps.pick.outputs.stem }}" || true
           git push
 
-      - name: 검수에 걸린 원고 알림
+      - name: 검수 알림 (걸린 원고·경고가 있으면 실패 메일)
         if: always()
         run: |
+          status=0
           if [ -f skipped.txt ]; then
-            echo "::error::발행 전 검수에 걸려 건너뛴 원고가 있어요. 고친 뒤 다시 검수해 주세요."
-            cat skipped.txt
-            exit 1
+            echo "::error::발행 전 검수에 걸려 건너뛴 원고가 있어요."
+            cat skipped.txt; status=1
           fi
+          if [ -f warnings.txt ]; then
+            echo "::warning::발행은 했지만 확인할 점이 있어요."
+            cat warnings.txt; status=1
+          fi
+          exit $status

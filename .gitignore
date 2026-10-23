@@ -1,3 +1,4 @@
 fonts/*.otf
 __pycache__/
 skipped.txt
+warnings.txt

@@ -97,14 +97,21 @@ def wait_public(urls: list[str]):
 
 
 def build_text(post: dict, for_threads: bool) -> str:
-    parts = [post["caption"].strip()]
+    parts = []
+    if post.get("link"):
+        # 공정위 지침: 수수료 문구는 '더보기' 전에 보이는 첫 줄에
+        parts.append("[광고] " + DISCLOSURE)
+    parts.append(post["caption"].strip())
     if post.get("link"):
         if for_threads:
             parts.append(f"👉 소개한 제품 보기\n{post['link']}")
         else:
             parts.append("👉 소개한 제품 링크는 스레드(@daily_j83)에 있어요")
-        parts.append(DISCLOSURE)
-    tags = " ".join("#" + t.lstrip("#") for t in post.get("hashtags", []))
+    hashtags = [t.lstrip("#") for t in post.get("hashtags", [])]
+    if post.get("link"):
+        hashtags = ["광고"] + [t for t in hashtags if t != "광고"]  # #광고는 맨 앞
+    post = {**post, "hashtags": hashtags}
+    tags = " ".join("#" + t for t in hashtags)
     if tags and not for_threads:
         parts.append(tags)  # 인스타는 해시태그 여러 개 가능
     if for_threads and post.get("hashtags"):
@@ -187,6 +194,11 @@ def main():
         print("---- 인스타 글 ----\n" + ig_text)
         print("---- 스레드 글 ----\n" + th_text)
         return
+
+    from check import warnings
+    warns = warnings(post, p.stem, load_log())
+    if warns:
+        (ROOT / "warnings.txt").write_text(f"{p.stem}\n" + "\n".join(warns) + "\n", encoding="utf-8")
 
     urls = image_urls(p.stem, count)
     wait_public(urls)
