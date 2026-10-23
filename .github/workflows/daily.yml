@@ -1,0 +1,86 @@
+name: 매일 카드뉴스 발행
+
+on:
+  schedule:
+    - cron: "17 22 * * *"   # 한국 시간 매일 아침 7시 17분 (깃허브 시계는 영국 시간 기준)
+  workflow_dispatch:         # 버튼으로 바로 실행하기
+    inputs:
+      dry_run:
+        description: "미리보기만 (실제로 올리지 않기)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 준비물 설치
+        run: pip install -r requirements.txt
+
+      - name: 프리텐다드 글꼴 받기
+        run: |
+          curl -sSL -o /tmp/pretendard.zip https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip
+          unzip -q -o /tmp/pretendard.zip -d /tmp/pretendard
+          mkdir -p fonts
+          for w in Black Bold Medium; do
+            cp "$(find /tmp/pretendard -name "Pretendard-$w.otf" | head -1)" fonts/
+          done
+          ls fonts
+
+      - name: 오늘 올릴 원고 고르기
+        id: pick
+        run: echo "stem=$(python scripts/publish.py --pick)" >> "$GITHUB_OUTPUT"
+
+      - name: 올릴 원고가 없을 때
+        if: steps.pick.outputs.stem == ''
+        run: echo "::warning::content 폴더에 남은 원고가 없어요. 새 원고를 넣어 주세요."
+
+      - name: 미리보기
+        if: steps.pick.outputs.stem != '' && inputs.dry_run
+        run: |
+          python scripts/render.py "content/${{ steps.pick.outputs.stem }}.json"
+          python scripts/publish.py --dry-run
+
+      - name: 미리보기 이미지 내려받기용으로 보관
+        if: steps.pick.outputs.stem != '' && inputs.dry_run
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-${{ steps.pick.outputs.stem }}
+          path: out/${{ steps.pick.outputs.stem }}
+
+      - name: 카드 이미지 만들어 올리기
+        if: steps.pick.outputs.stem != '' && !inputs.dry_run
+        run: |
+          python scripts/render.py "content/${{ steps.pick.outputs.stem }}.json"
+          git config user.name "sallim-bot"
+          git config user.email "sallim-bot@users.noreply.github.com"
+          git add out/
+          git commit -m "카드 이미지: ${{ steps.pick.outputs.stem }}" || true
+          git push
+
+      - name: 인스타·스레드 발행
+        if: steps.pick.outputs.stem != '' && !inputs.dry_run
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+        run: python scripts/publish.py
+
+      - name: 발행 기록 저장
+        if: always() && steps.pick.outputs.stem != '' && !inputs.dry_run
+        run: |
+          git add published.json
+          git commit -m "발행 기록: ${{ steps.pick.outputs.stem }}" || true
+          git push
