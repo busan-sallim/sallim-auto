@@ -1,0 +1,52 @@
+{
+  "001_bath": {
+    "date": "2026-10-23",
+    "tag": "욕실 청소",
+    "title": "샤워부스 물때, 문지르지 말고 불려서 닦아요",
+    "has_link": false,
+    "instagram": {
+      "views": 41,
+      "reach": 12,
+      "likes": 1,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "follows": 0
+    },
+    "threads": {
+      "views": 359,
+      "likes": 1,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-10-25"
+  },
+  "002_fridge": {
+    "date": "2026-10-24",
+    "tag": "주방 정리",
+    "title": "냉장고 정리, 칸마다 자리만 정해도 반은 끝나요",
+    "has_link": false,
+    "instagram": {
+      "views": 43,
+      "reach": 11,
+      "likes": 2,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 2,
+      "follows": 0
+    },
+    "threads": {
+      "views": 167,
+      "likes": 2,
+      "replies": 1,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 1
+    },
+    "updated": "2026-10-25"
+  }
+}
