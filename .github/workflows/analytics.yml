@@ -1,0 +1,54 @@
+name: 통계 모으기 (분석 담당)
+
+on:
+  schedule:
+    - cron: "23 14 * * *"   # 한국 시간 매일 밤 11시 23분 (하루 반응이 다 쌓인 뒤)
+  workflow_dispatch:         # 버튼으로 바로 실행하기
+    inputs:
+      check_only:
+        description: "권한 확인만 (저장 안 함)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish             # 발행과 동시에 돌지 않게 줄 세우기
+  cancel-in-progress: false
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: 통계 권한 확인
+        if: inputs.check_only
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+        run: python scripts/analytics.py --check
+
+      - name: 통계 모으기
+        if: ${{ !inputs.check_only }}
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+        run: python scripts/analytics.py
+
+      - name: 통계 저장
+        if: ${{ !inputs.check_only }}
+        run: |
+          git config user.name "sallim-bot"
+          git config user.email "sallim-bot@users.noreply.github.com"
+          git add stats/
+          git commit -m "통계: $(TZ=Asia/Seoul date +%F)" || exit 0
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push

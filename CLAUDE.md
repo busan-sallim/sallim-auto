@@ -31,3 +31,9 @@
 - 얼굴 없는 익명 운영: 실명·직업·병원·동네 등 신원이 드러나는 내용 금지
 - 토큰·비밀번호는 코드·파일·대화에 절대 적지 않는다 (Secrets 에만)
 - 원고: content/숫자_영어이름.json, 본문 3~8장, 해시태그 3~5개, 해요체로 짧고 쉽게
+
+## 분석 담당 (통계 수집)
+- `scripts/analytics.py` — 매일 밤 23:23(한국 시간) 깃허브가 자동 실행 (`.github/workflows/analytics.yml`)
+- 결과: `stats/report.md`(요약), `stats/posts.json`(게시물별 숫자), `stats/followers.csv`(팔로워 추이)
+- 점수 = (인스타 저장+공유) ÷ 도달. 다음 원고 주제는 점수 높은 주제 쪽으로 늘린다
+- 권한 확인만: Actions → '통계 모으기' → Run workflow (기본값 '권한 확인만' 체크) — 아무것도 저장 안 함
