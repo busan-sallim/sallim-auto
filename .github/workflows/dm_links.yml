@@ -1,0 +1,42 @@
+name: 댓글 → DM 자동 링크
+
+on:
+  # 시험 통과 뒤 자동 실행을 켤 자리 (15분마다)
+  # schedule:
+  #   - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "무엇을 할까요?"
+        type: choice
+        options:
+          - 권한 확인
+          - 시험 발송 (001_bath 댓글에 링크 모음 페이지 보내기)
+          - 미리보기 (안 보냄)
+          - 실제 보내기
+        default: 권한 확인
+
+concurrency:
+  group: dm-links
+  cancel-in-progress: false
+
+jobs:
+  dm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: 실행
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          MODE: ${{ inputs.mode || '실제 보내기' }}
+        run: |
+          case "$MODE" in
+            "권한 확인") python scripts/dm_links.py --check ;;
+            "시험 발송"*) python scripts/dm_links.py --test 001_bath ;;
+            "미리보기"*) python scripts/dm_links.py --dry-run ;;
+            *) python scripts/dm_links.py ;;
+          esac
