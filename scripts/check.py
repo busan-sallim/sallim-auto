@@ -119,6 +119,8 @@ def problems(post: dict, need_final: bool = True) -> list[str]:
     out += overflow(post)
     if post.get("link") and not re.match(r"^https://(link\.)?coupang\.com/", post["link"]):
         out.append("링크가 쿠팡 파트너스 주소가 아님")
+    if post.get("link") and not post.get("product"):
+        out.append("링크 글인데 제품 이름(product)이 없음")
     return out
 
 

@@ -81,7 +81,8 @@ jobs:
       - name: 발행 기록 저장
         if: always() && steps.pick.outputs.stem != '' && !inputs.dry_run
         run: |
-          git add published.json
+          python scripts/build_links.py   # 프로필 링크 모음 페이지 갱신
+          git add published.json docs/
           git commit -m "발행 기록: ${{ steps.pick.outputs.stem }}" || true
           git push
 

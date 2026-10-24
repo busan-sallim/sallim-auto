@@ -1,0 +1,103 @@
+"""프로필 링크용 '링크 모음 페이지' 만들기 → docs/index.html
+
+이미 발행된 원고 중 쿠팡 링크(link)가 있는 것만, 최근 것부터 보여 준다.
+(발행 전에는 페이지에 안 나옴 → 게시물과 페이지가 늘 같은 날 맞춰진다)
+공정위 지침대로 페이지 맨 위에 수수료 문구를 크게 둔다.
+"""
+import html
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+DISCLOSURE = "이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
+
+
+def items() -> list[dict]:
+    log_path = ROOT / "published.json"
+    log = json.loads(log_path.read_text(encoding="utf-8")) if log_path.exists() else {}
+    out = []
+    for stem, rec in log.items():
+        if not (rec.get("instagram") or rec.get("threads")):
+            continue
+        f = ROOT / "content" / f"{stem}.json"
+        if not f.exists():
+            continue
+        post = json.loads(f.read_text(encoding="utf-8"))
+        if post.get("link"):
+            out.append({"date": rec.get("date", ""), "stem": stem, **post})
+    return sorted(out, key=lambda x: (x["date"], x["stem"]), reverse=True)
+
+
+def card(it: dict) -> str:
+    e = html.escape
+    return f"""
+      <li class="item">
+        <span class="tag">{e(it.get("tag", ""))}</span>
+        <p class="title">{e(it["title"])}</p>
+        <a class="btn" href="{e(it["link"])}" target="_blank" rel="sponsored noopener">
+          {e(it.get("product") or "글에 나온 제품")} 보러 가기 <span aria-hidden="true">→</span>
+        </a>
+      </li>"""
+
+
+def build() -> Path:
+    its = items()
+    body = "".join(card(i) for i in its) if its else """
+      <li class="empty">곧 첫 추천 제품이 올라와요.<br>매일 아침 살림 카드뉴스는 인스타에서 먼저 만나요 🧺</li>"""
+    page = f"""<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부산여자 살림코칭 · 링크 모음</title>
+<meta name="description" content="살림 카드뉴스에 나온 제품을 모아 둔 곳">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {{ --cream:#F6F1E7; --ink:#222222; --mustard:#E8A33D; --soft:#6B655C; --line:#E4DCCB; }}
+  * {{ box-sizing:border-box; margin:0; padding:0; }}
+  body {{ background:var(--cream); color:var(--ink); font-family:Pretendard, -apple-system, sans-serif;
+         line-height:1.5; word-break:keep-all; -webkit-font-smoothing:antialiased; }}
+  .wrap {{ max-width:520px; margin:0 auto; padding:28px 16px 48px; }}
+  .ad {{ background:var(--ink); color:var(--cream); font-size:14px; font-weight:600; padding:12px 14px;
+        border-radius:10px; border-left:6px solid var(--mustard); }}
+  header {{ margin:32px 0 24px; }}
+  .bar {{ width:56px; height:6px; background:var(--mustard); margin-bottom:14px; }}
+  h1 {{ font-size:28px; font-weight:900; letter-spacing:-0.02em; }}
+  .sub {{ color:var(--soft); margin-top:6px; font-size:15px; }}
+  .sub a {{ color:var(--ink); font-weight:700; }}
+  ul {{ list-style:none; display:grid; gap:12px; }}
+  .item {{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; }}
+  .tag {{ font-size:12px; font-weight:700; color:var(--soft); }}
+  .title {{ font-size:17px; font-weight:800; margin:4px 0 12px; }}
+  .btn {{ display:block; text-align:center; background:var(--mustard); color:var(--ink); font-weight:800;
+         text-decoration:none; padding:13px; border-radius:10px; font-size:16px; }}
+  .btn:active {{ transform:translateY(1px); }}
+  .empty {{ color:var(--soft); text-align:center; padding:40px 8px; }}
+  footer {{ margin-top:32px; color:var(--soft); font-size:12px; text-align:center; }}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="ad">[광고] {html.escape(DISCLOSURE)}</p>
+    <header>
+      <div class="bar"></div>
+      <h1>부산여자 살림코칭</h1>
+      <p class="sub">카드뉴스에 나온 제품을 모아 뒀어요 · <a href="https://www.instagram.com/daily_j83/">@daily_j83</a></p>
+    </header>
+    <ul>{body}
+    </ul>
+    <footer>가격·재고는 쿠팡에서 바뀔 수 있어요.</footer>
+  </main>
+</body>
+</html>
+"""
+    out = ROOT / "docs" / "index.html"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(page, encoding="utf-8")
+    (ROOT / "docs" / ".nojekyll").write_text("", encoding="utf-8")
+    return out
+
+
+if __name__ == "__main__":
+    print(build())
