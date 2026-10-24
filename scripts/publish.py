@@ -8,6 +8,8 @@
   THREADS_TOKEN  스레드 토큰
 """
 import argparse
+import datetime
+from zoneinfo import ZoneInfo
 import json
 import os
 import sys
@@ -37,6 +39,16 @@ def save_log(log: dict):
 
 
 SKIPPED = ROOT / "skipped.txt"  # 검수에 걸려 건너뛴 원고 (워크플로가 보고 실패 메일을 보냄)
+
+
+def today_kst() -> str:
+    return datetime.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d")
+
+
+def published_today() -> bool:
+    """오늘(한국 날짜) 인스타나 스레드에 이미 올린 원고가 있는지"""
+    return any(r.get("date") == today_kst() and (r.get("instagram") or r.get("threads"))
+               for r in load_log().values())
 
 
 def next_post() -> Path | None:
@@ -176,7 +188,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="실제로 올리지 않고 무엇을 올릴지만 보여 주기")
     ap.add_argument("--pick", action="store_true", help="다음에 올릴 원고 이름만 출력")
+    ap.add_argument("--published-today", action="store_true", help="오늘 이미 발행했으면 0, 아니면 1로 끝내기")
     args = ap.parse_args()
+    if args.published_today:
+        sys.exit(0 if published_today() else 1)
 
     p = next_post()
     if args.pick:
@@ -220,7 +235,7 @@ def main():
             print("스레드 발행 완료")
         except Exception as e:
             errors.append(f"스레드 실패: {e}")
-    rec["date"] = time.strftime("%Y-%m-%d")
+    rec["date"] = today_kst()
     save_log(log)
     if errors:
         print("\n".join(errors))
