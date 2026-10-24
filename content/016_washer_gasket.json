@@ -25,10 +25,9 @@
     "세탁기청소",
     "드럼세탁기",
     "고무패킹",
-    "세탁조청소",
     "살림팁"
   ],
-  "link": "",
+  "link": "https://link.coupang.com/a/h54NewXGsm",
   "review": {
     "date": "2026-10-24",
     "by": "claude",
@@ -36,7 +35,8 @@
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "412e7cc5924d738a"
-  }
+    "note": "쿠팡 링크(세탁조 클리너) 추가 후 재검수: 본문 4번째 장 세탁조 클리너 내용과 일치, 사용 경험 주장 없음",
+    "hash": "dab171e75c2f5cb1"
+  },
+  "product": "세탁조 클리너"
 }
