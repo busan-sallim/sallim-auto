@@ -5,24 +5,24 @@
     "title": "샤워부스 물때, 문지르지 말고 불려서 닦아요",
     "has_link": false,
     "instagram": {
-      "views": 41,
+      "views": 46,
       "reach": 12,
-      "likes": 1,
+      "likes": 3,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 1,
+      "total_interactions": 3,
       "follows": 0
     },
     "threads": {
-      "views": 359,
-      "likes": 1,
+      "views": 361,
+      "likes": 3,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-25"
+    "updated": "2026-10-26"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -30,23 +30,48 @@
     "title": "냉장고 정리, 칸마다 자리만 정해도 반은 끝나요",
     "has_link": false,
     "instagram": {
-      "views": 43,
+      "views": 45,
       "reach": 11,
-      "likes": 2,
+      "likes": 3,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 2,
+      "total_interactions": 3,
       "follows": 0
     },
     "threads": {
-      "views": 167,
-      "likes": 2,
+      "views": 184,
+      "likes": 4,
       "replies": 1,
       "reposts": 0,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-10-25"
+    "updated": "2026-10-26"
+  },
+  "003_laundry": {
+    "date": "2026-10-25",
+    "tag": "빨래",
+    "title": "빨래에서 쉰내 날 때, 세제 더 넣으면 오히려 심해져요",
+    "has_link": false,
+    "instagram": {
+      "views": 38,
+      "reach": 11,
+      "likes": 2,
+      "comments": 2,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 4,
+      "follows": 0
+    },
+    "threads": {
+      "views": 68,
+      "likes": 1,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-10-26"
   }
 }
