@@ -117,7 +117,8 @@ def pick_track(used: dict) -> dict | None:
     lst = ROOT / "music" / "tracks.json"
     if not lst.exists():
         return None
-    tracks = [t for t in json.loads(lst.read_text(encoding="utf-8")) if (ROOT / "music" / t["file"]).exists()]
+    tracks = [t for t in json.loads(lst.read_text(encoding="utf-8"))
+              if t.get("use", True) and (ROOT / "music" / t["file"]).exists()]
     if not tracks:
         return None
     tracks.sort(key=lambda t: used.get(t["file"], ""))

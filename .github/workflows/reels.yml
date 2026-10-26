@@ -69,6 +69,20 @@ jobs:
             echo "preview=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: 음악 받기 (tracks.json 에 있고 아직 없는 곡만, 픽사베이 무료 음원)
+        if: steps.plan.outputs.stem != ''
+        run: |
+          python - <<'PY'
+          import json, pathlib, urllib.request
+          root = pathlib.Path("music")
+          for t in json.loads((root / "tracks.json").read_text(encoding="utf-8")):
+              f = root / t["file"]
+              if t.get("use", True) and t.get("url") and not f.exists():
+                  req = urllib.request.Request(t["url"], headers={"User-Agent": "Mozilla/5.0"})
+                  f.write_bytes(urllib.request.urlopen(req, timeout=60).read())
+                  print("받음:", t["title"], f.stat().st_size // 1024, "KB")
+          PY
+
       - name: 영상 만들기
         if: steps.plan.outputs.stem != ''
         env:
@@ -85,7 +99,7 @@ jobs:
         run: |
           git config user.name "sallim-bot"
           git config user.email "sallim-bot@users.noreply.github.com"
-          for p in docs/reels docs/preview reels.json; do [ -e "$p" ] && git add "$p"; done
+          for p in docs/reels docs/preview reels.json music; do [ -e "$p" ] && git add "$p"; done
           git commit -m "릴스 영상: ${{ steps.plan.outputs.stem }}${{ steps.plan.outputs.preview == 'true' && ' (미리보기)' || '' }}" || true
           git pull --rebase -q && git push
 
