@@ -1,0 +1,28 @@
+{
+  "posts": {},
+  "music": {},
+  "prepared": {
+    "002_fridge": {
+      "date": "2026-10-27",
+      "sha": "9bc2c9d9200cecde",
+      "music": "atlasaudio-happy-ukulele-617574.mp3",
+      "photos": [
+        "out/002_fridge/photos/00.jpg",
+        "out/002_fridge/photos/01.jpg",
+        "out/002_fridge/photos/02.jpg",
+        "out/002_fridge/photos/03.jpg",
+        "out/002_fridge/photos/04.jpg",
+        "out/002_fridge/photos/05.jpg"
+      ],
+      "queries": [
+        "organized refrigerator",
+        "leftovers food containers fridge",
+        "milk eggs yogurt",
+        "raw meat fish tray",
+        "fresh vegetables refrigerator drawer",
+        "sauce bottles fridge door"
+      ]
+    }
+  },
+  "approved": {}
+}
