@@ -27,7 +27,7 @@
     "url": "https://cdn.pixabay.com/download/audio/2026/09/30/audio_15533ee5b7.mp3?filename=andriih-cute-cats-pets-music-613347.mp3",
     "license": "Pixabay Content License (상업적 사용 가능, 출처 표기 의무 없음)",
     "start": 0,
-    "use": true
+    "use": false
   },
   {
     "no": 4,
@@ -37,7 +37,7 @@
     "url": "https://cdn.pixabay.com/download/audio/2026/07/29/audio_2c107f7055.mp3?filename=the_mountain-pop-upbeat-upbeat-pop-576584.mp3",
     "license": "Pixabay Content License (상업적 사용 가능, 출처 표기 의무 없음)",
     "start": 0,
-    "use": true
+    "use": false
   },
   {
     "no": 5,
@@ -47,7 +47,7 @@
     "url": "https://cdn.pixabay.com/download/audio/2025/10/24/audio_404fbe9e71.mp3?filename=tatamusic-pop-upbeat-pop-425328.mp3",
     "license": "Pixabay Content License (상업적 사용 가능, 출처 표기 의무 없음)",
     "start": 0,
-    "use": true
+    "use": false
   },
   {
     "no": 6,
@@ -57,7 +57,7 @@
     "url": "https://cdn.pixabay.com/download/audio/2026/08/14/audio_a5f2abd4d3.mp3?filename=zephiramusic-chill-lofi-585360.mp3",
     "license": "Pixabay Content License (상업적 사용 가능, 출처 표기 의무 없음)",
     "start": 0,
-    "use": true
+    "use": false
   },
   {
     "no": 7,
@@ -67,7 +67,7 @@
     "url": "https://cdn.pixabay.com/download/audio/2026/10/13/audio_f06d71ce85.mp3?filename=vaitsez-vlog-vlog-beat-620108.mp3",
     "license": "Pixabay Content License (상업적 사용 가능, 출처 표기 의무 없음)",
     "start": 0,
-    "use": true
+    "use": false
   },
   {
     "no": 8,
@@ -77,6 +77,6 @@
     "url": "https://cdn.pixabay.com/download/audio/2026/08/01/audio_d97506815d.mp3?filename=sub_clair-vlog-578098.mp3",
     "license": "Pixabay Content License (상업적 사용 가능, 출처 표기 의무 없음)",
     "start": 0,
-    "use": true
+    "use": false
   }
 ]
