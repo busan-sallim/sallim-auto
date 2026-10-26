@@ -21,6 +21,19 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+
+def _ffmpeg() -> str:
+    """컴퓨터에 ffmpeg 가 있으면 그것, 없으면 pip 로 받은 imageio-ffmpeg 안의 것을 쓴다"""
+    import shutil
+    f = shutil.which("ffmpeg")
+    if f:
+        return f
+    import imageio_ffmpeg
+    return imageio_ffmpeg.get_ffmpeg_exe()
+
+
+FFMPEG = _ffmpeg()
 from render import font as card_font, wrap  # noqa: E402  (카드와 같은 글꼴·줄바꿈)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -423,14 +436,14 @@ def render(post_path: Path, out: Path, fps: int = 60, photos=None, track: Path |
     if track:
         # 사용자가 고른 무료 음원: 영상 길이만큼 자르고 앞뒤 페이드, 소리 크기 맞추기
         fo = max(0.1, total - 1.2)
-        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(track_start), "-i", str(track), "-t", f"{total:.2f}",
+        subprocess.run([FFMPEG, "-y", "-loglevel", "error", "-ss", str(track_start), "-i", str(track), "-t", f"{total:.2f}",
                         "-af", f"afade=t=in:d=0.3,afade=t=out:st={fo:.2f}:d=1.2,loudnorm=I=-14:TP=-1.5:LRA=11",
                         "-ar", "44100", "-ac", "2", str(wav)], check=True)
     else:
         audio, sr = synth(total, [s.start for _, s in scenes])
         write_wav(wav, audio, sr)
 
-    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
+    cmd = [FFMPEG, "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
            "-r", str(fps), "-i", "-", "-i", str(wav), "-c:v", "libx264", "-preset", "medium", "-crf", "20",
            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", str(out)]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
