@@ -38,11 +38,16 @@
 - 점수 = (인스타 저장+공유) ÷ 도달. 다음 원고 주제는 점수 높은 주제 쪽으로 늘린다
 - 권한 확인만: Actions → '통계 모으기' → Run workflow (기본값 '권한 확인만' 체크) — 아무것도 저장 안 함
 
-## 릴스 (월·수·금·일 저녁)
-- `scripts/reel.py` 영상 만들기, `scripts/publish_reel.py` 고르기·발행, `.github/workflows/reels.yml`
-- 카드뉴스로 나간 지 3일 지난 원고 중 저장·공유 점수 높은 것 → 1080x1920 60fps, 첫 1초 훅, 픽사베이 사진(PIXABAY_KEY, 없으면 사진 없이), 음악은 music/ 의 무료 음원만
-- 원고의 "photo" 는 사진 영어 검색어 (도장과 무관). 새 원고 쓸 때 함께 넣는다
-- 미리보기: reel_preview.txt 에 원고 이름을 적어 올리면 docs/preview/ 에 영상만 만든다
+## 릴스 (월·수·금·일 저녁) — 고정 규칙
+- **영상의 사진은 그 장의 글 내용과 맞아야 한다.** 원고의 `"photos"` = 장면별 영어 검색어 [훅, 1장, 2장, …] (도장과 무관). 새 원고를 쓸 때 장마다 글에 딱 맞는 구체적인 검색어를 함께 넣는다
+- **음악은 music/tracks.json 의 use=true 곡(1번 Happy Ukulele · 2번 Children Ukulele Pop Rock)을 번갈아** 쓴다. 저작권 없는 무료 음원만
+- 흐름: ① 발행 전날 밤(일·화·목·토) 클로드가 `python scripts/publish_reel.py --pick` 으로 원고를 골라 `reel_prepare.txt` 에 적어 올림
+  → 깃허브가 픽사베이 사진·음악을 넣어 `docs/reels/<원고>.mp4` 생성 (커밋 "릴스 영상 준비: …")
+  ② 클로드가 받아서 `python scripts/publish_reel.py --sheet <원고>` → `out/<원고>/reel_sheet.jpg` 를 **열어 보고** 장면마다 사진과 글이 맞는지 확인
+  ③ 맞으면 `python scripts/publish_reel.py --approve <원고> "확인 메모"` → reels.json 커밋·푸시. 안 맞으면 그 장의 `photos` 검색어를 고치고 ①부터 다시 (최대 2번, 그래도 안 맞으면 승인하지 않음)
+  ④ 저녁 예약(20:07~22:07)이 **승인된 영상만** 인스타 릴스·스레드에 올림 (영상 지문 sha 와 묶여 있어 다시 만들면 다시 승인 필요). 승인된 게 없으면 실패 메일
+- `scripts/reel.py` 영상 만들기 (1080x1920 60fps, 첫 1초 훅, 쿠팡 링크 글은 처음 3.6초 '유료 광고 포함'), `.github/workflows/reels.yml`, 비밀 보관함 `PIXABAY_KEY`
+- 미리보기만: `reel_preview.txt` 에 원고 이름(+ `track=2` 처럼 곡 번호)을 적어 올리면 `docs/preview/` 에 영상만 만든다
 
 ## 댓글 → DM 자동 링크
 - `scripts/dm_links.py` — 쿠팡 링크 글에 '링크'가 들어간 댓글이 달리면 DM으로 수수료 문구 + 링크를 보내고, 댓글에 짧은 공개 답글(= 보냄 표시)을 단다

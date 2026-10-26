@@ -44,5 +44,12 @@
     "note": "카드 6장 직접 확인: 내용·맞춤법·계절·글자 넘침 이상 없음",
     "hash": "1965b1397e3a77cb"
   },
-  "photo": "laundry basket"
+  "photo": "laundry basket",
+  "photos": [
+    "laundry basket",
+    "laundry detergent measuring cap",
+    "washing machine door open",
+    "clothes hanging drying line",
+    "washing machine drum"
+  ]
 }

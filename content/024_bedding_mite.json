@@ -39,5 +39,12 @@
     "note": "수정 없이 통과",
     "hash": "983e79d2024fb10e"
   },
-  "photo": "bed linen"
+  "photo": "bed linen",
+  "photos": [
+    "bed linen",
+    "duvet cover laundry",
+    "washing machine hot water",
+    "bedding sunlight balcony",
+    "unmade bed morning"
+  ]
 }

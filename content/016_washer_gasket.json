@@ -39,5 +39,12 @@
     "hash": "dab171e75c2f5cb1"
   },
   "product": "세탁조 클리너",
-  "photo": "front load washing machine"
+  "photo": "front load washing machine",
+  "photos": [
+    "front load washing machine",
+    "washing machine door open",
+    "washing machine rubber seal",
+    "detergent drawer washing machine",
+    "washing machine drum clean"
+  ]
 }

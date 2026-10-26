@@ -42,7 +42,7 @@ DANGER_PARTNERS = ["구연산", "식초", "산성", "암모니아", "알코올",
 WARN_WORDS = ["섞", "같이 쓰지", "함께 쓰지", "같은 날", "가스"]
 
 
-STAMPS = ("review", "final_check", "photo")  # photo = 릴스 사진 검색어 (글 내용이 아니라서 도장과 무관)
+STAMPS = ("review", "final_check", "photo", "photos")  # photo = 릴스 사진 검색어 (글 내용이 아니라서 도장과 무관)
 BANNED_TAGS_FILE = ROOT / "banned_hashtags.txt"
 
 

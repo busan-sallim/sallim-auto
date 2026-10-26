@@ -39,5 +39,12 @@
     "note": "수정 없이 통과",
     "hash": "fb6d89fa8b9d09f9"
   },
-  "photo": "cooking pot"
+  "photo": "cooking pot",
+  "photos": [
+    "burnt pot",
+    "baking soda pot water",
+    "boiling pot stove",
+    "wooden spatula",
+    "aluminum pot"
+  ]
 }

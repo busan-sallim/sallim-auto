@@ -39,5 +39,12 @@
     "note": "수정 없이 통과",
     "hash": "5046465e0206bf15"
   },
-  "photo": "curtains living room"
+  "photo": "curtains living room",
+  "photos": [
+    "curtains living room",
+    "clothing care label",
+    "curtain hooks",
+    "laundry mesh bag",
+    "curtains hanging window"
+  ]
 }

@@ -39,5 +39,12 @@
     "note": "수정 없이 통과",
     "hash": "f863b5e3160d9280"
   },
-  "photo": "bathroom mirror"
+  "photo": "bathroom mirror",
+  "photos": [
+    "bathroom mirror",
+    "microfiber cloth",
+    "spray bottle mirror",
+    "wiping mirror",
+    "foggy mirror"
+  ]
 }

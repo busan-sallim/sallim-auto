@@ -39,5 +39,12 @@
     "note": "수정 없이 통과",
     "hash": "d0700915bcd2dfbc"
   },
-  "photo": "air fryer"
+  "photo": "air fryer",
+  "photos": [
+    "air fryer",
+    "air fryer basket",
+    "soapy water sink",
+    "soft sponge",
+    "cleaning brush"
+  ]
 }

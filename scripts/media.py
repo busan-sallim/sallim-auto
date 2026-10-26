@@ -69,38 +69,52 @@ def _openverse(query: str, n: int) -> list[str]:
     return urls
 
 
+def _search(query: str, n: int) -> list[str]:
+    src = photo_source()
+    if src == "Pixabay":
+        return _pixabay(query, n, os.environ["PIXABAY_KEY"].strip())
+    if src == "Pexels":
+        return _pexels(query, n, os.environ["PEXELS_KEY"].strip())
+    return []
+
+
 def photos(post: dict, stem: str, n: int) -> list[Path]:
-    """n장의 사진 파일 경로 (못 구하면 빈 목록 → 사진 없는 디자인으로)"""
-    query = post.get("photo")
-    if not query:
+    """장면마다 1장 (첫 장 = 훅, 나머지 = 본문 장 순서).
+    원고의 "photos" = 장면별 영어 검색어 목록 (고정 규칙: 사진은 그 장의 글 내용과 맞아야 한다).
+    없으면 "photo" 하나로 여러 장을 찾는다. 못 구하면 빈 목록 → 사진 없는 디자인."""
+    queries = post.get("photos") or ([post["photo"]] * n if post.get("photo") else [])
+    if not queries or not photo_source():
+        if queries:
+            print("사진 열쇠(PIXABAY_KEY)가 없어서 사진 없이 만들어요.")
         return []
     folder = ROOT / "out" / stem / "photos"
-    have = sorted(folder.glob("*.jpg"))
-    if len(have) >= n:
-        return have[:n]
+    stamp = folder / "queries.json"
+    if folder.exists() and stamp.exists() and json.loads(stamp.read_text(encoding="utf-8")) == queries:
+        have = sorted(folder.glob("*.jpg"))
+        if len(have) >= len(queries):
+            return have[:len(queries)]
+    if folder.exists():
+        for f in folder.glob("*"):
+            f.unlink()
     folder.mkdir(parents=True, exist_ok=True)
-    src = photo_source()
-    try:
-        if src == "Pixabay":
-            urls = _pixabay(query, n, os.environ["PIXABAY_KEY"].strip())
-        elif src == "Pexels":
-            urls = _pexels(query, n, os.environ["PEXELS_KEY"].strip())
-        else:
-            print("사진 열쇠(PIXABAY_KEY)가 없어서 사진 없이 만들어요.")
-            return []
-    except Exception as e:  # 사진이 없어도 영상은 만든다 (열쇠 값은 찍지 않음)
-        print(f"사진 검색 실패({src}): {type(e).__name__} {getattr(getattr(e, 'response', None), 'status_code', '')}")
-        return []
-    out = []
-    for i, u in enumerate(urls):
+    used, out = set(), []
+    for i, q in enumerate(queries[:n]):
         try:
-            b = requests.get(u, headers=UA, timeout=60)
-            b.raise_for_status()
-            f = folder / f"{i:02d}.jpg"
-            f.write_bytes(b.content)
-            out.append(f)
-        except Exception as e:
-            print(f"사진 받기 실패: {e}")
+            urls = [u for u in _search(q, 6) if u not in used]
+        except Exception as e:  # 열쇠 값은 찍지 않음
+            print(f"사진 검색 실패({q}): {type(e).__name__} {getattr(getattr(e, 'response', None), 'status_code', '')}")
+            urls = []
+        if not urls:
+            print(f"'{q}' 사진을 못 찾아서 이 장은 사진 없이 만들어요")
+            return []  # 한 장이라도 비면 글과 안 맞는 사진이 섞일 수 있어 전체를 사진 없이
+        u = urls[0]
+        used.add(u)
+        b = requests.get(u, headers=UA, timeout=60)
+        b.raise_for_status()
+        f = folder / f"{i:02d}.jpg"
+        f.write_bytes(b.content)
+        out.append(f)
+    stamp.write_text(json.dumps(queries, ensure_ascii=False), encoding="utf-8")
     return out
 
 
@@ -112,8 +126,8 @@ def photo_source() -> str:
     return ""
 
 
-def pick_track(used: dict) -> dict | None:
-    """music/tracks.json 중 가장 오래전에 쓴(또는 안 쓴) 곡"""
+def pick_track(last_file: str | None) -> dict | None:
+    """music/tracks.json 에서 use=true 인 곡 중 지난번과 다른 곡 (고정 규칙: 1번·2번 번갈아)"""
     lst = ROOT / "music" / "tracks.json"
     if not lst.exists():
         return None
@@ -121,5 +135,9 @@ def pick_track(used: dict) -> dict | None:
               if t.get("use", True) and (ROOT / "music" / t["file"]).exists()]
     if not tracks:
         return None
-    tracks.sort(key=lambda t: used.get(t["file"], ""))
+    tracks.sort(key=lambda t: t.get("no", 0))
+    if last_file:
+        nums = [t["file"] for t in tracks]
+        if last_file in nums:
+            return tracks[(nums.index(last_file) + 1) % len(tracks)]
     return tracks[0]

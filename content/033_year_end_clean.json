@@ -43,5 +43,13 @@
     "note": "수정 없이 통과",
     "hash": "610dd78c53bf917b"
   },
-  "photo": "cleaning supplies"
+  "photo": "cleaning supplies",
+  "photos": [
+    "cleaning supplies",
+    "dusting shelf",
+    "cleaning hallway",
+    "vacuum cleaner",
+    "mopping floor",
+    "garbage bag"
+  ]
 }

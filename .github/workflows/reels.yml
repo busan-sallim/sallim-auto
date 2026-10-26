@@ -1,26 +1,26 @@
 name: 저녁 릴스 발행
 
 on:
-  # 월·수·금·일 저녁. 깃허브 예약은 늦거나 빠질 때가 있어 여러 번 기회를 주고, 하루 한 번만 올린다.
-  # (시간은 영국 기준 → 한국 +9시간)
-  # ⏸ 사용자 승인 전이라 예약 실행은 꺼 둠. 승인되면 아래 # 를 지운다.
-  # schedule:
-  #   - cron: "7 11 * * 0,1,3,5"    # 20:07
-  #   - cron: "37 11 * * 0,1,3,5"   # 20:37
-  #   - cron: "7 12 * * 0,1,3,5"    # 21:07
-  #   - cron: "7 13 * * 0,1,3,5"    # 22:07 (마지막 기회)
+  # 발행: 월·수·금·일 저녁. 깃허브 예약은 늦거나 빠질 때가 있어 여러 번 기회를 주고, 하루 한 번만 올린다.
+  # (시간은 영국 기준 → 한국 +9시간)  ※ 클로드가 전날 밤 승인한 영상만 올린다
+  schedule:
+    - cron: "7 11 * * 0,1,3,5"    # 20:07
+    - cron: "37 11 * * 0,1,3,5"   # 20:37
+    - cron: "7 12 * * 0,1,3,5"    # 21:07
+    - cron: "7 13 * * 0,1,3,5"    # 22:07 (마지막 기회)
   workflow_dispatch:
     inputs:
       stem:
-        description: "원고 이름 (비우면 자동 선택, 예: 012_knit)"
+        description: "원고 이름 (예: 012_knit)"
         required: false
         default: ""
-      preview:
-        description: "미리보기만 (docs/preview 에 영상만 만들고 올리지 않기)"
-        type: boolean
-        default: true
+      mode:
+        description: "preview=미리보기만 / prepare=발행용 영상 준비(승인 전) / publish=승인된 영상 발행"
+        type: choice
+        options: [preview, prepare, publish]
+        default: preview
   push:
-    paths: ["reel_preview.txt"]   # 이 파일에 원고 이름을 적어 올리면 미리보기 영상만 만든다
+    paths: ["reel_preview.txt", "reel_prepare.txt"]   # 파일에 원고 이름을 적어 올리면 그 영상을 만든다
 
 permissions:
   contents: write
@@ -35,6 +35,8 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # 어떤 파일이 올라왔는지 비교용
 
       - uses: actions/setup-python@v5
         with:
@@ -55,23 +57,32 @@ jobs:
       - name: 할 일 정하기
         id: plan
         run: |
-          if [ "${{ github.event_name }}" = "push" ]; then
-            echo "stem=$(head -1 reel_preview.txt | tr -d '[:space:]')" >> "$GITHUB_OUTPUT"
-            echo "track=$(grep -oP '^track=\K\d+' reel_preview.txt || true)" >> "$GITHUB_OUTPUT"
-            echo "preview=true" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            s="${{ inputs.stem }}"; [ -z "$s" ] && s=$(python scripts/publish_reel.py --pick)
-            echo "stem=$s" >> "$GITHUB_OUTPUT"
-            echo "preview=${{ inputs.preview }}" >> "$GITHUB_OUTPUT"
+          ev="${{ github.event_name }}"
+          if [ "$ev" = "push" ]; then
+            if git diff --name-only HEAD~1 HEAD | grep -q '^reel_prepare.txt$'; then
+              echo "stem=$(head -1 reel_prepare.txt | tr -d '[:space:]')" >> "$GITHUB_OUTPUT"; echo "mode=prepare" >> "$GITHUB_OUTPUT"
+            else
+              echo "stem=$(head -1 reel_preview.txt | tr -d '[:space:]')" >> "$GITHUB_OUTPUT"; echo "mode=preview" >> "$GITHUB_OUTPUT"
+              echo "track=$(grep -oP '^track=\K\d+' reel_preview.txt || true)" >> "$GITHUB_OUTPUT"
+            fi
+          elif [ "$ev" = "workflow_dispatch" ]; then
+            s="${{ inputs.stem }}"; m="${{ inputs.mode }}"
+            [ -z "$s" ] && [ "$m" = "publish" ] && s=$(python scripts/publish_reel.py --next-approved)
+            [ -z "$s" ] && s=$(python scripts/publish_reel.py --pick)
+            echo "stem=$s" >> "$GITHUB_OUTPUT"; echo "mode=$m" >> "$GITHUB_OUTPUT"
           elif python scripts/publish_reel.py --made-today; then
-            echo "오늘은 이미 릴스를 올렸어요."; echo "stem=" >> "$GITHUB_OUTPUT"
+            echo "오늘은 이미 릴스를 올렸어요."; echo "stem=" >> "$GITHUB_OUTPUT"; echo "mode=skip" >> "$GITHUB_OUTPUT"
           else
-            echo "stem=$(python scripts/publish_reel.py --pick)" >> "$GITHUB_OUTPUT"
-            echo "preview=false" >> "$GITHUB_OUTPUT"
+            s=$(python scripts/publish_reel.py --next-approved)
+            if [ -z "$s" ]; then
+              echo "::error::클로드가 승인한 릴스가 없어서 오늘은 올리지 않아요."; echo "stem=" >> "$GITHUB_OUTPUT"; echo "mode=none" >> "$GITHUB_OUTPUT"
+            else
+              echo "stem=$s" >> "$GITHUB_OUTPUT"; echo "mode=publish" >> "$GITHUB_OUTPUT"
+            fi
           fi
 
       - name: 음악 받기 (tracks.json 에 있고 아직 없는 곡만, 픽사베이 무료 음원)
-        if: steps.plan.outputs.stem != ''
+        if: steps.plan.outputs.stem != '' && steps.plan.outputs.mode != 'publish'
         run: |
           python - <<'PY'
           import json, pathlib, urllib.request
@@ -85,28 +96,24 @@ jobs:
           PY
 
       - name: 영상 만들기
-        if: steps.plan.outputs.stem != ''
+        if: steps.plan.outputs.stem != '' && (steps.plan.outputs.mode == 'preview' || steps.plan.outputs.mode == 'prepare')
         env:
           PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
           REEL_TRACK: ${{ steps.plan.outputs.track }}
         run: |
-          if [ "${{ steps.plan.outputs.preview }}" = "true" ]; then
+          if [ "${{ steps.plan.outputs.mode }}" = "preview" ]; then
             python scripts/publish_reel.py --render "${{ steps.plan.outputs.stem }}" --preview
           else
-            python scripts/publish_reel.py --render "${{ steps.plan.outputs.stem }}"
+            python scripts/publish_reel.py --prepare "${{ steps.plan.outputs.stem }}"
           fi
-
-      - name: 영상 올려서 공개 주소 만들기
-        if: steps.plan.outputs.stem != ''
-        run: |
           git config user.name "sallim-bot"
           git config user.email "sallim-bot@users.noreply.github.com"
           for p in docs/reels docs/preview reels.json music; do [ -e "$p" ] && git add "$p"; done
-          git commit -m "릴스 영상: ${{ steps.plan.outputs.stem }}${{ steps.plan.outputs.preview == 'true' && ' (미리보기)' || '' }}" || true
+          git commit -m "릴스 영상 ${{ steps.plan.outputs.mode == 'prepare' && '준비' || '미리보기' }}: ${{ steps.plan.outputs.stem }}" || true
           git pull --rebase -q && git push
 
-      - name: 인스타 릴스·스레드 영상 발행
-        if: steps.plan.outputs.stem != '' && steps.plan.outputs.preview != 'true'
+      - name: 인스타 릴스·스레드 영상 발행 (클로드 승인된 영상만)
+        if: steps.plan.outputs.stem != '' && steps.plan.outputs.mode == 'publish'
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
@@ -114,8 +121,12 @@ jobs:
         run: python scripts/publish_reel.py --publish "${{ steps.plan.outputs.stem }}"
 
       - name: 발행 기록 저장
-        if: always() && steps.plan.outputs.stem != '' && steps.plan.outputs.preview != 'true'
+        if: always() && steps.plan.outputs.stem != '' && steps.plan.outputs.mode == 'publish'
         run: |
           git add reels.json
           git commit -m "릴스 발행 기록: ${{ steps.plan.outputs.stem }}" || true
           git pull --rebase -q && git push
+
+      - name: 승인된 릴스가 없을 때 알림 메일
+        if: steps.plan.outputs.mode == 'none'
+        run: exit 1

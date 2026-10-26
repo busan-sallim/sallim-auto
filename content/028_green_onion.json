@@ -39,5 +39,12 @@
     "note": "수정 없이 통과",
     "hash": "359c039f738da0d9"
   },
-  "photo": "green onions"
+  "photo": "green onions",
+  "photos": [
+    "green onions",
+    "washing green onions",
+    "chopped green onions",
+    "food container paper towel",
+    "frozen chopped vegetables"
+  ]
 }

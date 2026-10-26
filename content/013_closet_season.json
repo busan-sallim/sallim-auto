@@ -39,5 +39,12 @@
     "hash": "21afe830a04a4875"
   },
   "product": "옷장 제습제",
-  "photo": "wardrobe clothes"
+  "photo": "wardrobe clothes",
+  "photos": [
+    "wardrobe clothes",
+    "washing clothes laundry",
+    "clothes drying sunlight",
+    "vacuum storage bag clothes",
+    "dehumidifier box closet"
+  ]
 }
