@@ -85,7 +85,7 @@ jobs:
         run: |
           git config user.name "sallim-bot"
           git config user.email "sallim-bot@users.noreply.github.com"
-          git add docs/reels docs/preview reels.json 2>/dev/null || true
+          for p in docs/reels docs/preview reels.json; do [ -e "$p" ] && git add "$p"; done
           git commit -m "릴스 영상: ${{ steps.plan.outputs.stem }}${{ steps.plan.outputs.preview == 'true' && ' (미리보기)' || '' }}" || true
           git pull --rebase -q && git push
 
