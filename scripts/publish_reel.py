@@ -89,6 +89,12 @@ def render(stem: str, preview: bool = False) -> Path:
     pics = media.photos(post, stem, len(post["slides"]) + 1)
     d = load()
     track = media.pick_track(d.get("music", {}))
+    want = os.environ.get("REEL_TRACK", "").strip()  # 미리보기에서 곡 번호를 고를 때
+    if want:
+        import json as _j
+        for t in _j.loads((ROOT / "music" / "tracks.json").read_text(encoding="utf-8")):
+            if str(t.get("no")) == want and (ROOT / "music" / t["file"]).exists():
+                track = t
     out = ROOT / "docs" / ("preview" if preview else "reels") / f"{stem}.mp4"
     tpath = ROOT / "music" / track["file"] if track else None
     reel.render(ROOT / "content" / f"{stem}.json", out, fps=60, photos=pics,

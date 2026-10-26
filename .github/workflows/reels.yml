@@ -57,6 +57,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "push" ]; then
             echo "stem=$(head -1 reel_preview.txt | tr -d '[:space:]')" >> "$GITHUB_OUTPUT"
+            echo "track=$(grep -oP '^track=\K\d+' reel_preview.txt || true)" >> "$GITHUB_OUTPUT"
             echo "preview=true" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             s="${{ inputs.stem }}"; [ -z "$s" ] && s=$(python scripts/publish_reel.py --pick)
@@ -87,6 +88,7 @@ jobs:
         if: steps.plan.outputs.stem != ''
         env:
           PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
+          REEL_TRACK: ${{ steps.plan.outputs.track }}
         run: |
           if [ "${{ steps.plan.outputs.preview }}" = "true" ]; then
             python scripts/publish_reel.py --render "${{ steps.plan.outputs.stem }}" --preview
