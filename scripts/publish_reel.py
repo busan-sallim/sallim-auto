@@ -7,7 +7,7 @@
             저장+공유 점수(stats/posts.json)가 높은 것, 같으면 오래된 것
 안전: 검수·최종 확인 도장이 그대로인 원고만 (check.problems)
 
-토큰은 깃허브 비밀 보관함에서만: IG_TOKEN, THREADS_TOKEN, (사진) PEXELS_KEY
+토큰은 깃허브 비밀 보관함에서만: IG_TOKEN, THREADS_TOKEN, (사진) PIXABAY_KEY
 사용:
   python scripts/publish_reel.py --pick            오늘 만들 원고 이름 (없으면 빈 줄)
   python scripts/publish_reel.py --made-today      오늘 이미 릴스를 올렸으면 0
@@ -120,7 +120,8 @@ def wait_public(url: str):
 
 def caption(post: dict, threads: bool) -> str:
     base = P.build_text({**post, "caption": post["caption"].strip() + "\n\n카드뉴스 전체는 프로필에서 저장해 두세요 🧺"}, threads)
-    credit = "\n\n사진: Pexels" if os.environ.get("PEXELS_KEY") else ""
+    src = media.photo_source()
+    credit = f"\n\n사진: {src}" if src else ""
     limit = 500 if threads else 2200
     return (base + credit)[:limit]
 

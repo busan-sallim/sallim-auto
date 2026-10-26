@@ -2,8 +2,10 @@
 
 사진
   - 원고의 "photo" (영어 검색어, 예: "knit sweater") 로 세로 사진을 찾는다.
-  - PEXELS_KEY(깃허브 비밀 보관함)가 있으면 펙셀스 — 무료, 상업적 사용 가능, 출처 표기 의무 없음(캡션에 '사진: Pexels' 표기)
-  - 없으면 Openverse 의 CC0·퍼블릭 도메인 사진(출처 표기 의무 없음)으로 대신한다.
+  - PIXABAY_KEY(깃허브 비밀 보관함)가 있으면 픽사베이 — 무료, 상업적 사용 가능, 출처 표기 의무 없음
+    (픽사베이 규칙: 사진은 내려받아 쓰기(링크로 직접 띄우기 금지), 결과는 24시간 저장, 대량 자동 다운로드 금지 → 하루 몇 장이라 괜찮음)
+  - 없고 PEXELS_KEY 가 있으면 펙셀스 (2026-10 기준 펙셀스는 새 열쇠 발급 중단)
+  - 둘 다 없으면 사진 없이 만든다.
   - 사람 얼굴이 크게 나온 사진은 설명(alt)으로 걸러 낸다.
 음악
   - music/tracks.json 에 적힌 곡(사용자가 고른 무료 음원) 중 가장 오래 안 쓴 곡을 고른다.
@@ -35,6 +37,22 @@ def _pexels(query: str, n: int, key: str) -> list[str]:
     return urls
 
 
+def _pixabay(query: str, n: int, key: str) -> list[str]:
+    r = requests.get("https://pixabay.com/api/", headers=UA, timeout=30,
+                     params={"key": key, "q": query, "image_type": "photo", "orientation": "vertical",
+                             "safesearch": "true", "per_page": 40, "order": "popular"})
+    r.raise_for_status()
+    urls = []
+    for p in r.json().get("hits", []):
+        tags = " " + (p.get("tags") or "").lower() + " "
+        if any(w.strip() in tags for w in PEOPLE):
+            continue
+        urls.append(p.get("largeImageURL") or p["webformatURL"])
+        if len(urls) >= n:
+            break
+    return urls
+
+
 def _openverse(query: str, n: int) -> list[str]:
     r = requests.get("https://api.openverse.org/v1/images/", headers=UA, timeout=30,
                      params={"q": query, "license": "cc0,pdm", "aspect_ratio": "tall", "page_size": 40,
@@ -61,11 +79,17 @@ def photos(post: dict, stem: str, n: int) -> list[Path]:
     if len(have) >= n:
         return have[:n]
     folder.mkdir(parents=True, exist_ok=True)
-    key = os.environ.get("PEXELS_KEY", "").strip()
+    src = photo_source()
     try:
-        urls = _pexels(query, n, key) if key else _openverse(query, n)
-    except Exception as e:  # 사진이 없어도 영상은 만든다
-        print(f"사진 검색 실패({'pexels' if key else 'openverse'}): {e}")
+        if src == "Pixabay":
+            urls = _pixabay(query, n, os.environ["PIXABAY_KEY"].strip())
+        elif src == "Pexels":
+            urls = _pexels(query, n, os.environ["PEXELS_KEY"].strip())
+        else:
+            print("사진 열쇠(PIXABAY_KEY)가 없어서 사진 없이 만들어요.")
+            return []
+    except Exception as e:  # 사진이 없어도 영상은 만든다 (열쇠 값은 찍지 않음)
+        print(f"사진 검색 실패({src}): {type(e).__name__} {getattr(getattr(e, 'response', None), 'status_code', '')}")
         return []
     out = []
     for i, u in enumerate(urls):
@@ -81,7 +105,11 @@ def photos(post: dict, stem: str, n: int) -> list[Path]:
 
 
 def photo_source() -> str:
-    return "Pexels" if os.environ.get("PEXELS_KEY", "").strip() else "Openverse(CC0)"
+    if os.environ.get("PIXABAY_KEY", "").strip():
+        return "Pixabay"
+    if os.environ.get("PEXELS_KEY", "").strip():
+        return "Pexels"
+    return ""
 
 
 def pick_track(used: dict) -> dict | None:

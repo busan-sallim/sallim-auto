@@ -72,7 +72,7 @@ jobs:
       - name: 영상 만들기
         if: steps.plan.outputs.stem != ''
         env:
-          PEXELS_KEY: ${{ secrets.PEXELS_KEY }}
+          PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
         run: |
           if [ "${{ steps.plan.outputs.preview }}" = "true" ]; then
             python scripts/publish_reel.py --render "${{ steps.plan.outputs.stem }}" --preview
@@ -94,7 +94,7 @@ jobs:
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
-          PEXELS_KEY: ${{ secrets.PEXELS_KEY }}
+          PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
         run: python scripts/publish_reel.py --publish "${{ steps.plan.outputs.stem }}"
 
       - name: 발행 기록 저장

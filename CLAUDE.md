@@ -40,7 +40,7 @@
 
 ## 릴스 (월·수·금·일 저녁)
 - `scripts/reel.py` 영상 만들기, `scripts/publish_reel.py` 고르기·발행, `.github/workflows/reels.yml`
-- 카드뉴스로 나간 지 3일 지난 원고 중 저장·공유 점수 높은 것 → 1080x1920 60fps, 첫 1초 훅, 펙셀스 사진(PEXELS_KEY, 없으면 Openverse CC0), 음악은 music/ 의 무료 음원만
+- 카드뉴스로 나간 지 3일 지난 원고 중 저장·공유 점수 높은 것 → 1080x1920 60fps, 첫 1초 훅, 픽사베이 사진(PIXABAY_KEY, 없으면 사진 없이), 음악은 music/ 의 무료 음원만
 - 원고의 "photo" 는 사진 영어 검색어 (도장과 무관). 새 원고 쓸 때 함께 넣는다
 - 미리보기: reel_preview.txt 에 원고 이름을 적어 올리면 docs/preview/ 에 영상만 만든다
 
