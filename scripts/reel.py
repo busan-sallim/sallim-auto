@@ -82,6 +82,48 @@ def paste(frame, layer, x, y, alpha=1.0, scale=1.0):
     frame.alpha_composite(lay, (int(round(x)), int(round(y))))
 
 
+def cover(img: Image.Image, w: int, h: int) -> Image.Image:
+    """사진을 w×h 를 꽉 채우게 자르기 (가운데 기준)"""
+    img = img.convert("RGB")
+    s = max(w / img.width, h / img.height)
+    im = img.resize((int(img.width * s) + 1, int(img.height * s) + 1), Image.LANCZOS)
+    x0, y0 = (im.width - w) // 2, (im.height - h) // 2
+    return im.crop((x0, y0, x0 + w, y0 + h))
+
+
+def kenburns(img: Image.Image, w: int, h: int, p: float, zoom=0.10, pan=(0.0, -0.03)) -> Image.Image:
+    """사진이 천천히 다가오는 효과 (img 는 w,h 보다 zoom 만큼 크게 준비돼 있음)"""
+    z = 1 + zoom * ease_in_out_cubic(p)
+    cw, ch = img.width / z, img.height / z
+    cx = img.width / 2 + pan[0] * img.width * p
+    cy = img.height / 2 + pan[1] * img.height * p
+    x0 = min(max(0.0, cx - cw / 2), img.width - cw)
+    y0 = min(max(0.0, cy - ch / 2), img.height - ch)
+    return img.resize((w, h), Image.BILINEAR, box=(x0, y0, x0 + cw, y0 + ch))
+
+
+def round_mask(w, h, r):
+    m = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(m).rounded_rectangle((0, 0, w - 1, h - 1), r, fill=255)
+    return m
+
+
+CARD = (80, 250, W - 80, 820)   # 본문 장의 사진 카드 자리
+HOOK_SHADE = None
+
+
+def hook_shade():
+    """훅 사진 위 어둡게 깔리는 그라데이션 (글씨가 잘 보이게)"""
+    global HOOK_SHADE
+    if HOOK_SHADE is None:
+        a = np.zeros((H, W), dtype=np.uint8)
+        ys = np.arange(H)
+        prof = np.clip((ys - 420) / 900, 0, 1) ** 1.2 * 190 + 40   # 위 40 → 아래 230 (255 넘지 않게)
+        a[:] = prof[:, None].astype(np.uint8)
+        HOOK_SHADE = Image.merge("RGBA", [Image.new("L", (W, H), 22)] * 3 + [Image.fromarray(a)])
+    return HOOK_SHADE
+
+
 class Scene:
     def __init__(self, start, dur):
         self.start, self.dur = start, dur
@@ -91,27 +133,36 @@ class Scene:
 
 
 # ---------- 장면 준비 ----------
-def build(post: dict):
+def build(post: dict, photos=None):
+    photos = [Image.open(x) for x in (photos or [])]
     d = ImageDraw.Draw(Image.new("RGB", (10, 10)))
     scenes = []
     t = 0.0
 
     # 훅
     f_title = card_font("Black", 140)
+    has_photo = bool(photos)
+    t_col, s_col = (CREAM, (230, 222, 208)) if has_photo else (INK, SOFT)
+    t_lines = wrap(d, post["title"], f_title, TEXT_W)
+    sub = post.get("subtitle", "")
+    s_lines = wrap(d, sub, card_font("Medium", 58), TEXT_W)
+    # 사진이 있으면 글씨 묶음을 아래쪽(1480 위)에 맞춰 놓는다
+    block = len(t_lines) * 166 + 30 + len(s_lines) * 76
+    y = max(640, 1480 - block) if has_photo else 700
+    tag_y = y - 170
     words = []
-    y = 700
-    for line in wrap(d, post["title"], f_title, TEXT_W):
+    for line in t_lines:
         x = LEFT
         for wd in line.split(" "):
-            lay = text_layer(wd, f_title, INK)
+            lay = text_layer(wd, f_title, t_col)
             words.append((lay, x, y))
             x += d.textlength(wd + " ", font=f_title)
         y += 140 + 26
-    sub = post.get("subtitle", "")
-    sub_lines = [text_layer(s, card_font("Medium", 58), SOFT) for s in wrap(d, sub, card_font("Medium", 58), TEXT_W)]
+    sub_lines = [text_layer(s, card_font("Medium", 58), s_col) for s in s_lines]
     hook = Scene(t, HOOK_BEATS * BEAT)
-    hook.words, hook.sub, hook.sub_y = words, sub_lines, y + 30
-    hook.tag = text_layer(post.get("tag", "오늘의 살림"), card_font("Bold", 46), INK)
+    hook.words, hook.sub, hook.sub_y, hook.tag_y = words, sub_lines, y + 30, tag_y
+    hook.tag = text_layer(post.get("tag", "오늘의 살림"), card_font("Bold", 46), t_col)
+    hook.photo = cover(photos[0], int(W * 1.1), int(H * 1.1)) if has_photo else None
     scenes.append(("hook", hook))
     t += hook.dur
 
@@ -119,12 +170,18 @@ def build(post: dict):
     for i, sl in enumerate(post["slides"], 1):
         dark = i % 2 == 1
         fg, sub_c = (CREAM, (200, 193, 182)) if dark else (INK, SOFT)
-        f_head, f_body = card_font("Black", 112), card_font("Medium", 64)
+        ph = photos[i % len(photos)] if photos else None
+        f_head, f_body = (card_font("Black", 100), card_font("Medium", 60)) if ph else (card_font("Black", 112), card_font("Medium", 64))
         heads = [text_layer(s, f_head, fg) for s in wrap(d, sl["head"], f_head, TEXT_W)]
         bodies = [text_layer(s, f_body, fg) for s in wrap(d, sl["body"], f_body, TEXT_W)]
         sc = Scene(t, SLIDE_BEATS * BEAT)
         sc.i, sc.dark, sc.heads, sc.bodies, sc.fg = i, dark, heads, bodies, fg
         sc.num = text_layer(str(i), card_font("Black", 96), INK)
+        sc.photo = None
+        if ph is not None:
+            cw, ch = CARD[2] - CARD[0], CARD[3] - CARD[1]
+            sc.photo = cover(ph, int(cw * 1.1), int(ch * 1.1))
+            sc.mask = round_mask(cw, ch, 44)
         scenes.append(("slide", sc))
         t += sc.dur
 
@@ -145,6 +202,9 @@ def build(post: dict):
 
 # ---------- 그리기 ----------
 def draw_hook(fr, sc, lt):
+    if sc.photo is not None:
+        fr.paste(kenburns(sc.photo, W, H, lt / sc.dur, zoom=0.12), (0, 0))
+        fr.alpha_composite(hook_shade())
     d = ImageDraw.Draw(fr)
     # 0~0.25초: 머스타드 화면이 위로 걷히며 시작 (마지막 프레임과 이어짐)
     wipe = ease_in_out_cubic(progress(lt, 0.05, 0.35))
@@ -152,9 +212,9 @@ def draw_hook(fr, sc, lt):
         d.rectangle((0, 0, W, int(H * (1 - wipe))), fill=MUSTARD)
     # 꼬리표: 막대가 그어지고 글씨가 올라옴
     bar = ease_out_cubic(progress(lt, 0.25, 0.35))
-    d.rectangle((LEFT, 480, LEFT + int(180 * bar), 494), fill=MUSTARD)
+    d.rectangle((LEFT, sc.tag_y, LEFT + int(180 * bar), sc.tag_y + 14), fill=MUSTARD)
     p = ease_out_cubic(progress(lt, 0.35, 0.4))
-    paste(fr, sc.tag, LEFT, 530 + 30 * (1 - p), p)
+    paste(fr, sc.tag, LEFT, sc.tag_y + 50 + 30 * (1 - p), p)
     # 제목: 단어마다 반 박자 간격으로 튕기며 등장
     for k, (lay, x, y) in enumerate(sc.words):
         st = 0.4 + k * WORD_GAP
@@ -177,6 +237,16 @@ def draw_slide(fr, sc, lt, total_slides):
     bg = INK if sc.dark else CREAM
     cx, cy = SLIDE_CENTER
     d.rectangle((0, 0, W, H), fill=bg)
+    y = 760
+    if sc.photo is not None:
+        # 사진 카드: 아래에서 살짝 올라오며 나타나고, 천천히 다가옴
+        cw, ch = CARD[2] - CARD[0], CARD[3] - CARD[1]
+        q = ease_out_cubic(progress(lt, 0.15, 0.5))
+        img = kenburns(sc.photo, cw, ch, lt / sc.dur, zoom=0.09, pan=(0.02, 0.0)).convert("RGBA")
+        m = sc.mask.point(lambda v: int(v * q))
+        fr.paste(img, (CARD[0], int(CARD[1] + 50 * (1 - q))), m)
+        cx, cy = LEFT + 80, CARD[3]
+        y = CARD[3] + 110
     # 번호 동그라미: 튕기며 등장
     q = progress(lt, 0.25, 0.35)
     if q > 0:
@@ -184,11 +254,10 @@ def draw_slide(fr, sc, lt, total_slides):
         d.ellipse((cx - rr, cy - rr, cx + rr, cy + rr), fill=MUSTARD)
         paste(fr, sc.num, cx - sc.num.width / 2, cy - 66, min(1, q * 2), max(0.3, ease_out_back(q, 2.4)))
     # 소제목: 위로 올라오며
-    y = 760
     for k, lay in enumerate(sc.heads):
         q = ease_out_cubic(progress(lt, 0.45 + k * 0.07, 0.45))
         paste(fr, lay, LEFT, y + 60 * (1 - q), q)
-        y += 112 + 24
+        y += lay.height - 10
     # 밑줄이 그어짐
     u = ease_out_cubic(progress(lt, 0.75, 0.35))
     d.rectangle((LEFT, y + 26, LEFT + int(110 * u), y + 38), fill=MUSTARD)
@@ -197,7 +266,7 @@ def draw_slide(fr, sc, lt, total_slides):
     for k, lay in enumerate(sc.bodies):
         q = ease_out_cubic(progress(lt, 0.95 + k * 0.08, 0.45))
         paste(fr, lay, LEFT, y + 30 * (1 - q), q)
-        y += 64 + 34
+        y += lay.height + 8
     # 퇴장: 마지막 0.22초에 글씨가 위로 빠짐 (다음 원이 덮기 전에)
     return
 
@@ -266,7 +335,7 @@ def draw_scene(kind, sc, lt, n):
     z = 1 + 0.035 * ease_in_out_cubic(lt / sc.dur)
     if z > 1.001:
         cw, ch = int(W / z), int(H / z)
-        x0, y0 = int((W - cw) * 0.3), int((H - ch) * 0.45)
+        x0, y0 = int((W - cw) * 0.5), int((H - ch) * 0.45)
         fr = fr.crop((x0, y0, x0 + cw, y0 + ch)).resize((W, H), Image.BILINEAR)
     return fr
 
@@ -346,13 +415,20 @@ def write_wav(path, data, sr):
 
 
 # ---------- 렌더링 ----------
-def render(post_path: Path, out: Path, fps: int = 60):
+def render(post_path: Path, out: Path, fps: int = 60, photos=None, track: Path | None = None, track_start: float = 0.0):
     post = json.loads(post_path.read_text(encoding="utf-8"))
-    scenes, total, ad = build(post)
+    scenes, total, ad = build(post, photos)
     out.parent.mkdir(parents=True, exist_ok=True)
     wav = out.with_suffix(".wav")
-    audio, sr = synth(total, [s.start for _, s in scenes])
-    write_wav(wav, audio, sr)
+    if track:
+        # 사용자가 고른 무료 음원: 영상 길이만큼 자르고 앞뒤 페이드, 소리 크기 맞추기
+        fo = max(0.1, total - 1.2)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(track_start), "-i", str(track), "-t", f"{total:.2f}",
+                        "-af", f"afade=t=in:d=0.3,afade=t=out:st={fo:.2f}:d=1.2,loudnorm=I=-14:TP=-1.5:LRA=11",
+                        "-ar", "44100", "-ac", "2", str(wav)], check=True)
+    else:
+        audio, sr = synth(total, [s.start for _, s in scenes])
+        write_wav(wav, audio, sr)
 
     cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
            "-r", str(fps), "-i", "-", "-i", str(wav), "-c:v", "libx264", "-preset", "medium", "-crf", "20",
@@ -396,8 +472,11 @@ if __name__ == "__main__":
     ap.add_argument("post")
     ap.add_argument("--fps", type=int, default=60)
     ap.add_argument("--out")
+    ap.add_argument("--photos", nargs="*", help="사진 파일들 (첫 장은 훅, 나머지는 본문 장)")
+    ap.add_argument("--track", help="배경 음악 파일")
+    ap.add_argument("--track-start", type=float, default=0.0)
     a = ap.parse_args()
     p = Path(a.post)
     o = Path(a.out) if a.out else ROOT / "out" / p.stem / "reel.mp4"
-    path, dur = render(p, o, a.fps)
+    path, dur = render(p, o, a.fps, a.photos, Path(a.track) if a.track else None, a.track_start)
     print(f"{path} ({dur:.1f}초)")

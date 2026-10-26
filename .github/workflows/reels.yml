@@ -1,0 +1,104 @@
+name: 저녁 릴스 발행
+
+on:
+  # 월·수·금·일 저녁. 깃허브 예약은 늦거나 빠질 때가 있어 여러 번 기회를 주고, 하루 한 번만 올린다.
+  # (시간은 영국 기준 → 한국 +9시간)
+  schedule:
+    - cron: "7 11 * * 0,1,3,5"    # 20:07
+    - cron: "37 11 * * 0,1,3,5"   # 20:37
+    - cron: "7 12 * * 0,1,3,5"    # 21:07
+    - cron: "7 13 * * 0,1,3,5"    # 22:07 (마지막 기회)
+  workflow_dispatch:
+    inputs:
+      stem:
+        description: "원고 이름 (비우면 자동 선택, 예: 012_knit)"
+        required: false
+        default: ""
+      preview:
+        description: "미리보기만 (docs/preview 에 영상만 만들고 올리지 않기)"
+        type: boolean
+        default: true
+  push:
+    paths: ["reel_preview.txt"]   # 이 파일에 원고 이름을 적어 올리면 미리보기 영상만 만든다
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  reel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 준비물 설치
+        run: |
+          pip install -r requirements.txt numpy
+          which ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+
+      - name: 프리텐다드 글꼴 받기
+        run: |
+          curl -sSL -o /tmp/pretendard.zip https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip
+          unzip -q -o /tmp/pretendard.zip -d /tmp/pretendard
+          mkdir -p fonts
+          for w in Black Bold Medium; do cp "$(find /tmp/pretendard -name "Pretendard-$w.otf" | head -1)" fonts/; done
+
+      - name: 할 일 정하기
+        id: plan
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "stem=$(head -1 reel_preview.txt | tr -d '[:space:]')" >> "$GITHUB_OUTPUT"
+            echo "preview=true" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            s="${{ inputs.stem }}"; [ -z "$s" ] && s=$(python scripts/publish_reel.py --pick)
+            echo "stem=$s" >> "$GITHUB_OUTPUT"
+            echo "preview=${{ inputs.preview }}" >> "$GITHUB_OUTPUT"
+          elif python scripts/publish_reel.py --made-today; then
+            echo "오늘은 이미 릴스를 올렸어요."; echo "stem=" >> "$GITHUB_OUTPUT"
+          else
+            echo "stem=$(python scripts/publish_reel.py --pick)" >> "$GITHUB_OUTPUT"
+            echo "preview=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 영상 만들기
+        if: steps.plan.outputs.stem != ''
+        env:
+          PEXELS_KEY: ${{ secrets.PEXELS_KEY }}
+        run: |
+          if [ "${{ steps.plan.outputs.preview }}" = "true" ]; then
+            python scripts/publish_reel.py --render "${{ steps.plan.outputs.stem }}" --preview
+          else
+            python scripts/publish_reel.py --render "${{ steps.plan.outputs.stem }}"
+          fi
+
+      - name: 영상 올려서 공개 주소 만들기
+        if: steps.plan.outputs.stem != ''
+        run: |
+          git config user.name "sallim-bot"
+          git config user.email "sallim-bot@users.noreply.github.com"
+          git add docs/reels docs/preview reels.json 2>/dev/null || true
+          git commit -m "릴스 영상: ${{ steps.plan.outputs.stem }}${{ steps.plan.outputs.preview == 'true' && ' (미리보기)' || '' }}" || true
+          git pull --rebase -q && git push
+
+      - name: 인스타 릴스·스레드 영상 발행
+        if: steps.plan.outputs.stem != '' && steps.plan.outputs.preview != 'true'
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          PEXELS_KEY: ${{ secrets.PEXELS_KEY }}
+        run: python scripts/publish_reel.py --publish "${{ steps.plan.outputs.stem }}"
+
+      - name: 발행 기록 저장
+        if: always() && steps.plan.outputs.stem != '' && steps.plan.outputs.preview != 'true'
+        run: |
+          git add reels.json
+          git commit -m "릴스 발행 기록: ${{ steps.plan.outputs.stem }}" || true
+          git pull --rebase -q && git push
