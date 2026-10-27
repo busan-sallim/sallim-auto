@@ -43,7 +43,7 @@ STOP = {"a", "an", "the", "in", "on", "of", "with", "and", "for", "at", "to", "i
 def _norm(w: str) -> str:
     w = w.strip().lower()
     for suf in ("ies", "es", "s"):
-        if len(w) > 4 and w.endswith(suf):
+        if len(w) > 3 and w.endswith(suf):
             return w[: -len(suf)] + ("y" if suf == "ies" else "")
     return w
 
