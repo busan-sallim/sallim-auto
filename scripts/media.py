@@ -41,10 +41,14 @@ STOP = {"a", "an", "the", "in", "on", "of", "with", "and", "for", "at", "to", "i
 
 
 def _norm(w: str) -> str:
+    """복수형을 단수로 (eggs→egg, bottles→bottle, berries→berry, boxes→box, tomatoes→tomato)"""
     w = w.strip().lower()
-    for suf in ("ies", "es", "s"):
-        if len(w) > 3 and w.endswith(suf):
-            return w[: -len(suf)] + ("y" if suf == "ies" else "")
+    if len(w) > 4 and w.endswith("ies"):
+        return w[:-3] + "y"
+    if len(w) > 3 and w.endswith("s") and not w.endswith("ss"):
+        w = w[:-1]
+        if w.endswith(("xe", "oe", "she", "che")):
+            w = w[:-1]
     return w
 
 
