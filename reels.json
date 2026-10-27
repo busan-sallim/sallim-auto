@@ -4,9 +4,16 @@
   "prepared": {
     "002_fridge": {
       "date": "2026-10-27",
-      "sha": "1a739baa95825f7d",
+      "sha": "e5d05f6b12dfac3b",
       "music": "atlasaudio-happy-ukulele-617574.mp3",
-      "photos": [],
+      "photos": [
+        "out/002_fridge/photos/00.jpg",
+        "out/002_fridge/photos/01.jpg",
+        "out/002_fridge/photos/02.jpg",
+        null,
+        "out/002_fridge/photos/04.jpg",
+        "out/002_fridge/photos/05.jpg"
+      ],
       "queries": [
         "refrigerator food",
         "food containers refrigerator",
