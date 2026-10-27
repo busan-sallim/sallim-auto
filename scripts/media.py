@@ -37,20 +37,37 @@ def _pexels(query: str, n: int, key: str) -> list[str]:
     return urls
 
 
+STOP = {"a", "an", "the", "in", "on", "of", "with", "and", "for", "at", "to", "inside", "into"}
+
+
+def _norm(w: str) -> str:
+    w = w.strip().lower()
+    for suf in ("ies", "es", "s"):
+        if len(w) > 4 and w.endswith(suf):
+            return w[: -len(suf)] + ("y" if suf == "ies" else "")
+    return w
+
+
 def _pixabay(query: str, n: int, key: str) -> list[str]:
+    """태그가 검색어와 충분히 겹치는 사진만 (고정 규칙: 사진은 그 장의 글과 맞아야 함)
+    검색어 낱말의 2/3 이상이 사진 태그에 있어야 통과, 많이 겹치는 순서로 고른다."""
     r = requests.get("https://pixabay.com/api/", headers=UA, timeout=30,
                      params={"key": key, "q": query, "image_type": "photo", "orientation": "vertical",
-                             "safesearch": "true", "per_page": 40, "order": "popular"})
+                             "safesearch": "true", "per_page": 100, "order": "popular"})
     r.raise_for_status()
-    urls = []
-    for p in r.json().get("hits", []):
-        tags = " " + (p.get("tags") or "").lower() + " "
-        if any(w.strip() in tags for w in PEOPLE):
+    words = [_norm(w) for w in query.replace(",", " ").split() if w.lower() not in STOP]
+    need = max(1, -(-len(words) * 2 // 3))  # 올림(2/3)
+    scored = []
+    for i, h in enumerate(r.json().get("hits", [])):
+        raw = (h.get("tags") or "").lower()
+        tags = {_norm(t) for part in raw.split(",") for t in part.split()}
+        if any(w.strip() in (" " + raw.replace(",", " ") + " ") for w in PEOPLE):
             continue
-        urls.append(p.get("largeImageURL") or p["webformatURL"])
-        if len(urls) >= n:
-            break
-    return urls
+        hit = sum(1 for w in words if w in tags)
+        if hit >= need:
+            scored.append((-hit, i, h.get("largeImageURL") or h["webformatURL"]))
+    scored.sort()
+    return [u for _, _, u in scored[:n]]
 
 
 def _openverse(query: str, n: int) -> list[str]:
