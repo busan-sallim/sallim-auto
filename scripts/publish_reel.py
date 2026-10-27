@@ -108,7 +108,7 @@ def render(stem: str, preview: bool = False) -> Path:
     reel.render(ROOT / "content" / f"{stem}.json", out, fps=60, photos=pics,
                 track=tpath, track_start=float(track.get("start", 0)) if track else 0.0)
     info = {"date": today(), "sha": sha(out), "music": track["file"] if track else "직접 만든 배경음",
-            "photos": [str(x.relative_to(ROOT)) for x in pics], "queries": post.get("photos", [])}
+            "photos": [str(x.relative_to(ROOT)) if x else None for x in pics], "queries": post.get("photos", [])}
     if not preview:
         d["prepared"][stem] = info
         d["approved"].pop(stem, None)  # 다시 만들었으면 다시 승인 받아야 함

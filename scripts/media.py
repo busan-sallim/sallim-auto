@@ -52,11 +52,11 @@ def _norm(w: str) -> str:
     return w
 
 
-def _pixabay(query: str, n: int, key: str) -> list[str]:
+def _pixabay(query: str, n: int, key: str, orientation: str = "vertical") -> list[str]:
     """태그가 검색어와 충분히 겹치는 사진만 (고정 규칙: 사진은 그 장의 글과 맞아야 함)
     검색어 낱말의 2/3 이상이 사진 태그에 있어야 통과, 많이 겹치는 순서로 고른다."""
     r = requests.get("https://pixabay.com/api/", headers=UA, timeout=30,
-                     params={"key": key, "q": query, "image_type": "photo", "orientation": "vertical",
+                     params={"key": key, "q": query, "image_type": "photo", "orientation": orientation,
                              "safesearch": "true", "per_page": 100, "order": "popular"})
     r.raise_for_status()
     words = [_norm(w) for w in query.replace(",", " ").split() if w.lower() not in STOP]
@@ -90,10 +90,14 @@ def _openverse(query: str, n: int) -> list[str]:
     return urls
 
 
-def _search(query: str, n: int) -> list[str]:
+def _search(query: str, n: int, hook: bool = False) -> list[str]:
+    """훅(전체 화면)은 세로 사진 먼저, 본문 장(가로 카드)은 가로·세로 모두에서 찾는다"""
     src = photo_source()
     if src == "Pixabay":
-        return _pixabay(query, n, os.environ["PIXABAY_KEY"].strip())
+        key = os.environ["PIXABAY_KEY"].strip()
+        if hook:
+            return _pixabay(query, n, key, "vertical") or _pixabay(query, n, key, "all")
+        return _pixabay(query, n, key, "horizontal") or _pixabay(query, n, key, "all")
     if src == "Pexels":
         return _pexels(query, n, os.environ["PEXELS_KEY"].strip())
     return []
@@ -111,9 +115,8 @@ def photos(post: dict, stem: str, n: int) -> list[Path]:
     folder = ROOT / "out" / stem / "photos"
     stamp = folder / "queries.json"
     if folder.exists() and stamp.exists() and json.loads(stamp.read_text(encoding="utf-8")) == queries:
-        have = sorted(folder.glob("*.jpg"))
-        if len(have) >= len(queries):
-            return have[:len(queries)]
+        have = [folder / f"{i:02d}.jpg" for i in range(len(queries))]
+        return [h if h.exists() else None for h in have]
     if folder.exists():
         for f in folder.glob("*"):
             f.unlink()
@@ -121,13 +124,14 @@ def photos(post: dict, stem: str, n: int) -> list[Path]:
     used, out = set(), []
     for i, q in enumerate(queries[:n]):
         try:
-            urls = [u for u in _search(q, 6) if u not in used]
+            urls = [u for u in _search(q, 6, hook=(i == 0)) if u not in used]
         except Exception as e:  # 열쇠 값은 찍지 않음
             print(f"사진 검색 실패({q}): {type(e).__name__} {getattr(getattr(e, 'response', None), 'status_code', '')}")
             urls = []
         if not urls:
-            print(f"'{q}' 사진을 못 찾아서 이 장은 사진 없이 만들어요")
-            return []  # 한 장이라도 비면 글과 안 맞는 사진이 섞일 수 있어 전체를 사진 없이
+            print(f"[장면 {i}] '{q}' 와 맞는 사진이 없어 이 장면만 사진 없이 만들어요")
+            out.append(None)
+            continue
         u = urls[0]
         used.add(u)
         b = requests.get(u, headers=UA, timeout=60)
@@ -135,6 +139,7 @@ def photos(post: dict, stem: str, n: int) -> list[Path]:
         f = folder / f"{i:02d}.jpg"
         f.write_bytes(b.content)
         out.append(f)
+        print(f"[장면 {i}] '{q}' 사진 찾음")
     stamp.write_text(json.dumps(queries, ensure_ascii=False), encoding="utf-8")
     return out
 

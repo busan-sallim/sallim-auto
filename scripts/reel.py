@@ -147,14 +147,15 @@ class Scene:
 
 # ---------- 장면 준비 ----------
 def build(post: dict, photos=None):
-    photos = [Image.open(x) for x in (photos or [])]
+    # 장면별 사진 목록 [훅, 1장, 2장, …]. 맞는 사진이 없는 장면은 None → 그 장면만 사진 없이
+    photos = [Image.open(x) if x else None for x in (photos or [])]
     d = ImageDraw.Draw(Image.new("RGB", (10, 10)))
     scenes = []
     t = 0.0
 
     # 훅
     f_title = card_font("Black", 140)
-    has_photo = bool(photos)
+    has_photo = bool(photos) and photos[0] is not None
     t_col, s_col = (CREAM, (230, 222, 208)) if has_photo else (INK, SOFT)
     t_lines = wrap(d, post["title"], f_title, TEXT_W)
     sub = post.get("subtitle", "")
@@ -183,7 +184,7 @@ def build(post: dict, photos=None):
     for i, sl in enumerate(post["slides"], 1):
         dark = i % 2 == 1
         fg, sub_c = (CREAM, (200, 193, 182)) if dark else (INK, SOFT)
-        ph = photos[i % len(photos)] if photos else None
+        ph = photos[i] if i < len(photos) else None
         f_head, f_body = (card_font("Black", 100), card_font("Medium", 60)) if ph else (card_font("Black", 112), card_font("Medium", 64))
         heads = [text_layer(s, f_head, fg) for s in wrap(d, sl["head"], f_head, TEXT_W)]
         bodies = [text_layer(s, f_body, fg) for s in wrap(d, sl["body"], f_body, TEXT_W)]
