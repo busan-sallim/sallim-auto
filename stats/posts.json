@@ -5,13 +5,13 @@
     "title": "샤워부스 물때, 문지르지 말고 불려서 닦아요",
     "has_link": false,
     "instagram": {
-      "views": 46,
+      "views": 49,
       "reach": 12,
-      "likes": 3,
+      "likes": 4,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 3,
+      "total_interactions": 4,
       "follows": 0
     },
     "threads": {
@@ -22,7 +22,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-27"
+    "updated": "2026-10-28"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -30,24 +30,24 @@
     "title": "냉장고 정리, 칸마다 자리만 정해도 반은 끝나요",
     "has_link": false,
     "instagram": {
-      "views": 45,
+      "views": 47,
       "reach": 11,
-      "likes": 3,
+      "likes": 4,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 3,
+      "total_interactions": 4,
       "follows": 0
     },
     "threads": {
-      "views": 187,
+      "views": 189,
       "likes": 4,
       "replies": 1,
       "reposts": 0,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-10-27"
+    "updated": "2026-10-28"
   },
   "003_laundry": {
     "date": "2026-10-25",
@@ -55,13 +55,13 @@
     "title": "빨래에서 쉰내 날 때, 세제 더 넣으면 오히려 심해져요",
     "has_link": false,
     "instagram": {
-      "views": 40,
-      "reach": 11,
-      "likes": 2,
+      "views": 46,
+      "reach": 12,
+      "likes": 3,
       "comments": 2,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 4,
+      "total_interactions": 5,
       "follows": 0
     },
     "threads": {
@@ -72,7 +72,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-27"
+    "updated": "2026-10-28"
   },
   "004_window_condensation": {
     "date": "2026-10-26",
@@ -80,23 +80,48 @@
     "title": "창틀 물방울, 닦기만 하면 곰팡이 못 막아요",
     "has_link": false,
     "instagram": {
-      "views": 18,
-      "reach": 7,
-      "likes": 1,
+      "views": 26,
+      "reach": 8,
+      "likes": 2,
       "comments": 0,
       "saved": 0,
       "shares": 1,
-      "total_interactions": 2,
+      "total_interactions": 3,
       "follows": 0
     },
     "threads": {
-      "views": 108,
+      "views": 110,
       "likes": 2,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-27"
+    "updated": "2026-10-28"
+  },
+  "005_padding_wash": {
+    "date": "2026-10-27",
+    "tag": "세탁",
+    "title": "패딩, 드라이 맡기지 말고 집에서 빨아요",
+    "has_link": false,
+    "instagram": {
+      "views": 14,
+      "reach": 6,
+      "likes": 2,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 2,
+      "follows": 0
+    },
+    "threads": {
+      "views": 58,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-10-28"
   }
 }
