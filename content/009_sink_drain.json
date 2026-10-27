@@ -9,7 +9,7 @@
     },
     {
       "head": "베이킹소다 반 컵",
-      "body": "배수구에 베이킹소다를 반 컵 정도 뿌리고, 식초 한 컵을 천천히 부어 주세요."
+      "body": "배수구에 베이킹소다를 반 컵 정도 뿌리고, 식초 한 컵을 천천히 부어 주세요. 락스와 식초는 섞이면 유독 가스가 나오니 같은 날 쓰지 마세요."
     },
     {
       "head": "10분 뒤 뜨거운 물",
@@ -30,14 +30,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-27",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "06a131699c3fb1cc"
+    "note": "락스+식초 섞임 유독가스 경고 추가(제목에 락스 언급)",
+    "hash": "22dd297c195f70af"
   },
   "photo": "kitchen sink",
   "photos": [
@@ -46,5 +46,11 @@
     "baking soda powder",
     "hot water tap kitchen",
     "brush cleaning sink"
-  ]
+  ],
+  "final_check": {
+    "date": "2026-10-27",
+    "by": "claude",
+    "note": "카드 6장 직접 확인: 넘침·잘림 없음, 락스+식초 경고 2장에 표시, 끓는 물 주의 문구 확인",
+    "hash": "22dd297c195f70af"
+  }
 }

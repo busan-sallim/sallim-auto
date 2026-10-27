@@ -13,7 +13,7 @@
     },
     {
       "head": "마른 행주로 쓱",
-      "body": "문을 열고 행주로 천장부터 닦아 내려오면 굳은 얼룩도 쉽게 지워져요. 그릇이 뜨거우니 장갑 끼고 꺼내세요."
+      "body": "그릇은 뜨거우니 장갑 끼고 꺼내요. 플러그를 뽑고 행주로 천장부터 닦아 내려오면 굳은 얼룩도 쉽게 지워져요."
     },
     {
       "head": "회전 접시는 따로",
@@ -30,14 +30,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-27",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "물 갑자기 끓어 넘침(과열) 예방 문구 추가",
-    "hash": "201bc48de3937af2"
+    "note": "닦기 전 플러그 뽑기(전원 차단) 문구 추가, 뜨거운 그릇 꺼내는 순서 정리",
+    "hash": "e0ae9fe1b388ef40"
   },
   "photo": "microwave oven kitchen",
   "photos": [
@@ -46,5 +46,11 @@
     "microwave timer",
     "wiping kitchen cloth",
     "glass plate washing"
-  ]
+  ],
+  "final_check": {
+    "date": "2026-10-27",
+    "by": "claude",
+    "note": "카드 6장 직접 확인: 넘침·잘림 없음, 전원 차단·뜨거운 그릇 안전 문구 확인, 가을 무관 상시 주제",
+    "hash": "e0ae9fe1b388ef40"
+  }
 }
