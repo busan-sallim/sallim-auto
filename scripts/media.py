@@ -69,9 +69,9 @@ def _pixabay(query: str, n: int, key: str, orientation: str = "vertical") -> lis
             continue
         hit = sum(1 for w in words if w in tags)
         if hit >= need:
-            scored.append((-hit, i, h.get("largeImageURL") or h["webformatURL"]))
+            scored.append((-hit, i, (h.get("id"), h.get("largeImageURL") or h["webformatURL"])))
     scored.sort()
-    return [u for _, _, u in scored[:n]]
+    return [u for _, _, u in scored[:n]]  # (사진 번호, 주소) — 픽사베이 주소는 요청마다 바뀌어서 번호로 겹침을 막는다
 
 
 def _openverse(query: str, n: int) -> list[str]:
@@ -99,7 +99,7 @@ def _search(query: str, n: int, hook: bool = False) -> list[str]:
             return _pixabay(query, n, key, "vertical") or _pixabay(query, n, key, "all")
         return _pixabay(query, n, key, "horizontal") or _pixabay(query, n, key, "all")
     if src == "Pexels":
-        return _pexels(query, n, os.environ["PEXELS_KEY"].strip())
+        return [(u, u) for u in _pexels(query, n, os.environ["PEXELS_KEY"].strip())]
     return []
 
 
@@ -123,8 +123,11 @@ def photos(post: dict, stem: str, n: int) -> list[Path]:
     folder.mkdir(parents=True, exist_ok=True)
     used, out = set(), []
     for i, q in enumerate(queries[:n]):
+        if not q:  # 검색어를 비워 둔 장면 = 맞는 사진이 없어서 일부러 사진 없이
+            out.append(None)
+            continue
         try:
-            urls = [u for u in _search(q, 6, hook=(i == 0)) if u not in used]
+            urls = [x for x in _search(q, 10, hook=(i == 0)) if x[0] not in used]
         except Exception as e:  # 열쇠 값은 찍지 않음
             print(f"사진 검색 실패({q}): {type(e).__name__} {getattr(getattr(e, 'response', None), 'status_code', '')}")
             urls = []
@@ -132,8 +135,8 @@ def photos(post: dict, stem: str, n: int) -> list[Path]:
             print(f"[장면 {i}] '{q}' 와 맞는 사진이 없어 이 장면만 사진 없이 만들어요")
             out.append(None)
             continue
-        u = urls[0]
-        used.add(u)
+        pid, u = urls[0]
+        used.add(pid)
         b = requests.get(u, headers=UA, timeout=60)
         b.raise_for_status()
         f = folder / f"{i:02d}.jpg"
