@@ -95,7 +95,11 @@ def render(stem: str, preview: bool = False) -> Path:
     import reel
     post = json.loads((ROOT / "content" / f"{stem}.json").read_text(encoding="utf-8"))
     n = len(post["slides"]) + 1
-    pics = media.photos(post, stem, n)
+    picks = os.environ.get("REEL_PICKS", "").strip()
+    if picks:
+        pics = media.photos_by_pick(stem, parse_picks(stem, picks, n))
+    else:
+        pics = media.photos(post, stem, n)
     d = load()
     track = media.pick_track(d["music"].get("last"))
     want = os.environ.get("REEL_TRACK", "").strip()  # 미리보기에서 곡 번호를 고를 때
@@ -114,6 +118,59 @@ def render(stem: str, preview: bool = False) -> Path:
         d["approved"].pop(stem, None)  # 다시 만들었으면 다시 승인 받아야 함
         save(d)
     print(f"영상 완성: {out} / 사진 {len(pics)}장 / 음악 {info['music']}")
+    return out
+
+
+def parse_picks(stem: str, text: str, n: int) -> list:
+    """'0=3,1=0,2=-' (장면=확인표 후보 번호, - 는 사진 없이) → 장면별 픽사베이 사진 번호"""
+    cands = json.loads((ROOT / "review" / f"{stem}_cands.json").read_text(encoding="utf-8"))
+    picks = [None] * n
+    for part in text.replace(" ", "").split(","):
+        if "=" not in part:
+            continue
+        sc, k = part.split("=")
+        sc = int(sc)
+        if k not in ("-", "") and sc < n:
+            picks[sc] = cands[sc][int(k)]["id"]
+    return picks
+
+
+def candidates(stem: str) -> Path:
+    """장면마다 후보 사진 8장을 모은 확인표 (클로드가 보고 글에 맞는 사진 번호를 고른다)"""
+    import reel
+    from PIL import Image, ImageDraw
+    post = json.loads((ROOT / "content" / f"{stem}.json").read_text(encoding="utf-8"))
+    queries = post.get("photos") or []
+    labels = ["[훅] " + post["title"]] + [f"[{k + 1}] {sl['head']} — {sl['body']}" for k, sl in enumerate(post["slides"])]
+    n = len(labels)
+    tw, th, lw = 230, 230, 340
+    canvas = Image.new("RGB", (lw + 8 * tw, n * (th + 10)), "white")
+    d = ImageDraw.Draw(canvas)
+    f = reel.card_font("Medium", 19)
+    fn = reel.card_font("Black", 34)
+    allc = []
+    for i in range(n):
+        q = queries[i] if i < len(queries) else ""
+        y = i * (th + 10)
+        for j, ln in enumerate(reel.wrap(d, f"{labels[i]}  (검색: {q or '없음'})", f, lw - 16)[:9]):
+            d.text((8, y + 6 + j * 25), ln, font=f, fill=(20, 20, 20))
+        cs = media.pixabay_candidates(q, 8, hook=(i == 0)) if q else []
+        allc.append([{"id": c["id"], "tags": c["tags"]} for c in cs])
+        for k, c in enumerate(cs):
+            try:
+                im = Image.open(__import__("io").BytesIO(requests.get(c["thumb"], timeout=60).content)).convert("RGB")
+                im = reel.cover(im, tw - 6, th - 6)
+                x = lw + k * tw
+                canvas.paste(im, (x + 3, y + 3))
+                d.rectangle((x + 3, y + 3, x + 50, y + 48), fill=(232, 163, 61))
+                d.text((x + 14, y + 3), str(k), font=fn, fill=(20, 20, 20))
+            except Exception as e:
+                print("후보 받기 실패:", type(e).__name__)
+    (ROOT / "review").mkdir(exist_ok=True)
+    (ROOT / "review" / f"{stem}_cands.json").write_text(json.dumps(allc, ensure_ascii=False, indent=1), encoding="utf-8")
+    out = ROOT / "review" / f"{stem}_cands.jpg"
+    canvas.save(out, quality=85)
+    print(out)
     return out
 
 
@@ -271,6 +328,7 @@ if __name__ == "__main__":
     ap.add_argument("--render", help="미리보기 영상 만들기 (--preview 와 함께)")
     ap.add_argument("--preview", action="store_true")
     ap.add_argument("--sheet", help="확인용 장면 모음 그림 만들기")
+    ap.add_argument("--candidates", help="장면별 후보 사진 확인표 만들기 (review/)")
     ap.add_argument("--approve", nargs=2, metavar=("원고", "메모"))
     ap.add_argument("--publish")
     a = ap.parse_args()
@@ -286,6 +344,8 @@ if __name__ == "__main__":
         render(a.render, preview=a.preview)
     elif a.sheet:
         sheet(a.sheet)
+    elif a.candidates:
+        candidates(a.candidates)
     elif a.approve:
         approve(*a.approve)
     elif a.publish:

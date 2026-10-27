@@ -60,7 +60,10 @@ jobs:
           ev="${{ github.event_name }}"
           if [ "$ev" = "push" ]; then
             if git diff --name-only HEAD~1 HEAD | grep -q '^reel_prepare.txt$'; then
-              echo "stem=$(head -1 reel_prepare.txt | tr -d '[:space:]')" >> "$GITHUB_OUTPUT"; echo "mode=prepare" >> "$GITHUB_OUTPUT"
+              echo "stem=$(head -1 reel_prepare.txt | tr -d '[:space:]')" >> "$GITHUB_OUTPUT"
+              pk=$(grep -oP '^pick=\K.*' reel_prepare.txt || true)
+              if [ -n "$pk" ]; then echo "mode=prepare" >> "$GITHUB_OUTPUT"; echo "picks=$pk" >> "$GITHUB_OUTPUT"
+              else echo "mode=candidates" >> "$GITHUB_OUTPUT"; fi
             else
               echo "stem=$(head -1 reel_preview.txt | tr -d '[:space:]')" >> "$GITHUB_OUTPUT"; echo "mode=preview" >> "$GITHUB_OUTPUT"
               echo "track=$(grep -oP '^track=\K\d+' reel_preview.txt || true)" >> "$GITHUB_OUTPUT"
@@ -95,11 +98,24 @@ jobs:
                   print("받음:", t["title"], f.stat().st_size // 1024, "KB")
           PY
 
+      - name: 장면별 후보 사진 확인표 (클로드가 보고 고름)
+        if: steps.plan.outputs.mode == 'candidates'
+        env:
+          PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
+        run: |
+          python scripts/publish_reel.py --candidates "${{ steps.plan.outputs.stem }}"
+          git config user.name "sallim-bot"
+          git config user.email "sallim-bot@users.noreply.github.com"
+          git add review
+          git commit -m "릴스 후보 사진: ${{ steps.plan.outputs.stem }}" || true
+          git pull --rebase -q && git push
+
       - name: 영상 만들기
         if: steps.plan.outputs.stem != '' && (steps.plan.outputs.mode == 'preview' || steps.plan.outputs.mode == 'prepare')
         env:
           PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
           REEL_TRACK: ${{ steps.plan.outputs.track }}
+          REEL_PICKS: ${{ steps.plan.outputs.picks }}
         run: |
           if [ "${{ steps.plan.outputs.mode }}" = "preview" ]; then
             python scripts/publish_reel.py --render "${{ steps.plan.outputs.stem }}" --preview

@@ -74,6 +74,65 @@ def _pixabay(query: str, n: int, key: str, orientation: str = "vertical") -> lis
     return [u for _, _, u in scored[:n]]  # (사진 번호, 주소) — 픽사베이 주소는 요청마다 바뀌어서 번호로 겹침을 막는다
 
 
+def pixabay_candidates(query: str, n: int = 8, hook: bool = False) -> list[dict]:
+    """확인표용 후보: 태그가 검색어와 하나라도 겹치는 사진을 많이 겹치는 순서로 n장 (클로드가 눈으로 고른다)"""
+    key = os.environ["PIXABAY_KEY"].strip()
+    words = [_norm(w) for w in query.replace(",", " ").split() if w.lower() not in STOP]
+    seen, out = set(), []
+    for ori in (["vertical", "all"] if hook else ["horizontal", "all"]):
+        r = requests.get("https://pixabay.com/api/", headers=UA, timeout=30,
+                         params={"key": key, "q": query, "image_type": "photo", "orientation": ori,
+                                 "safesearch": "true", "per_page": 100, "order": "popular"})
+        r.raise_for_status()
+        for i, h in enumerate(r.json().get("hits", [])):
+            raw = (h.get("tags") or "").lower()
+            if h["id"] in seen or any(w.strip() in (" " + raw.replace(",", " ") + " ") for w in PEOPLE):
+                continue
+            tags = {_norm(x) for part in raw.split(",") for x in part.split()}
+            hit = sum(1 for w in words if w in tags)
+            if hit:
+                seen.add(h["id"])
+                out.append({"score": hit, "order": i, "id": h["id"], "thumb": h.get("webformatURL"), "tags": raw})
+        if len(out) >= n:
+            break
+    out.sort(key=lambda x: (-x["score"], x["order"]))
+    return out[:n]
+
+
+def pixabay_by_id(pid) -> str:
+    """사진 번호로 큰 사진 주소 받기 (픽사베이 주소는 시간이 지나면 바뀌어서 번호로 다시 묻는다)"""
+    r = requests.get("https://pixabay.com/api/", headers=UA, timeout=30,
+                     params={"key": os.environ["PIXABAY_KEY"].strip(), "id": pid})
+    r.raise_for_status()
+    hits = r.json().get("hits", [])
+    return (hits[0].get("largeImageURL") or hits[0]["webformatURL"]) if hits else ""
+
+
+def photos_by_pick(stem: str, picks: list) -> list:
+    """클로드가 확인표에서 고른 사진 번호대로 받기. None 인 장면은 사진 없이"""
+    folder = ROOT / "out" / stem / "photos"
+    if folder.exists():
+        for f in folder.glob("*"):
+            f.unlink()
+    folder.mkdir(parents=True, exist_ok=True)
+    out = []
+    for i, pid in enumerate(picks):
+        if not pid:
+            out.append(None)
+            continue
+        u = pixabay_by_id(pid)
+        if not u:
+            print(f"[장면 {i}] 사진 {pid} 를 못 받아서 이 장면은 사진 없이")
+            out.append(None)
+            continue
+        b = requests.get(u, headers=UA, timeout=60)
+        b.raise_for_status()
+        f = folder / f"{i:02d}.jpg"
+        f.write_bytes(b.content)
+        out.append(f)
+    return out
+
+
 def _openverse(query: str, n: int) -> list[str]:
     r = requests.get("https://api.openverse.org/v1/images/", headers=UA, timeout=30,
                      params={"q": query, "license": "cc0,pdm", "aspect_ratio": "tall", "page_size": 40,
