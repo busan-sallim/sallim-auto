@@ -1,12 +1,16 @@
 {
   "tag": "김장철 살림템",
   "hook": "김장하고 거실 바닥 닦느라 지쳤다면",
-  "title": "테두리가 서는 김장 매트",
+  "title": "테두리가 높은 원형 김장 매트",
   "subtitle": "양념이 바닥에 안 흘러요",
   "slides": [
     {
-      "head": "가장자리가 올라와요",
-      "body": "매트 테두리를 세우면 얕은 통처럼 돼요. 양념 물이 밖으로 덜 흘러요."
+      "head": "벽이 높아요",
+      "body": "가장자리가 벽처럼 올라와 있어서 큰 대야처럼 써요. 양념 물이 밖으로 덜 흘러요."
+    },
+    {
+      "head": "크기 고르기",
+      "body": "지름 90cm부터 180cm까지 있어요. 배추 양과 거실 공간에 맞춰 골라요."
     },
     {
       "head": "넓게 깔고 시작",
@@ -28,14 +32,16 @@
     "살림템",
     "살림팁"
   ],
-  "link": "",
+  "link": "https://link.coupang.com/a/iekWGwQoKa",
   "photos": [
     "kimchi making",
+    "making kimchi cabbage",
+    "measuring tape",
     "napa cabbage kimchi",
-    "making kimchi mat",
     "washing kitchen mat",
     "drying mat"
   ],
+  "product": "다용도 원형 김장 매트",
   "review": {
     "date": "2026-10-28",
     "by": "claude",
@@ -43,7 +49,7 @@
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "릴스 전용 살림템 원고. 1~4 확인: 실제 판매되는 일반 제품군, 효능 과장 없음(줄여요·덜), 열·칼날·충전·불 안전 문구, 대중적. 상표명 없음",
-    "hash": "97d9ac4d94ac0164"
+    "note": "쿠팡 링크·제품명 추가. 받은 상세(원형, 벽 높은 대야형, 90~180cm 크기 옵션)에 맞게 1장 수정·크기 장 추가. 과장 없음, 위생(건조 보관) 문구",
+    "hash": "3b640f42ab61a64e"
   }
 }
