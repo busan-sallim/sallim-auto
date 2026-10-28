@@ -150,7 +150,8 @@ jobs:
         run: |
           git config user.name "sallim-bot"
           git config user.email "sallim-bot@users.noreply.github.com"
-          git add reels.json
+          python scripts/build_links.py || true   # 링크 모음 페이지 갱신 (쿠팡 링크 릴스)
+          git add reels.json docs/index.html
           git commit -m "릴스 발행 기록: ${{ steps.plan.outputs.stem }}" || true
           git pull --rebase -q && git push
 

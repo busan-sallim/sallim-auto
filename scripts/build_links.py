@@ -25,6 +25,16 @@ def items() -> list[dict]:
         post = json.loads(f.read_text(encoding="utf-8"))
         if post.get("link"):
             out.append({"date": rec.get("date", ""), "stem": stem, **post})
+    # 릴스 전용 원고(reels_content/)로 올라간 쿠팡 링크 글도 함께
+    rl = ROOT / "reels.json"
+    reels = json.loads(rl.read_text(encoding="utf-8")).get("posts", {}) if rl.exists() else {}
+    for stem, rec in reels.items():
+        f = ROOT / "reels_content" / f"{stem}.json"
+        if not f.exists() or not (str(rec.get("instagram", "")).isdigit() or str(rec.get("threads", "")).isdigit()):
+            continue
+        post = json.loads(f.read_text(encoding="utf-8"))
+        if post.get("link"):
+            out.append({"date": rec.get("date", ""), "stem": stem, **post})
     return sorted(out, key=lambda x: (x["date"], x["stem"]), reverse=True)
 
 

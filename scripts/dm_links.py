@@ -90,6 +90,21 @@ def targets(test_stem: str | None) -> list[dict]:
             continue
         out.append({"stem": stem, "media": rec["instagram"], "link": post["link"],
                     "product": post.get("product") or "글에 나온 제품", "test": stem == test_stem})
+    # 릴스로 올린 쿠팡 링크 글 (릴스 전용 원고 포함). 릴스는 게시물 번호가 따로라 따로 살펴본다
+    rl = ROOT / "reels.json"
+    reels = json.loads(rl.read_text(encoding="utf-8")).get("posts", {}) if rl.exists() else {}
+    for stem, rec in reels.items():
+        media = str(rec.get("instagram", ""))
+        f = ROOT / "reels_content" / f"{stem}.json"
+        if not f.exists():
+            f = ROOT / "content" / f"{stem}.json"
+        if not media.isdigit() or not f.exists() or not rec.get("date"):
+            continue
+        post = json.loads(f.read_text(encoding="utf-8"))
+        if not post.get("link") or (today - dt.date.fromisoformat(rec["date"])).days > WINDOW_DAYS * 2:
+            continue
+        out.append({"stem": stem + " (릴스)", "media": media, "link": post["link"],
+                    "product": post.get("product") or "글에 나온 제품", "test": False})
     return out
 
 
