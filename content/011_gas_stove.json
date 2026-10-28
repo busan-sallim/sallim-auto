@@ -46,5 +46,11 @@
     "soaking dishes soapy water",
     "paper towel kitchen counter",
     "soft sponge cleaning stove"
-  ]
+  ],
+  "final_check": {
+    "date": "2026-10-28",
+    "by": "claude",
+    "note": "6장 모두 열어 봄. 글자 넘침 없음, 가스 밸브·식힌 뒤·화구 물기 안전 문구 있음, 맞춤법·계절 이상 없음, 링크 없음",
+    "hash": "64824612dbf0f0fc"
+  }
 }
