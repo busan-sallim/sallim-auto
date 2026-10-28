@@ -139,6 +139,8 @@ jobs:
       - name: 발행 기록 저장
         if: always() && steps.plan.outputs.stem != '' && steps.plan.outputs.mode == 'publish'
         run: |
+          git config user.name "sallim-bot"
+          git config user.email "sallim-bot@users.noreply.github.com"
           git add reels.json
           git commit -m "릴스 발행 기록: ${{ steps.plan.outputs.stem }}" || true
           git pull --rebase -q && git push

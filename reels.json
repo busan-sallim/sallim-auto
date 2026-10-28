@@ -1,6 +1,16 @@
 {
-  "posts": {},
-  "music": {},
+  "posts": {
+    "002_fridge": {
+      "instagram": "기록누락-10/28 중복발행",
+      "threads": "기록누락-10/28 중복발행",
+      "date": "2026-10-28",
+      "music": "atlasaudio-happy-ukulele-617574.mp3",
+      "note": "발행 기록 저장 단계에 작성자 설정이 없어 커밋 실패 → 같은 날 4번 올라감. 다시 안 올라가게 수동 기록"
+    }
+  },
+  "music": {
+    "last": "atlasaudio-happy-ukulele-617574.mp3"
+  },
   "prepared": {
     "002_fridge": {
       "date": "2026-10-27",
