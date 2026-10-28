@@ -1,4 +1,4 @@
-"""릴스 (월·수·금·일 저녁)
+"""릴스 (화 오전 10:30 · 목 낮 12:30 · 일 밤 21:30 무렵, 주 3회)
 
 고정 규칙
   - 영상의 사진은 그 장의 글 내용과 맞아야 한다 → 발행 전날 밤 클로드가 영상을 직접 보고 승인한 것만 발행
@@ -11,7 +11,8 @@
      사진과 글이 맞으면 승인 도장. 영상 파일 지문(sha)과 묶여서, 다시 만들면 다시 승인해야 한다
   3) 발행(--publish): 저녁 예약 실행이 승인된 영상만 인스타 릴스·스레드에 올린다 (하루 한 번)
 
-고르는 기준(--pick): 카드뉴스로 나간 지 3일 이상 + 아직 릴스로 안 만든 원고 중 저장·공유 점수 높은 것
+고르는 기준(--pick): ① 릴스 전용 원고(reels_content/, 신기한 살림템 등 카드뉴스와 다른 소재)를 번호 순서대로
+                     ② 없으면 카드뉴스로 나간 지 3일 이상 + 아직 릴스로 안 만든 원고 중 저장·공유 점수 높은 것
 토큰은 깃허브 비밀 보관함에서만: IG_TOKEN, THREADS_TOKEN, PIXABAY_KEY
 """
 import argparse
@@ -33,6 +34,16 @@ import publish as P  # noqa: E402  (인스타·스레드 공통 함수)
 
 ROOT = Path(__file__).resolve().parent.parent
 REELS_LOG = ROOT / "reels.json"
+REEL_DIR = ROOT / "reels_content"   # 릴스 전용 원고 (카드뉴스로는 안 나감)
+
+
+def post_file(stem: str) -> Path:
+    f = REEL_DIR / f"{stem}.json"
+    return f if f.exists() else ROOT / "content" / f"{stem}.json"
+
+
+def reel_only(stem: str) -> bool:
+    return (REEL_DIR / f"{stem}.json").exists()
 
 
 def today() -> str:
@@ -73,6 +84,12 @@ def score(stem: str) -> float:
 def pick() -> str:
     log = P.load_log()
     done = load()["posts"]
+    # ① 릴스 전용 원고: 1차 검수 통과 + 아직 안 올린 것, 번호 순서
+    for f in sorted(REEL_DIR.glob("*.json")) if REEL_DIR.exists() else []:
+        if done.get(f.stem, {}).get("instagram") or f.stem in load()["approved"]:
+            continue
+        if not problems(json.loads(f.read_text(encoding="utf-8")), need_final=False):
+            return f.stem
     cut = (datetime.datetime.now(ZoneInfo("Asia/Seoul")) - datetime.timedelta(days=3)).strftime("%Y-%m-%d")
     cands = []
     for stem, rec in log.items():
@@ -80,7 +97,7 @@ def pick() -> str:
             continue
         if done.get(stem, {}).get("instagram") or stem in load()["approved"]:
             continue
-        f = ROOT / "content" / f"{stem}.json"
+        f = post_file(stem)
         if not f.exists() or problems(json.loads(f.read_text(encoding="utf-8"))):
             continue
         cands.append((-score(stem), rec["date"], stem))
@@ -93,7 +110,7 @@ def sha(path: Path) -> str:
 
 def render(stem: str, preview: bool = False) -> Path:
     import reel
-    post = json.loads((ROOT / "content" / f"{stem}.json").read_text(encoding="utf-8"))
+    post = json.loads((post_file(stem)).read_text(encoding="utf-8"))
     n = len(post["slides"]) + 1
     picks = os.environ.get("REEL_PICKS", "").strip()
     if picks:
@@ -109,7 +126,7 @@ def render(stem: str, preview: bool = False) -> Path:
                 track = t
     out = ROOT / "docs" / ("preview" if preview else "reels") / f"{stem}.mp4"
     tpath = ROOT / "music" / track["file"] if track else None
-    reel.render(ROOT / "content" / f"{stem}.json", out, fps=60, photos=pics,
+    reel.render(post_file(stem), out, fps=60, photos=pics,
                 track=tpath, track_start=float(track.get("start", 0)) if track else 0.0)
     info = {"date": today(), "sha": sha(out), "music": track["file"] if track else "직접 만든 배경음",
             "photos": [str(x.relative_to(ROOT)) if x else None for x in pics], "queries": post.get("photos", [])}
@@ -139,9 +156,9 @@ def candidates(stem: str) -> Path:
     """장면마다 후보 사진 8장을 모은 확인표 (클로드가 보고 글에 맞는 사진 번호를 고른다)"""
     import reel
     from PIL import Image, ImageDraw
-    post = json.loads((ROOT / "content" / f"{stem}.json").read_text(encoding="utf-8"))
+    post = json.loads((post_file(stem)).read_text(encoding="utf-8"))
     queries = post.get("photos") or []
-    labels = ["[훅] " + post["title"]] + [f"[{k + 1}] {sl['head']} — {sl['body']}" for k, sl in enumerate(post["slides"])]
+    labels = ["[훅] " + (post.get("hook") or post["title"])] + [f"[{k + 1}] {sl['head']} — {sl['body']}" for k, sl in enumerate(post["slides"])]
     n = len(labels)
     tw, th, lw = 230, 230, 340
     canvas = Image.new("RGB", (lw + 8 * tw, n * (th + 10)), "white")
@@ -179,13 +196,13 @@ def sheet(stem: str, out: Path | None = None) -> Path:
     import subprocess
     import reel
     from PIL import Image, ImageDraw
-    post = json.loads((ROOT / "content" / f"{stem}.json").read_text(encoding="utf-8"))
+    post = json.loads((post_file(stem)).read_text(encoding="utf-8"))
     video = ROOT / "docs" / "reels" / f"{stem}.mp4"
     beat = reel.BEAT
     times = [reel.HOOK_BEATS * beat * 0.8]
     for k in range(len(post["slides"])):
         times.append(reel.HOOK_BEATS * beat + k * reel.SLIDE_BEATS * beat + reel.SLIDE_BEATS * beat * 0.7)
-    labels = ["[훅] " + post["title"]] + [f"[{k + 1}] {s['head']} — {s['body']}" for k, s in enumerate(post["slides"])]
+    labels = ["[훅] " + (post.get("hook") or post["title"])] + [f"[{k + 1}] {s['head']} — {s['body']}" for k, s in enumerate(post["slides"])]
     tw, th = 360, 640
     cols = 3
     rows = (len(times) + cols - 1) // cols
@@ -240,8 +257,9 @@ def wait_public(url: str):
     raise RuntimeError(f"영상 주소가 아직 열리지 않아요: {url}")
 
 
-def caption(post: dict, threads: bool) -> str:
-    base = P.build_text({**post, "caption": post["caption"].strip() + "\n\n카드뉴스 전체는 프로필에서 저장해 두세요 🧺"}, threads)
+def caption(post: dict, threads: bool, only_reel: bool = False) -> str:
+    tail = "저장해 두고 살림할 때 꺼내 보세요 🧺" if only_reel else "카드뉴스 전체는 프로필에서 저장해 두세요 🧺"
+    base = P.build_text({**post, "caption": post["caption"].strip() + "\n\n" + tail}, threads)
     src = media.photo_source()
     credit = f"\n\n사진: {src}" if src else ""
     limit = 500 if threads else 2200
@@ -284,7 +302,7 @@ def post_threads_video(url: str, text: str) -> str:
 
 
 def publish(stem: str):
-    post = json.loads((ROOT / "content" / f"{stem}.json").read_text(encoding="utf-8"))
+    post = json.loads((post_file(stem)).read_text(encoding="utf-8"))
     probs = problems(post)
     if probs:
         sys.exit(f"검수에 걸려 릴스를 올리지 않아요: {probs}")
@@ -299,13 +317,13 @@ def publish(stem: str):
     errors = []
     if not rec.get("instagram"):
         try:
-            rec["instagram"] = post_ig_reel(url, caption(post, False))
+            rec["instagram"] = post_ig_reel(url, caption(post, False, reel_only(stem)))
             print("인스타 릴스 발행 완료")
         except Exception as e:
             errors.append(f"인스타 릴스 실패: {e}")
     if not rec.get("threads"):
         try:
-            rec["threads"] = post_threads_video(url, caption(post, True))
+            rec["threads"] = post_threads_video(url, caption(post, True, reel_only(stem)))
             print("스레드 영상 발행 완료")
         except Exception as e:
             errors.append(f"스레드 영상 실패: {e}")

@@ -1,9 +1,10 @@
 """원고(content/*.json) → 릴스 영상 (1080x1920, 60fps, MP4)
 
 연출: 100BPM 박자에 맞춘 키네틱 타이포
-  훅(5박)   머스타드 번쩍 → 꼬리표 → 제목이 단어마다 튕기며 등장 (+살짝 흔들림)
+  훅(5박)   첫 프레임부터 전체 화면 사진이 움직이고(빠르게 줌아웃) 큰 한 줄 문구("hook")가 바로 보임
+            → 0.7초부터 제목이 아래에 작게 등장. 훅 사진이 없으면 1장 사진을 끌어다 쓴다
   본문(장당 6박) 번호 동그라미에서 원이 퍼지며 전환, 크림/먹색 배경 교대, 소제목·밑줄·본문 줄 순서 등장, 천천히 줌
-  마무리(5박) "저장해두고 꺼내 보세요" + 책갈피 아이콘, 끝 프레임은 첫 프레임 색 → 반복 재생이 자연스럽게
+  마무리(5박) "저장해두고 꺼내 보세요" + 책갈피 아이콘
 음악: scripts/reel.py 가 직접 합성 (외부 음원 없음 → 저작권 걱정 없음)
 쿠팡 링크 글: 처음 3.6초 동안 화면 위쪽에 "유료 광고 포함" 표시 (공정위 지침: 시작 부분 3초 이상)
 
@@ -79,6 +80,15 @@ def text_layer(text, fnt, color):
     return im
 
 
+def outlined(text, fnt, color):
+    """사진 위 글씨: 어두운 테두리로 어떤 사진에서도 잘 읽히게"""
+    box = fnt.getbbox(text, stroke_width=6)
+    w, h = box[2] - box[0] + 8, fnt.size + int(fnt.size * 0.45)
+    im = Image.new("RGBA", (max(w, 1), h), (0, 0, 0, 0))
+    ImageDraw.Draw(im).text((-box[0] + 4, 4), text, font=fnt, fill=color, stroke_width=6, stroke_fill=(20, 20, 20, 200))
+    return im
+
+
 def paste(frame, layer, x, y, alpha=1.0, scale=1.0):
     if alpha <= 0.01:
         return
@@ -131,7 +141,7 @@ def hook_shade():
     if HOOK_SHADE is None:
         a = np.zeros((H, W), dtype=np.uint8)
         ys = np.arange(H)
-        prof = np.clip((ys - 420) / 900, 0, 1) ** 1.2 * 190 + 40   # 위 40 → 아래 230 (255 넘지 않게)
+        prof = np.clip((ys - 300) / 1400, 0, 1) * 90 + 60   # 위 60 → 아래 150 (사진이 잘 보이게 옅게)
         a[:] = prof[:, None].astype(np.uint8)
         HOOK_SHADE = Image.merge("RGBA", [Image.new("L", (W, H), 22)] * 3 + [Image.fromarray(a)])
     return HOOK_SHADE
@@ -153,30 +163,28 @@ def build(post: dict, photos=None):
     scenes = []
     t = 0.0
 
-    # 훅
-    f_title = card_font("Black", 140)
+    # 훅: 큰 한 줄 문구(hook) + 그 아래 제목. 사진은 첫 프레임부터 보이게
+    if photos and photos[0] is None:
+        photos[0] = next((x for x in photos[1:] if x is not None), None)  # 훅 사진이 없으면 1장 사진을 쓴다
     has_photo = bool(photos) and photos[0] is not None
-    t_col, s_col = (CREAM, (230, 222, 208)) if has_photo else (INK, SOFT)
-    t_lines = wrap(d, post["title"], f_title, TEXT_W)
-    sub = post.get("subtitle", "")
-    s_lines = wrap(d, sub, card_font("Medium", 58), TEXT_W)
-    # 사진이 있으면 글씨 묶음을 아래쪽(1480 위)에 맞춰 놓는다
-    block = len(t_lines) * 166 + 30 + len(s_lines) * 76
-    y = max(640, 1480 - block) if has_photo else 700
-    tag_y = y - 170
-    words = []
-    for line in t_lines:
-        x = LEFT
-        for wd in line.split(" "):
-            lay = text_layer(wd, f_title, t_col)
-            words.append((lay, x, y))
-            x += d.textlength(wd + " ", font=f_title)
-        y += 140 + 26
-    sub_lines = [text_layer(s, card_font("Medium", 58), s_col) for s in s_lines]
+    hook_text = post.get("hook") or post["title"]
+    f_hook = card_font("Black", 132)
+    h_lines = wrap(d, hook_text, f_hook, TEXT_W - 40)
+    if len(h_lines) > 2:  # 3줄 이상이면 글씨를 줄인다
+        f_hook = card_font("Black", 104)
+        h_lines = wrap(d, hook_text, f_hook, TEXT_W - 40)
+    lh = int(f_hook.size * 1.28)
+    y = 640
+    hook_lines = []
+    for line in h_lines:
+        hook_lines.append((text_layer(line, f_hook, INK), LEFT, y))
+        y += lh
+    f_title = card_font("Bold", 64)
+    t_col = CREAM if has_photo else INK
+    title_lines = [outlined(s, f_title, t_col) if has_photo else text_layer(s, f_title, t_col) for s in wrap(d, post["title"] if post.get("hook") else post.get("subtitle", ""), f_title, TEXT_W)]
     hook = Scene(t, HOOK_BEATS * BEAT)
-    hook.words, hook.sub, hook.sub_y, hook.tag_y = words, sub_lines, y + 30, tag_y
-    hook.tag = text_layer(post.get("tag", "오늘의 살림"), card_font("Bold", 46), t_col)
-    hook.photo = cover(photos[0], int(W * 1.1), int(H * 1.1)) if has_photo else None
+    hook.lines, hook.lh, hook.title, hook.title_y = hook_lines, lh, title_lines, y + 50
+    hook.photo = cover(photos[0], int(W * 1.18), int(H * 1.18)) if has_photo else None
     scenes.append(("hook", hook))
     t += hook.dur
 
@@ -216,34 +224,25 @@ def build(post: dict, photos=None):
 
 # ---------- 그리기 ----------
 def draw_hook(fr, sc, lt):
-    if sc.photo is not None:
-        fr.paste(kenburns(sc.photo, W, H, lt / sc.dur, zoom=0.12), (0, 0))
-        fr.alpha_composite(hook_shade())
     d = ImageDraw.Draw(fr)
-    # 0~0.25초: 머스타드 화면이 위로 걷히며 시작 (마지막 프레임과 이어짐)
-    wipe = ease_in_out_cubic(progress(lt, 0.05, 0.35))
-    if wipe < 1:
-        d.rectangle((0, 0, W, int(H * (1 - wipe))), fill=MUSTARD)
-    # 꼬리표: 막대가 그어지고 글씨가 올라옴
-    bar = ease_out_cubic(progress(lt, 0.25, 0.35))
-    d.rectangle((LEFT, sc.tag_y, LEFT + int(180 * bar), sc.tag_y + 14), fill=MUSTARD)
-    p = ease_out_cubic(progress(lt, 0.35, 0.4))
-    paste(fr, sc.tag, LEFT, sc.tag_y + 50 + 30 * (1 - p), p)
-    # 제목: 단어마다 반 박자 간격으로 튕기며 등장
-    for k, (lay, x, y) in enumerate(sc.words):
-        st = 0.4 + k * WORD_GAP
-        q = progress(lt, st, 0.32)
-        if q <= 0:
-            continue
-        s = 0.55 + 0.45 * ease_out_back(q, 2.2)
-        shake = math.sin((lt - st) * 70) * 10 * max(0, 1 - (lt - st) / 0.18) if q > 0 else 0
-        paste(fr, lay, x + shake, y + 40 * (1 - ease_out_cubic(q)), min(1, q * 3), s)
-    last = 0.4 + len(sc.words) * WORD_GAP
-    for k, lay in enumerate(sc.sub):
-        q = ease_out_cubic(progress(lt, last + 0.1 + k * 0.06, 0.4))
-        paste(fr, lay, LEFT, sc.sub_y + k * 76 + 24 * (1 - q), q)
-    # 퇴장: 마지막 0.2초 동안 위로 살짝
-    return
+    if sc.photo is not None:
+        # 첫 프레임부터 움직임: 1.5초 동안 빠르게 줌아웃 → 이후 아주 천천히
+        p = 1 - 0.85 * ease_out_cubic(lt / 1.5) - 0.15 * (lt / sc.dur)
+        fr.paste(kenburns(sc.photo, W, H, max(0.0, p), zoom=0.18, pan=(0.0, 0.0)), (0, 0))
+        fr.alpha_composite(hook_shade())
+    else:
+        d.rectangle((0, 0, W, H), fill=CREAM)
+    # 큰 한 줄 문구: 첫 프레임부터 보임 (머스타드 띠 위 먹색 글씨), 0.18초 동안 살짝 튕김
+    q = ease_out_back(progress(lt, 0.0, 0.18), 2.0)
+    s = 1.04 - 0.04 * q
+    for lay, x, y in sc.lines:
+        pad = 18
+        d.rounded_rectangle((x - pad, y - 6, x + lay.width + pad, y + sc.lh - 22), 18, fill=MUSTARD)
+        paste(fr, lay, x, y, 1.0, s)
+    # 제목: 0.7초부터 아래에서 올라옴
+    for k, lay in enumerate(sc.title):
+        q = ease_out_cubic(progress(lt, 0.7 + k * 0.08, 0.4))
+        paste(fr, lay, LEFT, sc.title_y + k * 84 + 30 * (1 - q), q)
 
 
 def draw_slide(fr, sc, lt, total_slides):
@@ -306,10 +305,6 @@ def draw_end(fr, sc, lt):
     q = ease_out_cubic(progress(lt, 1.8, 0.4))
     paste(fr, sc.sub1, LEFT, y + 90 + 20 * (1 - q), q)
     paste(fr, sc.sub2, LEFT, y + 160 + 20 * (1 - q), q)
-    # 마지막 0.3초: 머스타드가 아래에서 올라와 첫 프레임과 이어짐 (반복 재생용)
-    z = ease_in_out_cubic(progress(lt, sc.dur - 0.3, 0.3))
-    if z > 0:
-        d.rectangle((0, int(H * (1 - z)), W, H), fill=MUSTARD)
 
 
 SLIDE_CENTER = (LEFT + 80, 600)
@@ -331,10 +326,7 @@ def hud(fr, t, idx, seg_p, nseg, dark):
         if f > 0:
             d.rectangle((x0, 150, x0 + seg_w * f, 156), fill=MUSTARD)
     small = card_font("Medium", 26)
-    col = (150, 146, 140)
-    d.text((LEFT, 182), "부산여자 살림코칭", font=small, fill=col)
-    tc = f"{int(t // 60):02d}:{t % 60:05.2f}"
-    d.text((W - RIGHT_SAFE - d.textlength(tc, font=small), 182), tc, font=small, fill=col)
+    d.text((LEFT, 182), "부산여자 살림코칭", font=small, fill=(150, 146, 140))
 
 
 def draw_scene(kind, sc, lt, n):
@@ -468,7 +460,8 @@ def render(post_path: Path, out: Path, fps: int = 60, photos=None, track: Path |
             under.paste(fr, (0, 0), mask)
             fr = under
             dark = dark if lt > TRANS / 2 else ((pk == "slide" and ps.dark) or pk == "end")
-        hud(fr, t, idx, lt / sc.dur, len(scenes), dark)
+        if kind != "hook":  # 훅 화면은 깨끗하게 (진행 막대·글씨 없이)
+            hud(fr, t, idx, lt / sc.dur, len(scenes), dark)
         if ad and t < 3.6:  # 처음 3.6초: 유료 광고 표시
             dd = ImageDraw.Draw(fr)
             dd.rounded_rectangle((LEFT - 10, 228, LEFT + ad.width + 26, 228 + ad.height + 14), 14, fill=MUSTARD)
