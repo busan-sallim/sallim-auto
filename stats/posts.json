@@ -5,24 +5,24 @@
     "title": "샤워부스 물때, 문지르지 말고 불려서 닦아요",
     "has_link": false,
     "instagram": {
-      "views": 49,
-      "reach": 12,
-      "likes": 4,
+      "views": 51,
+      "reach": 13,
+      "likes": 5,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 4,
+      "total_interactions": 5,
       "follows": 0
     },
     "threads": {
-      "views": 361,
+      "views": 362,
       "likes": 3,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-28"
+    "updated": "2026-10-29"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -30,24 +30,24 @@
     "title": "냉장고 정리, 칸마다 자리만 정해도 반은 끝나요",
     "has_link": false,
     "instagram": {
-      "views": 47,
-      "reach": 11,
-      "likes": 4,
+      "views": 49,
+      "reach": 12,
+      "likes": 5,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 4,
+      "total_interactions": 5,
       "follows": 0
     },
     "threads": {
-      "views": 189,
+      "views": 190,
       "likes": 4,
       "replies": 1,
       "reposts": 0,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-10-28"
+    "updated": "2026-10-29"
   },
   "003_laundry": {
     "date": "2026-10-25",
@@ -55,24 +55,24 @@
     "title": "빨래에서 쉰내 날 때, 세제 더 넣으면 오히려 심해져요",
     "has_link": false,
     "instagram": {
-      "views": 46,
-      "reach": 12,
-      "likes": 3,
+      "views": 52,
+      "reach": 13,
+      "likes": 4,
       "comments": 2,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 5,
+      "total_interactions": 6,
       "follows": 0
     },
     "threads": {
-      "views": 69,
+      "views": 70,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-28"
+    "updated": "2026-10-29"
   },
   "004_window_condensation": {
     "date": "2026-10-26",
@@ -80,24 +80,24 @@
     "title": "창틀 물방울, 닦기만 하면 곰팡이 못 막아요",
     "has_link": false,
     "instagram": {
-      "views": 26,
-      "reach": 8,
-      "likes": 2,
+      "views": 37,
+      "reach": 10,
+      "likes": 4,
       "comments": 0,
       "saved": 0,
       "shares": 1,
-      "total_interactions": 3,
+      "total_interactions": 5,
       "follows": 0
     },
     "threads": {
-      "views": 110,
+      "views": 111,
       "likes": 2,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-28"
+    "updated": "2026-10-29"
   },
   "005_padding_wash": {
     "date": "2026-10-27",
@@ -105,23 +105,48 @@
     "title": "패딩, 드라이 맡기지 말고 집에서 빨아요",
     "has_link": false,
     "instagram": {
-      "views": 14,
-      "reach": 6,
-      "likes": 2,
+      "views": 20,
+      "reach": 8,
+      "likes": 3,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 2,
+      "total_interactions": 3,
       "follows": 0
     },
     "threads": {
-      "views": 58,
+      "views": 62,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-28"
+    "updated": "2026-10-29"
+  },
+  "006_humidifier": {
+    "date": "2026-10-28",
+    "tag": "겨울 준비",
+    "title": "가습기, 물만 갈아 주면 된다고 생각했다면",
+    "has_link": false,
+    "instagram": {
+      "views": 28,
+      "reach": 8,
+      "likes": 1,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "follows": 0
+    },
+    "threads": {
+      "views": 10,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-10-29"
   }
 }
