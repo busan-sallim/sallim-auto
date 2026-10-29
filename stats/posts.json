@@ -15,14 +15,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 362,
+      "views": 363,
       "likes": 3,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -40,14 +40,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 190,
+      "views": 193,
       "likes": 4,
       "replies": 1,
       "reposts": 0,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   },
   "003_laundry": {
     "date": "2026-10-25",
@@ -65,14 +65,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 70,
+      "views": 71,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   },
   "004_window_condensation": {
     "date": "2026-10-26",
@@ -80,7 +80,7 @@
     "title": "창틀 물방울, 닦기만 하면 곰팡이 못 막아요",
     "has_link": false,
     "instagram": {
-      "views": 37,
+      "views": 39,
       "reach": 10,
       "likes": 4,
       "comments": 0,
@@ -90,14 +90,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 111,
+      "views": 113,
       "likes": 2,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   },
   "005_padding_wash": {
     "date": "2026-10-27",
@@ -115,14 +115,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 62,
+      "views": 63,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   },
   "006_humidifier": {
     "date": "2026-10-28",
@@ -140,13 +140,38 @@
       "follows": 0
     },
     "threads": {
-      "views": 10,
+      "views": 13,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
+  },
+  "007_fleece_blanket": {
+    "date": "2026-10-29",
+    "tag": "침구",
+    "title": "극세사 이불, 빨고 나니 뻣뻣해졌다면",
+    "has_link": false,
+    "instagram": {
+      "views": 21,
+      "reach": 6,
+      "likes": 1,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "follows": 0
+    },
+    "threads": {
+      "views": 56,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-10-30"
   }
 }
