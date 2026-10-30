@@ -153,6 +153,17 @@ def collect():
                 break
             except Exception as e:
                 problems.append(f"{stem} {name}: {e}")
+        # 5번 개선: 답 안 단 댓글 수 (최근 7일 글만, 숫자만 기록 — 공개 저장소라 남의 아이디·댓글 내용은 안 적음)
+        if ig and str(rec.get("instagram", "")).isdigit() and (today - date).days <= 7:
+            try:
+                me = get(f"{IG_API}/me", fields="username", access_token=ig).get("username", "")
+                cs = get(f"{IG_API}/{rec['instagram']}/comments", fields="id,username,replies{username}",
+                         access_token=ig).get("data", [])
+                cs = [c for c in cs if c.get("username") != me]
+                todo = [c for c in cs if not any(r.get("username") == me for r in (c.get("replies") or {}).get("data", []))]
+                row["comments_todo"] = len(todo)
+            except Exception as e:
+                problems.append(f"{stem} 댓글 확인: {e}")
         row["updated"] = today.isoformat()
 
     # 팔로워 수 + 스레드 링크 클릭(최근 7일)
@@ -219,6 +230,11 @@ def report(posts: dict, followers: list, clicks: list, problems: list) -> str:
         ig, th = r.get("instagram", {}), r.get("threads", {})
         out.append(f"| {i} | {stem} | {r.get('tag','')} | {ig.get('reach','-')} | {ig.get('saved','-')} | "
                    f"{ig.get('shares','-')} | {th.get('views','-')} | {score(r):.1%} |")
+
+    todo = [(stem, r["comments_todo"]) for stem, r in posts.items() if r.get("comments_todo")]
+    if todo:
+        out += ["", "## 답 안 단 댓글 (최근 7일, 인스타 앱에서 직접 답해 주세요)", ""]
+        out += [f"- {stem}: {n}개" for stem, n in sorted(todo)]
 
     by_tag = {}
     for r in posts.values():
