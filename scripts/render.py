@@ -146,7 +146,7 @@ def ending(post: dict, total: int) -> Image.Image:
     y = draw_lines(d, wrap(d, msg, fe, W - 180), fe, 90, 380, CREAM, 22)
     d.rectangle((90, y + 40, 250, y + 52), fill=MUSTARD)
     fm = font("Bold", 44)
-    d.text((90, y + 110), "매일 아침 살림 카드뉴스", font=fm, fill=MUSTARD)
+    d.text((90, y + 110), "매일 저녁 살림 카드뉴스", font=fm, fill=MUSTARD)
     d.text((90, y + 175), "@daily_j83", font=font("Medium", 42), fill=CREAM)
     if post.get("link"):
         fd = font("Medium", 30)

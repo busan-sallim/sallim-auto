@@ -53,7 +53,7 @@ def card(it: dict) -> str:
 def build() -> Path:
     its = items()
     body = "".join(card(i) for i in its) if its else """
-      <li class="empty">곧 첫 추천 제품이 올라와요.<br>매일 아침 살림 카드뉴스는 인스타에서 먼저 만나요 🧺</li>"""
+      <li class="empty">곧 첫 추천 제품이 올라와요.<br>매일 저녁 살림 카드뉴스는 인스타에서 먼저 만나요 🧺</li>"""
     page = f"""<!doctype html>
 <html lang="ko">
 <head>
