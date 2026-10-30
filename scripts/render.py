@@ -179,9 +179,9 @@ def cover_photo(post: dict, total: int, photo: Image.Image, style: str = "full")
     im = fill(photo, W, H)
     shade = Image.new("L", (1, H))
     for yy in range(H):  # 위쪽 살짝 + 아래쪽 진하게 어둡게
-        t = max(0.0, (yy - H * 0.35) / (H * 0.65))
-        top_t = max(0.0, (260 - yy) / 260) * 0.55
-        shade.putpixel((0, yy), int(255 * min(0.88, t * 1.05 + top_t)))
+        t = max(0.0, (yy - H * 0.28) / (H * 0.42))  # 제목 자리(아래 절반)는 밝은 사진도 충분히 어둡게
+        top_t = max(0.0, (300 - yy) / 300) * 0.6
+        shade.putpixel((0, yy), int(255 * min(0.86, t * 0.86 + top_t)))
     im = Image.composite(Image.new("RGB", (W, H), "#141210"), im, shade.resize((W, H)))
     d = ImageDraw.Draw(im)
     if link:
@@ -194,6 +194,16 @@ def cover_photo(post: dict, total: int, photo: Image.Image, style: str = "full")
     sub = wrap(d, post["subtitle"], fs, W - 180)[:1] if post.get("subtitle") else []
     block = len(lines) * (ft.size + 18) + (len(sub) * (fs.size + 12) + 30 if sub else 0)
     y = H - 210 - block
+    # 글자 뒤 은은한 그림자 (밝은 사진에서도 흰 제목이 또렷하게)
+    from PIL import ImageFilter
+    glow = Image.new("L", (W, H), 0)
+    gd = ImageDraw.Draw(glow)
+    draw_lines(gd, lines, ft, 90, y, 255, 18)
+    if sub:
+        draw_lines(gd, sub, fs, 90, y + len(lines) * (ft.size + 18) + 40, 255, 12)
+    glow = glow.filter(ImageFilter.GaussianBlur(14)).point(lambda v: min(255, v * 2))
+    im.paste(Image.new("RGB", (W, H), "#0E0C0A"), (0, 0), glow.point(lambda v: v * 0.75))
+    d = ImageDraw.Draw(im)
     y = draw_lines(d, lines, ft, 90, y, "#FFFFFF", 18)
     if sub:
         d.rectangle((90, y + 6, 170, y + 16), fill=MUSTARD)
