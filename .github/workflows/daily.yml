@@ -28,6 +28,8 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      IDENTITY_WORDS: ${{ secrets.IDENTITY_WORDS }}   # 신원 단어(실명 등)는 공개 코드가 아니라 비밀 보관함에만
     steps:
       - uses: actions/checkout@v4
 

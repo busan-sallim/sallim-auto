@@ -25,6 +25,7 @@ import datetime
 import difflib
 import hashlib
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -32,8 +33,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CRITERIA = {"real_method": "실제 방법", "legal": "법 위반 없음", "safe": "인체 무해", "common_practice": "대중적 방법"}
 
-# 겸업 규정 때문에 신원이 드러나면 안 되는 단어 (브랜드명 '부산여자 살림코칭'은 예외)
-IDENTITY_WORDS = ["간호사", "병원", "병동", "교직원"]
+# 신원이 드러나면 안 되는 단어 (브랜드명 '부산여자 살림코칭'은 예외)
+IDENTITY_WORDS = ["간호사", "의사", "교사", "교직원", "공무원", "병원", "병동"]
+# 실명·근무지·동네처럼 콕 집어 신원이 드러나는 단어는 공개 저장소에 적지 않는다 →
+# 깃허브 비밀 보관함 IDENTITY_WORDS(쉼표로 구분)에서만 읽는다. 없으면 위 일반 단어만 검사.
+IDENTITY_WORDS += [w.strip() for w in os.environ.get("IDENTITY_WORDS", "").split(",") if w.strip()]
 # 표시광고법·의료법에 걸릴 수 있는 과장·효능 표현
 HYPE_WORDS = ["100%", "99%", "99.9", "완벽 제거", "무조건", "완치", "치료", "살균력", "멸균", "의사 추천", "식약처 인증"]
 # 함께 쓰면 유독가스가 생기는 조합 (같은 장에 나오면 '섞지' 같은 경고가 있어야 함)
