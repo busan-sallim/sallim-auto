@@ -49,5 +49,11 @@
     "soft sponge cleaning stove"
   ],
   "cover_query": "gas stove",
-  "cover_photo": 490017
+  "cover_photo": 490017,
+  "final_check": {
+    "date": "2026-10-30",
+    "by": "claude",
+    "note": "카드 6장·사진 표지 미리보기 직접 확인: 글자 넘침·잘림 없음, 밸브 잠금·식힌 뒤 시작·화구 물기 건조 안전 문구 있음, 위험 세제 조합 없음, 늦가을 주방 청소로 계절 맞음, 해시태그 5개",
+    "hash": "83ca55957adc1a6e"
+  }
 }
