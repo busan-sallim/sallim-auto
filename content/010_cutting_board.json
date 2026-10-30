@@ -49,5 +49,11 @@
     "coarse salt"
   ],
   "cover_query": "wooden cutting board",
-  "cover_photo": 2673812
+  "cover_photo": 2673812,
+  "final_check": {
+    "date": "2026-10-30",
+    "by": "claude",
+    "note": "사진 표지(나무 도마) 포함 6장 직접 확인: 표지 문구 과장 없음, 넘침·잘림 없음, 햇볕 갈라짐 주의 문구, 캡션 댓글 질문 확인",
+    "hash": "acb9e29d8e6acd97"
+  }
 }
