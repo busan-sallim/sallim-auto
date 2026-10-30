@@ -119,6 +119,92 @@ def cover(post: dict, total: int) -> Image.Image:
     return im
 
 
+def fill(photo: Image.Image, w: int, h: int) -> Image.Image:
+    """사진을 w x h 칸에 꽉 차게 (가운데 기준으로 잘라 냄)"""
+    photo = photo.convert("RGB")
+    s = max(w / photo.width, h / photo.height)
+    p = photo.resize((max(w, round(photo.width * s)), max(h, round(photo.height * s))), Image.LANCZOS)
+    x, y = (p.width - w) // 2, (p.height - h) // 2
+    return p.crop((x, y, x + w, y + h))
+
+
+def pill(d, x, y, text, f, bg, fg):
+    tw = d.textlength(text, font=f)
+    d.rounded_rectangle((x, y, x + tw + 48, y + f.size + 30), radius=(f.size + 30) // 2, fill=bg)
+    d.text((x + 24, y + 13), text, font=f, fill=fg)
+
+
+def fit_title(d, text, max_w, max_lines, sizes=(112, 104, 96, 88, 80)):
+    """제목이 정해진 줄 수 안에 들어가는 가장 큰 글씨"""
+    for s in sizes:
+        ft = font("Black", s)
+        lines = wrap(d, text, ft, max_w)
+        if len(lines) <= max_lines:
+            return ft, lines
+    return ft, lines
+
+
+def cover_photo(post: dict, total: int, photo: Image.Image, style: str = "full") -> Image.Image:
+    """사진 표지 — 피드에서 손가락을 멈추게 하는 첫 장 (글자만 있는 표지보다 눈에 띔)
+    full: 사진이 화면 전체, 아래쪽을 어둡게 깔고 흰 큰 제목
+    top : 위 60% 사진, 아래 크림 바탕에 먹색 큰 제목 (브랜드 색 유지)"""
+    link = bool(post.get("link"))
+    title = post.get("cover_title") or post["title"]
+    tag = post.get("tag", "오늘의 살림")
+    if style == "top":
+        im = Image.new("RGB", (W, H), CREAM)
+        d = ImageDraw.Draw(im)
+        top = 0
+        if link:  # 수수료 문구는 표지 맨 위
+            top = 130
+            draw_lines(d, DISCLOSURE.split("\n"), font("Bold", 28), 60, 30, INK, 10)
+        ph = 720 - (130 if link else 0)
+        im.paste(fill(photo, W, ph), (0, top))
+        y = top + ph
+        pill(d, 90, y - 40, tag, font("Bold", 40), MUSTARD, INK)
+        fs = font("Medium", 42)
+        sub = wrap(d, post["subtitle"], fs, W - 180)[:1] if post.get("subtitle") else []
+        room = H - 150 - (y + 70) - (len(sub) * (fs.size + 32))
+        for s in (100, 92, 84, 76, 70):  # 아래 쪽번호와 안 겹치는 가장 큰 제목
+            ft = font("Black", s)
+            lines = wrap(d, title, ft, W - 180)
+            if len(lines) * (s + 16) <= room:
+                break
+        y = draw_lines(d, lines, ft, 90, y + 70, INK, 16)
+        if sub:
+            draw_lines(d, sub, fs, 90, y + 16, SOFT, 12)
+        footer(d, 1, total)
+        return im
+    # full
+    im = fill(photo, W, H)
+    shade = Image.new("L", (1, H))
+    for yy in range(H):  # 위쪽 살짝 + 아래쪽 진하게 어둡게
+        t = max(0.0, (yy - H * 0.35) / (H * 0.65))
+        top_t = max(0.0, (260 - yy) / 260) * 0.55
+        shade.putpixel((0, yy), int(255 * min(0.88, t * 1.05 + top_t)))
+    im = Image.composite(Image.new("RGB", (W, H), "#141210"), im, shade.resize((W, H)))
+    d = ImageDraw.Draw(im)
+    if link:
+        fd = font("Bold", 28)
+        d.rounded_rectangle((60, 50, W - 60, 160), radius=18, fill="#222222")
+        draw_lines(d, DISCLOSURE.split("\n"), fd, 90, 66, CREAM, 10)
+    pill(d, 90, 190 if link else 90, tag, font("Bold", 40), MUSTARD, INK)
+    ft, lines = fit_title(d, title, W - 180, 4)
+    fs = font("Medium", 44)
+    sub = wrap(d, post["subtitle"], fs, W - 180)[:1] if post.get("subtitle") else []
+    block = len(lines) * (ft.size + 18) + (len(sub) * (fs.size + 12) + 30 if sub else 0)
+    y = H - 210 - block
+    y = draw_lines(d, lines, ft, 90, y, "#FFFFFF", 18)
+    if sub:
+        d.rectangle((90, y + 6, 170, y + 16), fill=MUSTARD)
+        draw_lines(d, sub, fs, 90, y + 40, "#EDE6D8", 12)
+    f = font("Medium", 30)
+    d.text((90, H - 110), BRAND, font=f, fill="#D9D2C4")
+    hint = "넘겨보기 →"
+    d.text((W - 90 - d.textlength(hint, font=f), H - 110), hint, font=font("Bold", 30), fill=MUSTARD)
+    return im
+
+
 def body(slide: dict, idx: int, page: int, total: int) -> Image.Image:
     im = Image.new("RGB", (W, H), CREAM)
     d = ImageDraw.Draw(im)
@@ -158,6 +244,38 @@ def ending(post: dict, total: int) -> Image.Image:
     return im
 
 
+COVER_STYLE = "full"  # 표지 사진 배치: full(사진 꽉 채움) / top(위 사진 + 아래 크림)
+COVER_CACHE = ROOT / ".cache" / "covers"  # 원본 사진은 공개 저장소에 올리지 않는다 (.gitignore)
+
+
+def cover_source(post: dict, stem: str):
+    """원고의 cover_photo(픽사베이 사진 번호, 클로드가 확인표에서 고름) → 사진.
+    없거나 못 받으면 None → 글자 표지로 대신 만든다."""
+    pid = post.get("cover_photo")
+    if not pid:
+        return None
+    f = COVER_CACHE / f"{stem}_{pid}.jpg"
+    if not f.exists():
+        if not os.environ.get("PIXABAY_KEY", "").strip():
+            print(f"표지 사진 {pid}: 사진 열쇠(PIXABAY_KEY)가 없어 글자 표지로 만들어요")
+            return None
+        try:
+            sys.path.insert(0, str(ROOT / "scripts"))
+            import media
+            import requests
+            u = media.pixabay_by_id(pid)
+            if not u:
+                raise RuntimeError("사진이 사라짐")
+            r = requests.get(u, headers=media.UA, timeout=60)
+            r.raise_for_status()
+            COVER_CACHE.mkdir(parents=True, exist_ok=True)
+            f.write_bytes(r.content)
+        except Exception as e:  # 열쇠 값은 찍지 않음
+            print(f"표지 사진 {pid} 받기 실패({type(e).__name__}) → 글자 표지로 만들어요")
+            return None
+    return Image.open(f)
+
+
 def render(post_path: Path) -> list[Path]:
     post = json.loads(post_path.read_text(encoding="utf-8"))
     slides = post["slides"]
@@ -166,7 +284,8 @@ def render(post_path: Path) -> list[Path]:
         raise ValueError("인스타 캐러셀은 최대 10장이에요. 본문 장수를 8장 이하로 줄여 주세요.")
     out_dir = ROOT / "out" / post_path.stem
     out_dir.mkdir(parents=True, exist_ok=True)
-    images = [cover(post, total)]
+    ph = cover_source(post, post_path.stem)
+    images = [cover_photo(post, total, ph, COVER_STYLE) if ph else cover(post, total)]
     images += [body(s, i + 1, i + 2, total) for i, s in enumerate(slides)]
     images.append(ending(post, total))
     paths = []

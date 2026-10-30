@@ -1,6 +1,7 @@
 {
   "tag": "침구",
   "title": "이불 진드기, 햇볕만으로는 부족해요",
+  "cover_title": "이불, 햇볕만 쬐면 괜찮을까요?",
   "subtitle": "겨울 침구 깨끗하게 쓰는 법",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "일어나자마자 이불을 개지 말고 걷어 두면 밤새 찬 습기가 날아가요."
     }
   ],
-  "caption": "겨울엔 이불을 덜 빨게 되죠.\n그래도 커버만은 2주에 한 번 챙겨 주세요.\n\n저장해두고 이불 빨래 날 꺼내 보세요 🧺",
+  "caption": "겨울엔 이불을 덜 빨게 되죠.\n그래도 커버만은 2주에 한 번 챙겨 주세요.\n\n💬 이불 커버는 얼마 만에 빠세요?\n저장해두고 이불 빨래 날 꺼내 보세요 🧺",
   "hashtags": [
     "침구관리",
     "이불빨래",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "983e79d2024fb10e"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "5980758057f452b6"
   },
   "photo": "bed linen",
   "photos": [
@@ -46,5 +47,6 @@
     "washing machine hot water",
     "bedding sunlight balcony",
     "unmade bed morning"
-  ]
+  ],
+  "cover_query": "bed linen"
 }

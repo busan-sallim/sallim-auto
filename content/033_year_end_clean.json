@@ -1,6 +1,7 @@
 {
   "tag": "대청소",
   "title": "연말 대청소, 순서만 지키면 두 번 일 안 해요",
+  "cover_title": "대청소를 두 번 하게 되는 이유",
   "subtitle": "하루에 끝내는 대청소 순서",
   "slides": [
     {
@@ -24,7 +25,7 @@
       "body": "청소하면서 버릴 물건을 바로 넣을 봉투를 옆에 두면 정리가 같이 끝나요."
     }
   ],
-  "caption": "연말 대청소, 어디서부터 해야 할지 막막하죠.\n순서만 지키면 같은 곳을 두 번 닦지 않아도 돼요.\n\n저장해두고 대청소 날 꺼내 보세요 🧺",
+  "caption": "연말 대청소, 어디서부터 해야 할지 막막하죠.\n순서만 지키면 같은 곳을 두 번 닦지 않아도 돼요.\n\n💬 올해 대청소는 어디부터 하실 거예요?\n저장해두고 대청소 날 꺼내 보세요 🧺",
   "hashtags": [
     "대청소",
     "연말대청소",
@@ -34,14 +35,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "610dd78c53bf917b"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "624b1f87cc9fde2c"
   },
   "photo": "cleaning supplies",
   "photos": [
@@ -51,5 +52,6 @@
     "vacuum cleaner",
     "mopping floor",
     "garbage bag"
-  ]
+  ],
+  "cover_query": "cleaning supplies"
 }

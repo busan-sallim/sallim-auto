@@ -1,0 +1,1 @@
+candidates 009_sink_drain 010_cutting_board 011_gas_stove 012_knit 013_closet_season 014_shoe_cabinet 015_silicone_mold 016_washer_gasket 017_tumbler 018_towel 019_meat_freeze 020_draft_window 021_airfryer 022_burnt_pot 023_bath_drain 024_bedding_mite 025_drawer 026_toilet 027_indoor_drying 028_green_onion 029_curtain 030_dishcloth 031_rice_cooker 032_mirror 033_year_end_clean 

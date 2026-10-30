@@ -1,6 +1,7 @@
 {
   "tag": "주방",
   "title": "대파 한 단, 이렇게 두면 끝까지 다 먹어요",
+  "cover_title": "대파 반은 물러서 버린다면",
   "subtitle": "무르지 않게 보관하는 법",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "송송 썬 대파는 지퍼백에 넣어 냉동하면 요리할 때 바로 한 줌씩 넣을 수 있어요."
     }
   ],
-  "caption": "대파 한 단 사면 반은 물러서 버리게 되죠.\n사 온 날 손질만 해 두면 끝까지 먹어요.\n\n저장해두고 장 본 날 꺼내 보세요 🧺",
+  "caption": "대파 한 단 사면 반은 물러서 버리게 되죠.\n사 온 날 손질만 해 두면 끝까지 먹어요.\n\n💬 대파 보관하는 나만의 방법이 있으세요?\n저장해두고 장 본 날 꺼내 보세요 🧺",
   "hashtags": [
     "대파보관",
     "식재료보관",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "359c039f738da0d9"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "df9fa72c1bfe5771"
   },
   "photo": "green onions",
   "photos": [
@@ -46,5 +47,6 @@
     "chopped green onions",
     "food container paper towel",
     "frozen chopped vegetables"
-  ]
+  ],
+  "cover_query": "green onions"
 }

@@ -1,6 +1,7 @@
 {
   "tag": "겨울 준비",
   "title": "창문 틈새 바람, 뽁뽁이만 붙여서는 부족해요",
+  "cover_title": "보일러 돌려도 추운 방, 창문 틈 때문이에요",
   "subtitle": "난방비 아끼는 외풍 막기",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "두꺼운 커튼을 바닥까지 내리면 창에서 내려오는 찬 공기를 한 번 더 막아 줘요."
     }
   ],
-  "caption": "보일러는 계속 도는데 방이 안 따뜻하다면\n창문 틈으로 열이 새고 있을 수 있어요.\n\n저장해두고 이번 주말 창문 한 바퀴 돌아보세요 🧺",
+  "caption": "보일러는 계속 도는데 방이 안 따뜻하다면\n창문 틈으로 열이 새고 있을 수 있어요.\n\n💬 우리 집에서 외풍이 제일 심한 곳은 어디예요?\n저장해두고 이번 주말 창문 한 바퀴 돌아보세요 🧺",
   "hashtags": [
     "외풍차단",
     "문풍지",
@@ -29,14 +30,14 @@
   ],
   "link": "https://link.coupang.com/a/h54UCNgjxk",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "쿠팡 링크(단열 뽁뽁이) 추가 후 재검수: 본문 3번째 장 뽁뽁이 내용과 일치, 단열 효과 과장 없음, 사용 경험 주장 없음",
-    "hash": "a33a572a0d538145"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "ffae531d9bfaa4d8"
   },
   "product": "단열 뽁뽁이(에어캡)",
   "photo": "window curtain winter",
@@ -46,5 +47,6 @@
     "weather stripping door",
     "bubble wrap window",
     "thick curtains night"
-  ]
+  ],
+  "cover_query": "window curtain winter"
 }

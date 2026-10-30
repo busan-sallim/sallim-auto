@@ -1,6 +1,7 @@
 {
   "tag": "현관 정리",
   "title": "신발장 냄새, 방향제로는 안 빠져요",
+  "cover_title": "현관문 열자마자 나는 그 냄새",
   "subtitle": "냄새 뿌리부터 잡는 법",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "주말 청소할 때 신발장 문을 열어 두고 현관문도 잠깐 열면 공기가 싹 바뀌어요."
     }
   ],
-  "caption": "현관문 열자마자 냄새 나면 민망하죠.\n향으로 덮는 것보다 습기를 빼는 게 먼저예요.\n\n저장해두고 오늘 저녁 신발장 열어 보세요 🧺",
+  "caption": "현관문 열자마자 냄새 나면 민망하죠.\n향으로 덮는 것보다 습기를 빼는 게 먼저예요.\n\n💬 신발장 냄새는 어떻게 잡고 계세요?\n저장해두고 오늘 저녁 신발장 열어 보세요 🧺",
   "hashtags": [
     "신발장정리",
     "신발냄새",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "fea87610ca04c6cb"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "e5a8e142f78c5036"
   },
   "photo": "shoes entryway",
   "photos": [
@@ -46,5 +47,6 @@
     "crumpled newspaper",
     "baking soda bowl",
     "open door fresh air"
-  ]
+  ],
+  "cover_query": "shoes entryway"
 }

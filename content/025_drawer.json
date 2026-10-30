@@ -1,6 +1,7 @@
 {
   "tag": "정리 수납",
   "title": "서랍 정리, 눕히지 말고 세워 보세요",
+  "cover_title": "서랍 맨 아래 옷, 세우면 다 보여요",
   "subtitle": "한눈에 보이는 서랍 만들기",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "휴지 상자, 신발 상자를 잘라 칸막이로 쓰면 양말, 속옷이 섞이지 않아요."
     }
   ],
-  "caption": "서랍 열 때마다 맨 아래 옷은 찾기 힘들죠.\n세워 넣기만 해도 옷이 다 보여요.\n\n저장해두고 서랍 하나만 먼저 해 보세요 🧺",
+  "caption": "서랍 열 때마다 맨 아래 옷은 찾기 힘들죠.\n세워 넣기만 해도 옷이 다 보여요.\n\n💬 집에서 제일 정리 안 되는 서랍은 어디예요?\n저장해두고 서랍 하나만 먼저 해 보세요 🧺",
   "hashtags": [
     "서랍정리",
     "옷정리",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "26abf9b9351394dd"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "5686208d44c2529a"
   },
   "photo": "folded clothes drawer",
   "photos": [
@@ -46,5 +47,6 @@
     "folding t-shirt",
     "clothes standing drawer",
     "drawer organizer boxes"
-  ]
+  ],
+  "cover_query": "folded clothes drawer"
 }

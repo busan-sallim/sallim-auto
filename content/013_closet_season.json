@@ -1,6 +1,7 @@
 {
   "tag": "정리 수납",
   "title": "여름옷 넣을 때, 그냥 넣으면 내년에 누레져요",
+  "cover_title": "내년에 꺼낸 여름옷이 누렇다면",
   "subtitle": "옷장 계절 정리 4단계",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "수납함마다 제습제를 넣고, 겉에 날짜를 적어 두면 교체 시기를 놓치지 않아요."
     }
   ],
-  "caption": "옷장 바꾸는 날, 대충 넣었다가\n내년에 꺼내면 얼룩이 생겨 있죠.\n\n넣기 전 10분이 1년을 지켜 줘요.\n저장해두고 옷장 정리할 때 꺼내 보세요 🧺",
+  "caption": "옷장 바꾸는 날, 대충 넣었다가\n내년에 꺼내면 얼룩이 생겨 있죠.\n\n넣기 전 10분이 1년을 지켜 줘요.\n\n💬 옷장 계절 정리, 벌써 하셨어요?\n저장해두고 옷장 정리할 때 꺼내 보세요 🧺",
   "hashtags": [
     "옷장정리",
     "계절옷정리",
@@ -29,14 +30,14 @@
   ],
   "link": "https://link.coupang.com/a/h54ISR5DBA",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "쿠팡 링크(옷장 제습제) 추가 후 재검수: 본문 4번째 장 제습제 내용과 일치, 사용 경험 주장 없음",
-    "hash": "21afe830a04a4875"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "0a40de4d9e298613"
   },
   "product": "옷장 제습제",
   "photo": "wardrobe clothes",
@@ -46,5 +47,6 @@
     "clothes drying sunlight",
     "vacuum storage bag clothes",
     "dehumidifier box closet"
-  ]
+  ],
+  "cover_query": "wardrobe clothes"
 }

@@ -1,6 +1,7 @@
 {
   "tag": "욕실 청소",
   "title": "욕실 실리콘 까만 곰팡이, 붙여 두면 빠져요",
+  "cover_title": "실리콘 곰팡이, 문질러선 안 빠져요",
   "subtitle": "문지르지 않는 곰팡이 제거",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "락스와 구연산, 식초 같은 산성 세제가 섞이면 해로운 가스가 생겨요. 같은 날 함께 쓰지 마세요."
     }
   ],
-  "caption": "욕실 실리콘에 핀 까만 곰팡이,\n솔로 아무리 문질러도 안 빠지죠?\n\n'붙여 두기'가 답이에요. 단, 안전수칙은 꼭 지켜 주세요.\n저장해두고 욕실 청소 날 꺼내 보세요 🧺",
+  "caption": "욕실 실리콘에 핀 까만 곰팡이,\n솔로 아무리 문질러도 안 빠지죠?\n\n'붙여 두기'가 답이에요. 단, 안전수칙은 꼭 지켜 주세요.\n\n💬 욕실에서 곰팡이가 제일 잘 생기는 곳은 어디예요?\n저장해두고 욕실 청소 날 꺼내 보세요 🧺",
   "hashtags": [
     "곰팡이제거",
     "욕실청소",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "락스 희석은 제품 표시 비율대로, 제품명은 일반 명칭 병기",
-    "hash": "5ef5617f00d3dcc8"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "29079abda8a1c114"
   },
   "photo": "bathroom tiles",
   "photos": [
@@ -46,5 +47,6 @@
     "tissue paper roll",
     "rinsing bathroom shower",
     "cleaning products bottles"
-  ]
+  ],
+  "cover_query": "bathroom tiles"
 }

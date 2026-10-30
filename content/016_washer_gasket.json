@@ -1,6 +1,7 @@
 {
   "tag": "세탁",
   "title": "드럼세탁기 냄새, 고무패킹 안쪽을 보세요",
+  "cover_title": "빨래 냄새, 범인은 세탁기일 수 있어요",
   "subtitle": "1분 습관으로 냄새 끊기",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "세탁조 클리너를 넣고 통세척 코스로 빈 세탁기를 돌려 주면 깔끔해요."
     }
   ],
-  "caption": "빨래에서 나는 묘한 냄새, 세탁기가 범인일 수 있어요.\n고무패킹만 매번 닦아도 확 달라져요.\n\n저장해두고 빨래 끝날 때 해 보세요 🧺",
+  "caption": "빨래에서 나는 묘한 냄새, 세탁기가 범인일 수 있어요.\n고무패킹만 매번 닦아도 확 달라져요.\n\n💬 세탁기 고무패킹, 마지막으로 닦은 게 언제예요?\n저장해두고 빨래 끝날 때 해 보세요 🧺",
   "hashtags": [
     "세탁기청소",
     "드럼세탁기",
@@ -29,14 +30,14 @@
   ],
   "link": "https://link.coupang.com/a/h54NewXGsm",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "쿠팡 링크(세탁조 클리너) 추가 후 재검수: 본문 4번째 장 세탁조 클리너 내용과 일치, 사용 경험 주장 없음",
-    "hash": "dab171e75c2f5cb1"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "e780b322158ff142"
   },
   "product": "세탁조 클리너",
   "photo": "front load washing machine",
@@ -46,5 +47,6 @@
     "washing machine rubber seal",
     "detergent drawer washing machine",
     "washing machine drum clean"
-  ]
+  ],
+  "cover_query": "front load washing machine"
 }

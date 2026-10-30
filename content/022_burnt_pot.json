@@ -1,6 +1,7 @@
 {
   "tag": "주방",
   "title": "냄비 탄 자국, 긁지 말고 끓이세요",
+  "cover_title": "냄비 태웠다면 긁지 말고 끓이세요",
   "subtitle": "까맣게 눌어붙은 바닥 살리기",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "양은, 알루미늄 냄비는 베이킹소다에 까맣게 변할 수 있어요. 이땐 주방세제로만 해 주세요."
     }
   ],
-  "caption": "찌개 끓이다 깜빡하면 바닥이 새까맣죠.\n수세미로 박박 긁기 전에 끓이는 게 먼저예요.\n\n저장해두고 냄비 태운 날 꺼내 보세요 🧺",
+  "caption": "찌개 끓이다 깜빡하면 바닥이 새까맣죠.\n수세미로 박박 긁기 전에 끓이는 게 먼저예요.\n\n💬 냄비 태워 본 적 있으면 댓글로 🙋\n저장해두고 냄비 태운 날 꺼내 보세요 🧺",
   "hashtags": [
     "탄냄비",
     "냄비세척",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "fb6d89fa8b9d09f9"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "edaea56a2b8550d1"
   },
   "photo": "cooking pot",
   "photos": [
@@ -46,5 +47,6 @@
     "boiling pot stove",
     "wooden spatula",
     "aluminum pot"
-  ]
+  ],
+  "cover_query": "cooking pot"
 }

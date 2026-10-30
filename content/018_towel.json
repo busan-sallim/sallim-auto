@@ -1,6 +1,7 @@
 {
   "tag": "빨래",
   "title": "수건이 뻣뻣하고 냄새 나면 유연제부터 빼세요",
+  "cover_title": "뻣뻣한 수건, 유연제부터 빼 보세요",
   "subtitle": "보송한 수건 만드는 세탁법",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "반쯤 마른 채 개면 냄새가 다시 나요. 바람 잘 드는 곳에서 바짝 말려 주세요."
     }
   ],
-  "caption": "샤워하고 수건 대는데 냄새 나면 기분이 별로죠.\n좋은 향보다 '안 남기는 세탁'이 먼저예요.\n\n저장해두고 수건 빨래 날 꺼내 보세요 🧺",
+  "caption": "샤워하고 수건 대는데 냄새 나면 기분이 별로죠.\n좋은 향보다 '안 남기는 세탁'이 먼저예요.\n\n💬 수건 빨 때 섬유유연제 넣으세요, 안 넣으세요?\n저장해두고 수건 빨래 날 꺼내 보세요 🧺",
   "hashtags": [
     "수건빨래",
     "수건냄새",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "4647428b3bb82426"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "6e349aa6dde5b5bf"
   },
   "photo": "folded towels",
   "photos": [
@@ -46,5 +47,6 @@
     "laundry detergent",
     "shaking towel",
     "towels drying sun"
-  ]
+  ],
+  "cover_query": "folded towels"
 }

@@ -1,6 +1,7 @@
 {
   "tag": "욕실 청소",
   "title": "거울 얼룩, 세제 많이 쓰면 더 남아요",
+  "cover_title": "닦은 거울에 줄무늬, 세제 탓이에요",
   "subtitle": "줄무늬 없이 닦는 법",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "주방세제를 아주 조금 묻혀 얇게 펴 바르고 마른 천으로 닦으면 샤워 후 김이 덜 서려요."
     }
   ],
-  "caption": "분명 닦았는데 불 켜면 줄무늬가 보이죠.\n세제를 줄이고 '마른 천'을 더하면 돼요.\n\n저장해두고 욕실 청소 날 꺼내 보세요 🧺",
+  "caption": "분명 닦았는데 불 켜면 줄무늬가 보이죠.\n세제를 줄이고 '마른 천'을 더하면 돼요.\n\n💬 욕실 거울은 뭐로 닦으세요?\n저장해두고 욕실 청소 날 꺼내 보세요 🧺",
   "hashtags": [
     "거울청소",
     "욕실청소",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "f863b5e3160d9280"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "e227aab3f317c57b"
   },
   "photo": "bathroom mirror",
   "photos": [
@@ -46,5 +47,6 @@
     "spray bottle mirror",
     "wiping mirror",
     "foggy mirror"
-  ]
+  ],
+  "cover_query": "bathroom mirror"
 }

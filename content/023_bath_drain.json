@@ -1,6 +1,7 @@
 {
   "tag": "욕실 청소",
   "title": "욕실 배수구 막힘, 뚫어뻥 전에 이것부터",
+  "cover_title": "샤워하다 물이 차오른다면",
   "subtitle": "머리카락 쌓이기 전에 막는 법",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "물 빠짐이 느려졌다 싶을 때 머리카락 집게로 끌어올리면 크게 막히는 걸 막아요."
     }
   ],
-  "caption": "샤워하다 발목까지 물이 차오르면 당황스럽죠.\n막히고 나서보다 매일 1초가 쉬워요.\n\n저장해두고 오늘 샤워 끝에 해 보세요 🧺",
+  "caption": "샤워하다 발목까지 물이 차오르면 당황스럽죠.\n막히고 나서보다 매일 1초가 쉬워요.\n\n💬 욕실 배수구에 거름망 쓰세요?\n저장해두고 오늘 샤워 끝에 해 보세요 🧺",
   "hashtags": [
     "배수구막힘",
     "욕실청소",
@@ -29,14 +30,14 @@
   ],
   "link": "https://link.coupang.com/a/h54YhSArQa",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "쿠팡 링크(배수구 머리카락 거름망) 추가 후 재검수: 본문 1번째 장 거름망 내용과 일치, 사용 경험 주장 없음",
-    "hash": "08707999ebf677cd"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "ea0b9aeb0a5d35c8"
   },
   "product": "배수구 머리카락 거름망",
   "photo": "shower drain bathroom",
@@ -46,5 +47,6 @@
     "hairbrush",
     "bathroom drain cover",
     "clogged drain water"
-  ]
+  ],
+  "cover_query": "shower drain bathroom"
 }

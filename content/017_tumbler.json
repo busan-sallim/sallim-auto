@@ -1,6 +1,7 @@
 {
   "tag": "주방",
   "title": "텀블러에서 쉰 냄새 날 때, 뚜껑을 분해해 보세요",
+  "cover_title": "씻었는데도 텀블러에서 쉰내 난다면",
   "subtitle": "커피 얼룩·냄새 빼는 법",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "씻은 뒤엔 거꾸로 세워 완전히 말리고, 다 마른 다음에 조립해요."
     }
   ],
-  "caption": "매일 쓰는 텀블러, 씻었는데도 냄새가 나나요?\n몸통보다 뚜껑 속 고무링이 문제예요.\n\n저장해두고 오늘 한 번 분해해 보세요 🧺",
+  "caption": "매일 쓰는 텀블러, 씻었는데도 냄새가 나나요?\n몸통보다 뚜껑 속 고무링이 문제예요.\n\n💬 텀블러 뚜껑까지 분해해서 씻어 보셨어요?\n저장해두고 오늘 한 번 분해해 보세요 🧺",
   "hashtags": [
     "텀블러세척",
     "텀블러냄새",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "수정 없이 통과",
-    "hash": "1fecffb856bcc551"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "4d6587aa52e371f0"
   },
   "photo": "tumbler cup",
   "photos": [
@@ -46,5 +47,6 @@
     "baking soda spoon",
     "open tumbler lid",
     "bottles drying rack"
-  ]
+  ],
+  "cover_query": "tumbler cup"
 }

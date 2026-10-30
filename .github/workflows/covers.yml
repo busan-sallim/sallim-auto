@@ -1,0 +1,48 @@
+name: 표지 사진 고르기
+
+# 클로드가 cover_prepare.txt 첫 줄에 `candidates 원고1 원고2 …` 또는 `preview 원고1 …` 를 적어 올리면 실행
+# candidates = 원고마다 후보 사진 8장 확인표 / preview = 고른 사진으로 실제 표지 만들기 (발행은 안 함)
+on:
+  push:
+    paths: ["cover_prepare.txt"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: covers
+  cancel-in-progress: false
+
+jobs:
+  covers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 준비물 설치
+        run: pip install -r requirements.txt
+
+      - name: 프리텐다드 글꼴 받기
+        run: |
+          curl -sSL -o /tmp/pretendard.zip https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip
+          unzip -q -o /tmp/pretendard.zip -d /tmp/pretendard
+          mkdir -p fonts
+          for w in Black Bold Medium; do cp "$(find /tmp/pretendard -name "Pretendard-$w.otf" | head -1)" fonts/; done
+
+      - name: 확인표·표지 만들기
+        env:
+          PIXABAY_KEY: ${{ secrets.PIXABAY_KEY }}
+        run: |
+          line=$(head -1 cover_prepare.txt)
+          python scripts/covers.py $line
+          git config user.name "sallim-bot"
+          git config user.email "sallim-bot@users.noreply.github.com"
+          git add review/covers
+          git commit -m "표지 사진: $line" || true
+          git pull --rebase -q && git push

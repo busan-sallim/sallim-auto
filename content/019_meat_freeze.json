@@ -1,6 +1,7 @@
 {
   "tag": "주방",
   "title": "고기 냉동할 때 덩어리째 넣으면 손해예요",
+  "cover_title": "고기 덩어리째 얼리면 손해예요",
   "subtitle": "장 본 날 10분 소분법",
   "slides": [
     {
@@ -20,7 +21,7 @@
       "body": "겉에 고기 종류와 날짜를 적어 두세요. 오래된 것부터 먼저 꺼내 먹어요."
     }
   ],
-  "caption": "냉동실에서 꽁꽁 언 고기 덩어리,\n꺼낼 때마다 칼로 쪼개고 있진 않나요?\n\n장 본 날 10분만 투자하면 일주일이 편해요.\n저장해두고 다음 장보기 때 해 보세요 🧺",
+  "caption": "냉동실에서 꽁꽁 언 고기 덩어리,\n꺼낼 때마다 칼로 쪼개고 있진 않나요?\n\n장 본 날 10분만 투자하면 일주일이 편해요.\n\n💬 장 본 날 바로 소분하는 편이세요?\n저장해두고 다음 장보기 때 해 보세요 🧺",
   "hashtags": [
     "고기소분",
     "냉동보관",
@@ -30,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-24",
+    "date": "2026-10-30",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "입으로 빨대 흡입(생고기 위생 문제) → 물에 담가 공기 빼기로 변경",
-    "hash": "2c78f779ca8f5727"
+    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
+    "hash": "2fd29f8d75a4fdba"
   },
   "photo": "freezer bags food storage",
   "photos": [
@@ -46,5 +47,6 @@
     "flat freezer bag",
     "zipper bag water",
     "labels freezer bags"
-  ]
+  ],
+  "cover_query": "freezer bags food storage"
 }
