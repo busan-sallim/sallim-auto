@@ -5,13 +5,13 @@
     "title": "샤워부스 물때, 문지르지 말고 불려서 닦아요",
     "has_link": false,
     "instagram": {
-      "views": 51,
-      "reach": 13,
-      "likes": 5,
+      "views": 52,
+      "reach": 14,
+      "likes": 6,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 5,
+      "total_interactions": 6,
       "follows": 0
     },
     "threads": {
@@ -22,7 +22,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-30"
+    "updated": "2026-10-31"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -30,13 +30,13 @@
     "title": "냉장고 정리, 칸마다 자리만 정해도 반은 끝나요",
     "has_link": false,
     "instagram": {
-      "views": 49,
-      "reach": 12,
-      "likes": 5,
+      "views": 51,
+      "reach": 13,
+      "likes": 6,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 5,
+      "total_interactions": 6,
       "follows": 0
     },
     "threads": {
@@ -47,7 +47,8 @@
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-10-30"
+    "updated": "2026-10-31",
+    "comments_todo": 0
   },
   "003_laundry": {
     "date": "2026-10-25",
@@ -55,13 +56,13 @@
     "title": "빨래에서 쉰내 날 때, 세제 더 넣으면 오히려 심해져요",
     "has_link": false,
     "instagram": {
-      "views": 52,
+      "views": 54,
       "reach": 13,
-      "likes": 4,
+      "likes": 5,
       "comments": 2,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 6,
+      "total_interactions": 7,
       "follows": 0
     },
     "threads": {
@@ -72,7 +73,8 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-30"
+    "updated": "2026-10-31",
+    "comments_todo": 0
   },
   "004_window_condensation": {
     "date": "2026-10-26",
@@ -80,13 +82,13 @@
     "title": "창틀 물방울, 닦기만 하면 곰팡이 못 막아요",
     "has_link": false,
     "instagram": {
-      "views": 39,
-      "reach": 10,
-      "likes": 4,
+      "views": 42,
+      "reach": 12,
+      "likes": 5,
       "comments": 0,
       "saved": 0,
       "shares": 1,
-      "total_interactions": 5,
+      "total_interactions": 6,
       "follows": 0
     },
     "threads": {
@@ -97,7 +99,8 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-30"
+    "updated": "2026-10-31",
+    "comments_todo": 0
   },
   "005_padding_wash": {
     "date": "2026-10-27",
@@ -105,13 +108,13 @@
     "title": "패딩, 드라이 맡기지 말고 집에서 빨아요",
     "has_link": false,
     "instagram": {
-      "views": 20,
-      "reach": 8,
-      "likes": 3,
+      "views": 21,
+      "reach": 9,
+      "likes": 4,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 3,
+      "total_interactions": 4,
       "follows": 0
     },
     "threads": {
@@ -122,7 +125,8 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-30"
+    "updated": "2026-10-31",
+    "comments_todo": 0
   },
   "006_humidifier": {
     "date": "2026-10-28",
@@ -130,13 +134,13 @@
     "title": "가습기, 물만 갈아 주면 된다고 생각했다면",
     "has_link": false,
     "instagram": {
-      "views": 28,
-      "reach": 8,
-      "likes": 1,
+      "views": 29,
+      "reach": 9,
+      "likes": 2,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 1,
+      "total_interactions": 2,
       "follows": 0
     },
     "threads": {
@@ -147,7 +151,8 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-30"
+    "updated": "2026-10-31",
+    "comments_todo": 0
   },
   "007_fleece_blanket": {
     "date": "2026-10-29",
@@ -155,23 +160,76 @@
     "title": "극세사 이불, 빨고 나니 뻣뻣해졌다면",
     "has_link": false,
     "instagram": {
-      "views": 21,
-      "reach": 6,
-      "likes": 1,
+      "views": 22,
+      "reach": 7,
+      "likes": 2,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 1,
+      "total_interactions": 2,
       "follows": 0
     },
     "threads": {
-      "views": 56,
+      "views": 62,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-30"
+    "updated": "2026-10-31",
+    "comments_todo": 0
+  },
+  "008_microwave": {
+    "date": "2026-10-30",
+    "tag": "주방 청소",
+    "title": "전자레인지 찌든 때, 3분 돌리면 닦여요",
+    "has_link": false,
+    "instagram": {
+      "views": 12,
+      "reach": 6,
+      "likes": 2,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 2,
+      "follows": 0
+    },
+    "threads": {
+      "views": 103,
+      "likes": 2,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 1
+    },
+    "comments_todo": 0,
+    "updated": "2026-10-31"
+  },
+  "009_sink_drain": {
+    "date": "2026-10-31",
+    "tag": "주방 청소",
+    "title": "싱크대 배수구 냄새, 락스 붓기 전에 이것부터",
+    "has_link": false,
+    "instagram": {
+      "views": 5,
+      "reach": 1,
+      "likes": 0,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "follows": 0
+    },
+    "threads": {
+      "views": 98,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "comments_todo": 0,
+    "updated": "2026-10-31"
   }
 }
