@@ -9,6 +9,8 @@ on:
     - cron: "7 23 * * *"    # 08:07
     - cron: "37 23 * * *"   # 08:37
     - cron: "7 1 * * *"     # 10:07 (마지막 기회)
+  push:                      # 아침 7시 클로드 예약 작업이 이 파일을 고쳐 올리면 바로 실행 (깃허브 예약 지연 대비 — 가장 확실한 방법)
+    paths: ["publish_now.txt"]
   workflow_dispatch:         # 버튼으로 바로 실행하기
     inputs:
       dry_run:
@@ -49,7 +51,7 @@ jobs:
       - name: 오늘 올릴 원고 고르기
         id: pick
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ] && python scripts/publish.py --published-today; then
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ] && python scripts/publish.py --published-today; then
             echo "오늘(한국 날짜)은 이미 발행했어요. 이번 예약 실행은 건너뜁니다."
             echo "stem=" >> "$GITHUB_OUTPUT"
             echo "done=1" >> "$GITHUB_OUTPUT"
