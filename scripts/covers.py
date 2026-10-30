@@ -30,6 +30,19 @@ def query(post: dict) -> str:
     return post.get("cover_query") or post.get("photo") or (post.get("photos") or [""])[0]
 
 
+def thumb(url: str) -> bytes:
+    """작은 사진 받기 — 한꺼번에 많이 받으면 픽사베이가 막아서 쉬엄쉬엄 + 다시 시도"""
+    import time
+    for k in range(4):
+        time.sleep(0.6 + k * 3)
+        r = requests.get(url, headers=media.UA, timeout=60)
+        if r.ok and r.headers.get("content-type", "").startswith("image"):
+            return r.content
+        print("  작은 사진 다시 시도:", r.status_code)
+    r.raise_for_status()
+    raise RuntimeError("사진이 아님")
+
+
 def candidates(stem: str) -> Path:
     post = json.loads((ROOT / "content" / f"{stem}.json").read_text(encoding="utf-8"))
     q = query(post)
@@ -42,7 +55,7 @@ def candidates(stem: str) -> Path:
     d.text((10, 48), f"검색: {q or '없음'}", font=R.font("Medium", 22), fill=(90, 90, 90))
     for k, c in enumerate(cs):
         try:
-            im = Image.open(io.BytesIO(requests.get(c["thumb"], timeout=60).content))
+            im = Image.open(io.BytesIO(thumb(c["thumb"])))
             x, y = (k % 4) * tw, head + (k // 4) * th
             canvas.paste(R.fill(im, tw - 6, th - 6), (x + 3, y + 3))
             d.rectangle((x + 3, y + 3, x + 50, y + 48), fill=(232, 163, 61))
