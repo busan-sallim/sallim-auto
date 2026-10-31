@@ -32,6 +32,25 @@
         "vegetables refrigerator",
         "sauce bottles"
       ]
+    },
+    "101_boil_over_lid": {
+      "date": "2026-10-31",
+      "sha": "67468894859e78fe",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        "out/101_boil_over_lid/photos/00.jpg",
+        null,
+        "out/101_boil_over_lid/photos/02.jpg",
+        "out/101_boil_over_lid/photos/03.jpg",
+        "out/101_boil_over_lid/photos/04.jpg"
+      ],
+      "queries": [
+        "pot boiling over stove",
+        "silicone lid pot",
+        "boiling pot steam",
+        "gas stove flame",
+        "oven mitt kitchen"
+      ]
     }
   },
   "approved": {
