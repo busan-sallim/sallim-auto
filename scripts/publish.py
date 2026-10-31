@@ -42,7 +42,16 @@ SKIPPED = ROOT / "skipped.txt"  # 검수에 걸려 건너뛴 원고 (워크플�
 
 
 def today_kst() -> str:
-    return datetime.datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d")
+    """발행 '몫' 날짜 (한국 시간). 새벽 0~5시는 전날 저녁 몫으로 친다
+    (깃허브 예약이 몇 시간 늦어 자정을 넘겨도 다음 날 저녁 발행이 빠지지 않게)"""
+    now = datetime.datetime.now(ZoneInfo("Asia/Seoul")) - datetime.timedelta(hours=5)
+    return now.strftime("%Y-%m-%d")
+
+
+def in_window() -> bool:
+    """예약(대비용) 실행이 발행해도 되는 시간: 한국 시간 저녁 8시~밤 11시 59분.
+    깃허브 예약이 크게 늦어 새벽·아침에 도는 경우엔 올리지 않는다 (2026-10-31 새벽 2시 발행 사고)"""
+    return datetime.datetime.now(ZoneInfo("Asia/Seoul")).hour >= 20
 
 
 def published_today() -> bool:
@@ -189,7 +198,10 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="실제로 올리지 않고 무엇을 올릴지만 보여 주기")
     ap.add_argument("--pick", action="store_true", help="다음에 올릴 원고 이름만 출력")
     ap.add_argument("--published-today", action="store_true", help="오늘 이미 발행했으면 0, 아니면 1로 끝내기")
+    ap.add_argument("--in-window", action="store_true", help="저녁 발행 시간대(20~24시)면 0, 아니면 1")
     args = ap.parse_args()
+    if args.in_window:
+        sys.exit(0 if in_window() else 1)
     if args.published_today:
         sys.exit(0 if published_today() else 1)
 

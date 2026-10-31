@@ -53,7 +53,11 @@ jobs:
       - name: 오늘 올릴 원고 고르기
         id: pick
         run: |
-          if [ "${{ github.event_name }}" != "workflow_dispatch" ] && python scripts/publish.py --published-today; then
+          if [ "${{ github.event_name }}" = "schedule" ] && ! python scripts/publish.py --in-window; then
+            echo "예약이 너무 늦게 돌았어요(저녁 8시~자정 밖). 새벽·아침엔 올리지 않고 건너뜁니다."
+            echo "stem=" >> "$GITHUB_OUTPUT"
+            echo "done=1" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" != "workflow_dispatch" ] && python scripts/publish.py --published-today; then
             echo "오늘(한국 날짜)은 이미 발행했어요. 이번 예약 실행은 건너뜁니다."
             echo "stem=" >> "$GITHUB_OUTPUT"
             echo "done=1" >> "$GITHUB_OUTPUT"
