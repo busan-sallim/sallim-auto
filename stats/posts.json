@@ -5,7 +5,7 @@
     "title": "샤워부스 물때, 문지르지 말고 불려서 닦아요",
     "has_link": false,
     "instagram": {
-      "views": 52,
+      "views": 53,
       "reach": 14,
       "likes": 6,
       "comments": 0,
@@ -22,7 +22,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-31"
+    "updated": "2026-11-01"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -30,7 +30,7 @@
     "title": "냉장고 정리, 칸마다 자리만 정해도 반은 끝나요",
     "has_link": false,
     "instagram": {
-      "views": 51,
+      "views": 52,
       "reach": 13,
       "likes": 6,
       "comments": 0,
@@ -40,14 +40,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 193,
-      "likes": 4,
-      "replies": 1,
-      "reposts": 0,
+      "views": 205,
+      "likes": 5,
+      "replies": 2,
+      "reposts": 1,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-10-31",
+    "updated": "2026-11-01",
     "comments_todo": 0
   },
   "003_laundry": {
@@ -73,7 +73,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-31",
+    "updated": "2026-11-01",
     "comments_todo": 0
   },
   "004_window_condensation": {
@@ -99,7 +99,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-31",
+    "updated": "2026-11-01",
     "comments_todo": 0
   },
   "005_padding_wash": {
@@ -108,8 +108,8 @@
     "title": "패딩, 드라이 맡기지 말고 집에서 빨아요",
     "has_link": false,
     "instagram": {
-      "views": 21,
-      "reach": 9,
+      "views": 23,
+      "reach": 10,
       "likes": 4,
       "comments": 0,
       "saved": 0,
@@ -125,7 +125,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-31",
+    "updated": "2026-11-01",
     "comments_todo": 0
   },
   "006_humidifier": {
@@ -151,7 +151,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-31",
+    "updated": "2026-11-01",
     "comments_todo": 0
   },
   "007_fleece_blanket": {
@@ -160,8 +160,8 @@
     "title": "극세사 이불, 빨고 나니 뻣뻣해졌다면",
     "has_link": false,
     "instagram": {
-      "views": 22,
-      "reach": 7,
+      "views": 28,
+      "reach": 10,
       "likes": 2,
       "comments": 0,
       "saved": 0,
@@ -170,14 +170,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 62,
-      "likes": 0,
+      "views": 69,
+      "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-10-31",
+    "updated": "2026-11-01",
     "comments_todo": 0
   },
   "008_microwave": {
@@ -186,7 +186,7 @@
     "title": "전자레인지 찌든 때, 3분 돌리면 닦여요",
     "has_link": false,
     "instagram": {
-      "views": 12,
+      "views": 14,
       "reach": 6,
       "likes": 2,
       "comments": 0,
@@ -196,24 +196,24 @@
       "follows": 0
     },
     "threads": {
-      "views": 103,
-      "likes": 2,
+      "views": 105,
+      "likes": 3,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 1
     },
     "comments_todo": 0,
-    "updated": "2026-10-31"
+    "updated": "2026-11-01"
   },
   "009_sink_drain": {
-    "date": "2026-10-31",
+    "date": "2026-10-30",
     "tag": "주방 청소",
     "title": "싱크대 배수구 냄새, 락스 붓기 전에 이것부터",
     "has_link": false,
     "instagram": {
-      "views": 5,
-      "reach": 1,
+      "views": 23,
+      "reach": 7,
       "likes": 0,
       "comments": 0,
       "saved": 0,
@@ -222,7 +222,33 @@
       "follows": 0
     },
     "threads": {
-      "views": 98,
+      "views": 113,
+      "likes": 2,
+      "replies": 1,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "comments_todo": 0,
+    "updated": "2026-11-01"
+  },
+  "010_cutting_board": {
+    "date": "2026-10-31",
+    "tag": "주방",
+    "title": "도마, 씻고 눕혀 두면 세균이 자라요",
+    "has_link": false,
+    "instagram": {
+      "views": 21,
+      "reach": 6,
+      "likes": 1,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "follows": 0
+    },
+    "threads": {
+      "views": 21,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -230,6 +256,6 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-10-31"
+    "updated": "2026-11-01"
   }
 }
