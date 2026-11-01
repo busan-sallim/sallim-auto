@@ -49,5 +49,11 @@
     "open door fresh air"
   ],
   "cover_query": "shoes entryway",
-  "cover_photo": 9136331
+  "cover_photo": 9136331,
+  "final_check": {
+    "date": "2026-11-01",
+    "by": "claude",
+    "note": "11/1 밤 최종 확인: 카드 6장 렌더링·사진 표지 미리보기 직접 확인, 글자 넘침·잘림 없음, 맞춤법 정상, 내용 1~12 통과(베이킹소다·신문지·환기, 위험 요소 없음), 계절 무관 주제. 링크 없음",
+    "hash": "292404a92d63d1a8"
+  }
 }

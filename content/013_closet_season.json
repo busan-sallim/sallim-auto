@@ -49,5 +49,11 @@
     "dehumidifier box closet"
   ],
   "cover_query": "wardrobe clothes",
-  "cover_photo": 4696557
+  "cover_photo": 4696557,
+  "final_check": {
+    "date": "2026-11-01",
+    "by": "claude",
+    "note": "11/1 밤 최종 확인: 카드 6장 렌더링·사진 표지 미리보기 직접 확인, 글자 넘침·잘림 없음, 수수료 문구 표지 위·마지막 장 위치 정상, 내용 1~12 통과(오리털 압축 주의 포함), 늦가을 옷장 정리 시기 맞음. 쿠팡 링크 생존은 작업 환경에서 접속 차단으로 확인 못 함(발행 때 자동 확인)",
+    "hash": "51c28839647d4b6d"
+  }
 }
