@@ -4,6 +4,8 @@ on:
   # 시험 통과 뒤 자동 실행을 켤 자리 (15분마다)
   # schedule:
   #   - cron: "*/15 * * * *"
+  push:
+    paths: ["dm_now.txt"]   # 클로드가 첫 줄에 할 일(권한 확인 / 시험 발송 / 미리보기 / 실제 보내기)을 적어 올리면 실행
   workflow_dispatch:
     inputs:
       mode:
@@ -34,6 +36,8 @@ jobs:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           MODE: ${{ inputs.mode || '실제 보내기' }}
         run: |
+          if [ "${{ github.event_name }}" = "push" ]; then MODE=$(head -1 dm_now.txt); fi
+          echo "할 일: $MODE"
           case "$MODE" in
             "권한 확인") python scripts/dm_links.py --check ;;
             "시험 발송"*) python scripts/dm_links.py --test 001_bath ;;
