@@ -30,14 +30,14 @@
   ],
   "link": "https://link.coupang.com/a/h54NewXGsm",
   "review": {
-    "date": "2026-10-30",
+    "date": "2026-11-02",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
-    "hash": "e780b322158ff142"
+    "note": "표지 사진(cover_photo 4164831, 드럼세탁기 고무패킹) 지정·1장 아이·반려동물 주의, 4장 설명서대로·다른 세제 섞지 않기 추가 후 재검수: 제조사 안내와 맞음(문 열어 두기·패킹 닦기·월 1회 통세척), 수수료 문구 자동, 해시태그 4개, 얼굴·로고 없음",
+    "hash": "c45093d68ef0f042"
   },
   "product": "세탁조 클리너",
   "photo": "front load washing machine",
@@ -49,5 +49,11 @@
     "washing machine drum clean"
   ],
   "cover_query": "front load washing machine",
-  "cover_photo": 4164831
+  "cover_photo": 4164831,
+  "final_check": {
+    "date": "2026-11-02",
+    "by": "claude",
+    "note": "카드 6장·사진 표지 미리보기 직접 확인: 수수료 문구 표지 위쪽·마지막 장, 글자 넘침 없음, 아이·반려동물 주의·세제 섞지 않기, 제품명 세탁조 클리너, 과장 없음",
+    "hash": "c45093d68ef0f042"
+  }
 }

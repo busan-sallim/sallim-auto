@@ -31,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-30",
+    "date": "2026-11-02",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
-    "hash": "29079abda8a1c114"
+    "note": "표지 사진(cover_photo 330747, 욕실 타일 샤워 코너) 지정·4장에 암모니아 섞기 경고 추가 후 재검수: 실제 쓰는 방법, 과장 없음, 위험 조합 경고·보호구·환기 문구, 맞춤법 확인, 얼굴·로고 없음",
+    "hash": "53dce7bfd9c89ecf"
   },
   "photo": "bathroom tiles",
   "photos": [
@@ -49,5 +49,11 @@
     "cleaning products bottles"
   ],
   "cover_query": "bathroom tiles",
-  "cover_photo": 330747
+  "cover_photo": 330747,
+  "final_check": {
+    "date": "2026-11-02",
+    "by": "claude",
+    "note": "카드 6장·사진 표지 미리보기 직접 확인: 글자 넘침·잘림 없음, 보호구·환기·위험 조합(산성·암모니아) 경고, 과장 없음, 11월 욕실 청소 계절 맞음",
+    "hash": "53dce7bfd9c89ecf"
+  }
 }
