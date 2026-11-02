@@ -18,7 +18,7 @@
     },
     {
       "head": "다른 세제랑 절대 섞지 않기",
-      "body": "락스와 구연산, 식초 같은 산성 세제가 섞이면 해로운 가스가 생겨요. 같은 날 함께 쓰지 마세요."
+      "body": "락스에 구연산·식초 같은 산성 세제나 암모니아가 섞이면 해로운 가스가 생겨요. 같은 날 함께 쓰지 마세요."
     }
   ],
   "caption": "욕실 실리콘에 핀 까만 곰팡이,\n솔로 아무리 문질러도 안 빠지죠?\n\n'붙여 두기'가 답이에요. 단, 안전수칙은 꼭 지켜 주세요.\n\n💬 욕실에서 곰팡이가 제일 잘 생기는 곳은 어디예요?\n저장해두고 욕실 청소 날 꺼내 보세요 🧺",
@@ -48,5 +48,6 @@
     "rinsing bathroom shower",
     "cleaning products bottles"
   ],
-  "cover_query": "bathroom tiles"
+  "cover_query": "bathroom tiles",
+  "cover_photo": 330747
 }
