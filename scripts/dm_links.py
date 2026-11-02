@@ -164,6 +164,28 @@ def run(dry: bool, test_stem: str | None) -> int:
     return failed
 
 
+def diag(test_stem: str | None):
+    """진단: 게시물마다 읽힌 댓글 수만 출력 (아이디·내용은 안 찍음 — 공개 저장소 로그)"""
+    tok = os.environ["IG_TOKEN"]
+    me = call("GET", f"{IG_API}/me", params={"fields": "user_id,username", "access_token": tok})
+    log = json.loads((ROOT / "published.json").read_text(encoding="utf-8"))
+    ts = targets(test_stem)
+    print(f"대상 게시물 {len(ts)}개: {[t['stem'] for t in ts]}")
+    for stem, rec in log.items():
+        if not rec.get("instagram"):
+            continue
+        try:
+            d = call("GET", f"{IG_API}/{rec['instagram']}", params={
+                "fields": "comments_count,comments.limit(50){id,timestamp,username,text}", "access_token": tok})
+        except Exception as e:
+            print(stem, "읽기 실패:", e)
+            continue
+        cs = (d.get("comments") or {}).get("data", [])
+        others = [c for c in cs if c.get("username") != me["username"]]
+        kw = [c for c in others if wants_link(c.get("text"))]
+        print(f"{stem}: 댓글 수(인스타 집계) {d.get('comments_count')} / 읽힌 댓글 {len(cs)} / 다른 계정 {len(others)} / '링크' 포함 {len(kw)}")
+
+
 def check() -> bool:
     tok = os.environ.get("IG_TOKEN")
     if not tok:
@@ -187,7 +209,11 @@ if __name__ == "__main__":
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--test", default=None, help="이 원고(예: 001_bath)는 링크 모음 페이지로 시험 발송")
+    ap.add_argument("--diag", action="store_true")
     a = ap.parse_args()
+    if a.diag:
+        diag(a.test)
+        sys.exit(0)
     if a.check:
         sys.exit(0 if check() else 1)
     try:

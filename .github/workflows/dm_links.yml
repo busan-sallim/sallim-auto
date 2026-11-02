@@ -40,6 +40,7 @@ jobs:
           echo "할 일: $MODE"
           case "$MODE" in
             "권한 확인") python scripts/dm_links.py --check ;;
+            "진단") python scripts/dm_links.py --diag --test 001_bath ;;
             "시험 발송"*) python scripts/dm_links.py --test 001_bath ;;
             "미리보기"*) python scripts/dm_links.py --dry-run ;;
             *) python scripts/dm_links.py ;;
