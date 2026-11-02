@@ -15,14 +15,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 363,
+      "views": 364,
       "likes": 3,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-02"
+    "updated": "2026-11-03"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -40,14 +40,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 210,
+      "views": 216,
       "likes": 5,
       "replies": 2,
       "reposts": 1,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-11-02",
+    "updated": "2026-11-03",
     "comments_todo": 0
   },
   "003_laundry": {
@@ -66,14 +66,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 71,
+      "views": 72,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-02",
+    "updated": "2026-11-03",
     "comments_todo": 0
   },
   "004_window_condensation": {
@@ -92,14 +92,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 113,
+      "views": 114,
       "likes": 2,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-02",
+    "updated": "2026-11-03",
     "comments_todo": 0
   },
   "005_padding_wash": {
@@ -108,7 +108,7 @@
     "title": "패딩, 드라이 맡기지 말고 집에서 빨아요",
     "has_link": false,
     "instagram": {
-      "views": 23,
+      "views": 25,
       "reach": 10,
       "likes": 4,
       "comments": 0,
@@ -118,14 +118,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 63,
+      "views": 65,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-02",
+    "updated": "2026-11-03",
     "comments_todo": 0
   },
   "006_humidifier": {
@@ -144,14 +144,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 13,
+      "views": 14,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-02",
+    "updated": "2026-11-03",
     "comments_todo": 0
   },
   "007_fleece_blanket": {
@@ -170,14 +170,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 75,
+      "views": 79,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 2
     },
-    "updated": "2026-11-02",
+    "updated": "2026-11-03",
     "comments_todo": 0
   },
   "008_microwave": {
@@ -186,8 +186,8 @@
     "title": "전자레인지 찌든 때, 3분 돌리면 닦여요",
     "has_link": false,
     "instagram": {
-      "views": 16,
-      "reach": 8,
+      "views": 19,
+      "reach": 9,
       "likes": 2,
       "comments": 0,
       "saved": 0,
@@ -196,7 +196,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 106,
+      "views": 108,
       "likes": 3,
       "replies": 0,
       "reposts": 0,
@@ -204,7 +204,7 @@
       "shares": 1
     },
     "comments_todo": 0,
-    "updated": "2026-11-02"
+    "updated": "2026-11-03"
   },
   "009_sink_drain": {
     "date": "2026-10-30",
@@ -212,17 +212,17 @@
     "title": "싱크대 배수구 냄새, 락스 붓기 전에 이것부터",
     "has_link": false,
     "instagram": {
-      "views": 23,
-      "reach": 7,
-      "likes": 0,
+      "views": 26,
+      "reach": 9,
+      "likes": 2,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 0,
+      "total_interactions": 2,
       "follows": 0
     },
     "threads": {
-      "views": 115,
+      "views": 117,
       "likes": 2,
       "replies": 1,
       "reposts": 0,
@@ -230,7 +230,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-02"
+    "updated": "2026-11-03"
   },
   "010_cutting_board": {
     "date": "2026-10-31",
@@ -238,17 +238,17 @@
     "title": "도마, 씻고 눕혀 두면 세균이 자라요",
     "has_link": false,
     "instagram": {
-      "views": 22,
-      "reach": 7,
-      "likes": 1,
+      "views": 28,
+      "reach": 10,
+      "likes": 2,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 1,
+      "total_interactions": 2,
       "follows": 0
     },
     "threads": {
-      "views": 25,
+      "views": 26,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
@@ -256,7 +256,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-02"
+    "updated": "2026-11-03"
   },
   "011_gas_stove": {
     "date": "2026-11-01",
@@ -264,17 +264,17 @@
     "title": "가스레인지 기름때, 긁지 말고 덮어 두세요",
     "has_link": false,
     "instagram": {
-      "views": 14,
-      "reach": 6,
-      "likes": 1,
+      "views": 26,
+      "reach": 11,
+      "likes": 3,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 1,
+      "total_interactions": 3,
       "follows": 0
     },
     "threads": {
-      "views": 34,
+      "views": 38,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
@@ -282,6 +282,32 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-02"
+    "updated": "2026-11-03"
+  },
+  "012_knit": {
+    "date": "2026-11-02",
+    "tag": "세탁",
+    "title": "니트 줄어들고 늘어나는 건 빨래 방법 탓이에요",
+    "has_link": true,
+    "instagram": {
+      "views": 23,
+      "reach": 9,
+      "likes": 1,
+      "comments": 1,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 2,
+      "follows": 0
+    },
+    "threads": {
+      "views": 3,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "comments_todo": 0,
+    "updated": "2026-11-03"
   }
 }
