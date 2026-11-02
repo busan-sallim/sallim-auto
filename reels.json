@@ -57,6 +57,27 @@
         "gas stove flame",
         "oven mitt kitchen"
       ]
+    },
+    "102_spin_scrubber": {
+      "date": "2026-11-02",
+      "sha": "230428cfceb350c7",
+      "music": "atlasaudio-happy-ukulele-617574.mp3",
+      "photos": [
+        "out/102_spin_scrubber/photos/00.jpg",
+        null,
+        "out/102_spin_scrubber/photos/02.jpg",
+        "out/102_spin_scrubber/photos/03.jpg",
+        "out/102_spin_scrubber/photos/04.jpg",
+        "out/102_spin_scrubber/photos/05.jpg"
+      ],
+      "queries": [
+        "cleaning bathroom tiles",
+        "cleaning brush",
+        "bathroom floor tiles",
+        "tile grout cleaning",
+        "scrub brush",
+        "bathroom sink"
+      ]
     }
   },
   "approved": {
