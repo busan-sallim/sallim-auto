@@ -93,7 +93,7 @@ def build() -> Path:
     <header>
       <div class="bar"></div>
       <h1>부산여자 살림코칭</h1>
-      <p class="sub">카드뉴스에 나온 제품을 모아 뒀어요 · <a href="https://www.instagram.com/daily_j83/">@daily_j83</a></p>
+      <p class="sub">카드뉴스에 나온 제품을 모아 뒀어요 · <a href="https://www.instagram.com/busan_sallim/">@busan_sallim</a></p>
     </header>
     <ul>{body}
     </ul>

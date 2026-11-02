@@ -243,7 +243,7 @@ def ending(post: dict, total: int) -> Image.Image:
     d.rectangle((90, y + 40, 250, y + 52), fill=MUSTARD)
     fm = font("Bold", 44)
     d.text((90, y + 110), "매일 저녁 살림 카드뉴스", font=fm, fill=MUSTARD)
-    d.text((90, y + 175), "@daily_j83", font=font("Medium", 42), fill=CREAM)
+    d.text((90, y + 175), "@busan_sallim", font=font("Medium", 42), fill=CREAM)
     if post.get("link"):
         fd = font("Medium", 30)
         draw_lines(d, DISCLOSURE.split("\n"), fd, 90, H - 230, "#B8B1A6", 10)

@@ -234,7 +234,7 @@ def build(post: dict, photos=None):
     f_end = card_font("Black", 120)
     end.lines = [text_layer(s, f_end, CREAM) for s in ["저장해두고", "살림할 때", "꺼내 보세요"]]
     end.sub1 = text_layer("매일 저녁 살림 카드뉴스", card_font("Bold", 50), MUSTARD)
-    end.sub2 = text_layer("@daily_j83", card_font("Medium", 48), CREAM)
+    end.sub2 = text_layer("@busan_sallim", card_font("Medium", 48), CREAM)
     scenes.append(("end", end))
     t += end.dur
 
