@@ -268,11 +268,19 @@ def caption(post: dict, threads: bool, only_reel: bool = False) -> str:
     return (base + credit)[:limit]
 
 
+def cover_ms() -> int:
+    """릴스 표지 = 훅 장면(사진 + 큰 문구)이 다 나타난 순간. 클로드가 확인표(--sheet)에서 본 첫 컷과 같은 시점"""
+    import reel
+    return int(reel.HOOK_BEATS * reel.BEAT * 0.8 * 1000)
+
+
 def post_ig_reel(url: str, text: str) -> str:
     tok = os.environ["IG_TOKEN"]
     me = P.call("GET", f"{P.IG_API}/me", params={"fields": "user_id", "access_token": tok})
     c = P.call("POST", f"{P.IG_API}/{me['user_id']}/media", data={
-        "media_type": "REELS", "video_url": url, "caption": text, "share_to_feed": "true", "access_token": tok})
+        "media_type": "REELS", "video_url": url, "caption": text, "share_to_feed": "true",
+        "thumb_offset": str(cover_ms()),  # 표지를 첫 화면(단색)이 아니라 훅 장면으로
+        "access_token": tok})
     for _ in range(60):  # 영상 처리 최대 10분
         st = P.call("GET", f"{P.IG_API}/{c['id']}", params={"fields": "status_code,status", "access_token": tok})
         if st.get("status_code") == "FINISHED":
