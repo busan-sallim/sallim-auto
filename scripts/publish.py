@@ -130,6 +130,10 @@ def build_text(post: dict, for_threads: bool) -> str:
             parts.append(f"👉 {name} 보러 가기\n{post['link']}")
         else:
             parts.append(f"👉 {name} 링크는 스레드(@daily_j83) 같은 게시물에 있어요")
+    # 인스타 공식: '보내기(공유)'가 팔로워 아닌 사람에게 닿는 가장 강한 신호 → 보내기 안내 한 줄 (문장 돌려쓰기)
+    sends = ["📤 이 살림 팁이 필요한 가족·친구에게 보내 주세요", "📤 같이 사는 사람에게 슬쩍 보내 두세요",
+             "📤 살림 같이 하는 친구한테 공유해 주세요", "📤 필요한 분께 보내 주면 저장보다 오래 남아요"]
+    parts.append(sends[sum(map(ord, post.get("title", ""))) % len(sends)])
     hashtags = [t.lstrip("#") for t in post.get("hashtags", [])]
     if post.get("link"):
         hashtags = ["광고"] + [t for t in hashtags if t != "광고"]  # #광고는 맨 앞

@@ -89,6 +89,19 @@ def outlined(text, fnt, color):
     return im
 
 
+def big_outline(text, fnt, stroke=12):
+    """따라하기 자막: 흰 글씨 + 두꺼운 검은 테두리 (소리 없이 봐도 읽히게)"""
+    box = fnt.getbbox(text, stroke_width=stroke)
+    w, h = box[2] - box[0] + 2 * stroke, fnt.size + int(fnt.size * 0.5) + stroke
+    im = Image.new("RGBA", (max(w, 1), h), (0, 0, 0, 0))
+    ImageDraw.Draw(im).text((-box[0] + stroke, stroke), text, font=fnt, fill=(255, 255, 255),
+                            stroke_width=stroke, stroke_fill=(12, 12, 12))
+    return im
+
+
+TUTORIAL = True  # 사진 있는 본문 장면은 따라하기 스타일 (False 면 예전 사진 카드)
+
+
 def paste(frame, layer, x, y, alpha=1.0, scale=1.0):
     if alpha <= 0.01:
         return
@@ -200,7 +213,16 @@ def build(post: dict, photos=None):
         sc.i, sc.dark, sc.heads, sc.bodies, sc.fg = i, dark, heads, bodies, fg
         sc.num = text_layer(str(i), card_font("Black", 96), INK)
         sc.photo = None
-        if ph is not None:
+        sc.full = None
+        if ph is not None and TUTORIAL:
+            # 따라하기 스타일(2026-11-02): 사진이 화면 전체 + 가운데 아주 큰 흰 글씨(검은 테두리) + 빨간 동그라미
+            sc.full = cover(ph, int(W * 1.12), int(H * 1.12))
+            f_cap = card_font("Black", 124)
+            sc.cap = [big_outline(s, f_cap) for s in wrap(d, sl["head"], f_cap, W - 2 * LEFT)]
+            f_sub = card_font("Bold", 58)
+            sc.sub = [big_outline(s, f_sub, 8) for s in wrap(d, sl["body"].split(". ")[0].rstrip(".") + ".", f_sub, W - 2 * LEFT)][:2]
+            sc.circle = (post.get("circles") or {}).get(str(i))  # [x, y, r] 화면 비율 — 클로드가 사진을 보고 정함
+        elif ph is not None:
             cw, ch = CARD[2] - CARD[0], CARD[3] - CARD[1]
             sc.photo = cover(ph, int(cw * 1.1), int(ch * 1.1))
             sc.mask = round_mask(cw, ch, 44)
@@ -245,7 +267,42 @@ def draw_hook(fr, sc, lt):
         paste(fr, lay, LEFT, sc.title_y + k * 84 + 30 * (1 - q), q)
 
 
+def red_circle(fr, circ, p):
+    """손으로 그린 듯한 빨간 동그라미가 p(0~1)만큼 그려짐. circ = [x, y, r] (화면 너비·높이 비율)"""
+    if not circ or p <= 0:
+        return
+    d = ImageDraw.Draw(fr)
+    cx, cy, r = circ[0] * W, circ[1] * H, circ[2] * W
+    for k, (wob, wd) in enumerate(((0, 14), (7, 7))):
+        n = max(2, int(90 * p))
+        pts = [(cx + math.cos(a) * (r * (1.15 + 0.05 * math.sin(a * 3 + k)) + wob) * 1.07,
+                cy + math.sin(a) * (r * (1.15 + 0.05 * math.sin(a * 3 + k)) + wob) * 0.93)
+               for a in (-math.pi * 0.6 + j / 90 * 2.15 * math.pi for j in range(n))]
+        d.line(pts, fill=(226, 32, 32), width=wd, joint="curve")
+
+
+def draw_tutorial(fr, sc, lt):
+    """따라하기 스타일 장면: 전체 화면 사진 → 빨간 동그라미 → 가운데 큰 자막"""
+    fr.paste(kenburns(sc.full, W, H, lt / sc.dur, zoom=0.08, pan=(0.0, 0.0)), (0, 0))
+    shade = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ImageDraw.Draw(shade).rectangle((0, int(H * 0.52), W, int(H * 0.86)), fill=(0, 0, 0, 70))
+    fr.alpha_composite(shade)
+    red_circle(fr, sc.circle, ease_out_cubic(progress(lt, 0.2, 0.45)))
+    y = int(H * 0.56)
+    q = ease_out_back(progress(lt, 0.05, 0.22), 2.2)
+    for lay in sc.cap:
+        paste(fr, lay, (W - lay.width) / 2, y, min(1, q * 2), 0.8 + 0.2 * q)
+        y += lay.height - 18
+    y += 10
+    for k, lay in enumerate(sc.sub):
+        q2 = ease_out_cubic(progress(lt, 0.45 + k * 0.08, 0.35))
+        paste(fr, lay, (W - lay.width) / 2, y + 20 * (1 - q2), q2)
+        y += lay.height - 6
+
+
 def draw_slide(fr, sc, lt, total_slides):
+    if getattr(sc, "full", None) is not None:
+        return draw_tutorial(fr, sc, lt)
     d = ImageDraw.Draw(fr)
     bg = INK if sc.dark else CREAM
     cx, cy = SLIDE_CENTER
