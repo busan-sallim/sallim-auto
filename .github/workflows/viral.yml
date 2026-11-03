@@ -1,0 +1,52 @@
+name: 터진 릴스 찾기
+
+on:
+  schedule:
+    - cron: "13 1 * * 1"   # 한국 시간 매주 월요일 오전 10시 13분 (토큰 연장 9:41 뒤)
+  workflow_dispatch:
+    inputs:
+      check_only:
+        description: "연결 확인만 (저장 안 함)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  viral:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+
+      - name: 연결 확인
+        if: inputs.check_only
+        env:
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+          IG_BIZ_ID: ${{ secrets.IG_BIZ_ID }}
+        run: python scripts/viral.py --check
+
+      - name: 터진 릴스 모으기
+        if: ${{ !inputs.check_only }}
+        env:
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+          IG_BIZ_ID: ${{ secrets.IG_BIZ_ID }}
+        run: python scripts/viral.py
+
+      - name: 보고서 저장
+        if: ${{ !inputs.check_only }}
+        run: |
+          git config user.name "sallim-bot"
+          git config user.email "sallim-bot@users.noreply.github.com"
+          git add stats/viral.md stats/viral.json
+          git commit -m "터진 릴스: $(TZ=Asia/Seoul date +%F)" || exit 0
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push

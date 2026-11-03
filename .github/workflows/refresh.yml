@@ -19,4 +19,7 @@ jobs:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+          FB_APP_ID: ${{ secrets.FB_APP_ID }}
+          FB_APP_SECRET: ${{ secrets.FB_APP_SECRET }}
         run: python scripts/refresh_tokens.py

@@ -2,6 +2,7 @@
 
 일주일에 한 번 실행된다. 새 토큰은 화면에 찍지 않고 바로 깃허브 비밀 보관함에 덮어쓴다.
 필요한 비밀 값: IG_TOKEN, THREADS_TOKEN, GH_PAT(비밀 보관함을 고칠 수 있는 깃허브 열쇠)
+(선택) FB_TOKEN, FB_APP_ID, FB_APP_SECRET — 터진 릴스 찾기용, 있으면 같이 연장
 """
 import os
 import subprocess
@@ -36,7 +37,27 @@ def main():
                        env={**os.environ, "GH_TOKEN": os.environ["GH_PAT"]})
         days = int(data.get("expires_in", 0)) // 86400
         print(f"{name}: 갱신 완료 (앞으로 약 {days}일 사용 가능)")
+    failed |= refresh_fb()
     sys.exit(1 if failed else 0)
+
+
+def refresh_fb() -> bool:
+    """터진 릴스 찾기용 페이스북 열쇠(FB_TOKEN)도 60일 연장. 아직 설정 전이면 조용히 건너뜀."""
+    old, app, secret = (os.environ.get(k) for k in ("FB_TOKEN", "FB_APP_ID", "FB_APP_SECRET"))
+    if not (old and app and secret):
+        print("FB_TOKEN: 아직 설정 전이라 건너뜀")
+        return False
+    r = requests.get("https://graph.facebook.com/v23.0/oauth/access_token", timeout=60, params={
+        "grant_type": "fb_exchange_token", "client_id": app, "client_secret": secret, "fb_exchange_token": old})
+    data = r.json() if r.content else {}
+    new = data.get("access_token")
+    if r.status_code != 200 or not new:
+        print(f"FB_TOKEN: 갱신 실패 ({r.status_code}) {data.get('error', {}).get('message', '')}")
+        return True
+    subprocess.run(["gh", "secret", "set", "FB_TOKEN", "--repo", os.environ["GITHUB_REPOSITORY"]],
+                   input=new, text=True, check=True, env={**os.environ, "GH_TOKEN": os.environ["GH_PAT"]})
+    print("FB_TOKEN: 갱신 완료")
+    return False
 
 
 if __name__ == "__main__":
