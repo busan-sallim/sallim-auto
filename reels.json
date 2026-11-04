@@ -84,6 +84,25 @@
         "scrub brush",
         "bathroom sink"
       ]
+    },
+    "103_bag_sealer": {
+      "date": "2026-11-04",
+      "sha": "4f61e549cf73b6f2",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        "out/103_bag_sealer/photos/00.jpg",
+        "out/103_bag_sealer/photos/01.jpg",
+        "out/103_bag_sealer/photos/02.jpg",
+        null,
+        null
+      ],
+      "queries": [
+        "snack bags",
+        "potato chips bag",
+        "plastic bag sealing",
+        "snack bag kitchen",
+        "child safety kitchen"
+      ]
     }
   },
   "approved": {
