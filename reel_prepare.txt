@@ -1,2 +1,1 @@
-102_spin_scrubber
-pick=0=0,1=-,2=3,3=0,4=7,5=0
+103_bag_sealer
