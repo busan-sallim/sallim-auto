@@ -22,7 +22,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-04"
+    "updated": "2026-11-05"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -40,14 +40,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 218,
+      "views": 221,
       "likes": 5,
       "replies": 2,
       "reposts": 1,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-11-04",
+    "updated": "2026-11-05",
     "comments_todo": 0
   },
   "003_laundry": {
@@ -73,7 +73,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-04",
+    "updated": "2026-11-05",
     "comments_todo": 0
   },
   "004_window_condensation": {
@@ -99,7 +99,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-04",
+    "updated": "2026-11-05",
     "comments_todo": 0
   },
   "005_padding_wash": {
@@ -118,14 +118,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 65,
+      "views": 66,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-04",
+    "updated": "2026-11-05",
     "comments_todo": 0
   },
   "006_humidifier": {
@@ -151,7 +151,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-04",
+    "updated": "2026-11-05",
     "comments_todo": 0
   },
   "007_fleece_blanket": {
@@ -170,14 +170,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 82,
+      "views": 83,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 2
     },
-    "updated": "2026-11-04",
+    "updated": "2026-11-05",
     "comments_todo": 0
   },
   "008_microwave": {
@@ -196,7 +196,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 108,
+      "views": 111,
       "likes": 3,
       "replies": 0,
       "reposts": 0,
@@ -204,7 +204,7 @@
       "shares": 1
     },
     "comments_todo": 0,
-    "updated": "2026-11-04"
+    "updated": "2026-11-05"
   },
   "009_sink_drain": {
     "date": "2026-10-30",
@@ -230,7 +230,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-04"
+    "updated": "2026-11-05"
   },
   "010_cutting_board": {
     "date": "2026-10-31",
@@ -238,7 +238,7 @@
     "title": "도마, 씻고 눕혀 두면 세균이 자라요",
     "has_link": false,
     "instagram": {
-      "views": 29,
+      "views": 30,
       "reach": 10,
       "likes": 2,
       "comments": 0,
@@ -256,7 +256,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-04"
+    "updated": "2026-11-05"
   },
   "011_gas_stove": {
     "date": "2026-11-01",
@@ -264,7 +264,7 @@
     "title": "가스레인지 기름때, 긁지 말고 덮어 두세요",
     "has_link": false,
     "instagram": {
-      "views": 30,
+      "views": 31,
       "reach": 12,
       "likes": 3,
       "comments": 0,
@@ -282,7 +282,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-04"
+    "updated": "2026-11-05"
   },
   "012_knit": {
     "date": "2026-11-02",
@@ -290,7 +290,7 @@
     "title": "니트 줄어들고 늘어나는 건 빨래 방법 탓이에요",
     "has_link": true,
     "instagram": {
-      "views": 28,
+      "views": 32,
       "reach": 10,
       "likes": 2,
       "comments": 1,
@@ -308,7 +308,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-04"
+    "updated": "2026-11-05"
   },
   "013_closet_season": {
     "date": "2026-11-03",
@@ -316,8 +316,34 @@
     "title": "여름옷 넣을 때, 그냥 넣으면 내년에 누레져요",
     "has_link": true,
     "instagram": {
-      "views": 12,
-      "reach": 3,
+      "views": 21,
+      "reach": 6,
+      "likes": 3,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 3,
+      "follows": 0
+    },
+    "threads": {
+      "views": 5,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "comments_todo": 0,
+    "updated": "2026-11-05"
+  },
+  "014_shoe_cabinet": {
+    "date": "2026-11-04",
+    "tag": "현관 정리",
+    "title": "신발장 냄새, 방향제로는 안 빠져요",
+    "has_link": false,
+    "instagram": {
+      "views": 16,
+      "reach": 5,
       "likes": 2,
       "comments": 0,
       "saved": 0,
@@ -326,7 +352,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 4,
+      "views": 14,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -334,6 +360,6 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-04"
+    "updated": "2026-11-05"
   }
 }
