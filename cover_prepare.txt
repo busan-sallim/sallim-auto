@@ -1,1 +1,1 @@
-candidates 019_meat_freeze 020_draft_window
+preview 019_meat_freeze 020_draft_window
