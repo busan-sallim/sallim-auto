@@ -30,14 +30,14 @@
   ],
   "link": "https://link.coupang.com/a/h54UCNgjxk",
   "review": {
-    "date": "2026-10-30",
+    "date": "2026-11-05",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
-    "hash": "ffae531d9bfaa4d8"
+    "note": "표지 사진(cover_photo 8516916, 커튼 친 겨울 창문) 지정·표지 문구 '난방해도 추운 방, 창문 틈 때문이에요'로 다듬어 재검수: 문풍지·뽁뽁이(물 분무)·커튼 모두 일반적 방법, 과장 없음, 제품 일반 명칭, 수수료 문구 자동, 해시태그 4개, 얼굴·로고 없음",
+    "hash": "718cb85588c58270"
   },
   "product": "단열 뽁뽁이(에어캡)",
   "photo": "window curtain winter",
@@ -49,5 +49,11 @@
     "thick curtains night"
   ],
   "cover_query": "window winter",
-  "cover_photo": 8516916
+  "cover_photo": 8516916,
+  "final_check": {
+    "date": "2026-11-05",
+    "by": "claude",
+    "note": "11/5 밤 최종 확인: 사진 표지(수수료 문구 위쪽)·본문 4장·마무리(수수료 문구) 모두 열어 봄, 글자 넘침·잘림 없음, 맞춤법 이상 없음, 초겨울 외풍 계절 맞음",
+    "hash": "718cb85588c58270"
+  }
 }

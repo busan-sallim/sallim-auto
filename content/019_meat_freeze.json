@@ -31,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-30",
+    "date": "2026-11-05",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
-    "hash": "2fd29f8d75a4fdba"
+    "note": "표지 사진(cover_photo 415586, 생돼지고기 클로즈업) 지정·검색어 raw meat 재검수: 소분·납작하게·물로 공기 빼기·날짜 표기 모두 널리 쓰는 방법, 과장 없음, 로고·얼굴 없음, 겨울 장보기 계절 맞음",
+    "hash": "583a38aed9b04f51"
   },
   "photo": "freezer bags food storage",
   "photos": [
@@ -49,5 +49,11 @@
     "labels freezer bags"
   ],
   "cover_query": "raw meat",
-  "cover_photo": 415586
+  "cover_photo": 415586,
+  "final_check": {
+    "date": "2026-11-05",
+    "by": "claude",
+    "note": "11/5 밤 최종 확인: 사진 표지 미리보기·본문 4장·마무리 장 모두 열어 봄, 글자 넘침·잘림 없음, 맞춤법 이상 없음, 겨울 장보기 계절 맞음",
+    "hash": "583a38aed9b04f51"
+  }
 }
