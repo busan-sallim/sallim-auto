@@ -140,7 +140,8 @@ def render(stem: str, preview: bool = False) -> Path:
 
 def parse_picks(stem: str, text: str, n: int) -> list:
     """'0=3,1=0,2=-,3=p' (장면=확인표 후보 번호, - 는 사진 없이, p 는 제품 사진) → 장면별 픽사베이 사진 번호"""
-    cands = json.loads((ROOT / "review" / f"{stem}_cands.json").read_text(encoding="utf-8"))
+    cf = ROOT / "review" / f"{stem}_cands.json"
+    cands = json.loads(cf.read_text(encoding="utf-8")) if cf.exists() else []
     picks = [None] * n
     for part in text.replace(" ", "").split(","):
         if "=" not in part:
@@ -149,6 +150,10 @@ def parse_picks(stem: str, text: str, n: int) -> list:
         sc = int(sc)
         if k in ("p", "P") and sc < n:  # 제품 사진 (product_photos/<원고>.jpg, 사용자가 올린 쿠팡 제품 사진)
             picks[sc] = f"product:{stem}"
+        elif k[:1] in ("p", "P") and k[1:].isdigit() and sc < n:  # 제품 사진 여러 장: p1 → product_photos/<원고>_1.jpg
+            picks[sc] = f"product:{stem}_{k[1:]}"
+        elif k[:1] in ("v", "V") and sc < n:  # 업체 제공 제품 영상: v@시작초 → product_videos/<원고>.mp4
+            picks[sc] = f"video:{stem}@{k.split('@')[1] if '@' in k else '0'}"
         elif k not in ("-", "") and sc < n:
             picks[sc] = cands[sc][int(k)]["id"]
     return picks

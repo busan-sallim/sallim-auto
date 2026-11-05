@@ -109,6 +109,27 @@
         "snack bag kitchen",
         "child safety kitchen"
       ]
+    },
+    "107_ceiling_fan": {
+      "date": "2026-11-05",
+      "sha": "5d8015fda796306a",
+      "music": "atlasaudio-happy-ukulele-617574.mp3",
+      "photos": [
+        "out/107_ceiling_fan/photos/00.mp4",
+        "out/107_ceiling_fan/photos/01.jpg",
+        "out/107_ceiling_fan/photos/02.mp4",
+        "out/107_ceiling_fan/photos/03.jpg",
+        "out/107_ceiling_fan/photos/04.jpg",
+        null
+      ],
+      "queries": [
+        "ceiling fan",
+        "warm living room winter",
+        "ceiling fan white",
+        "ceiling fan slow",
+        "dusting ceiling fan",
+        "electrician ceiling"
+      ]
     }
   },
   "approved": {

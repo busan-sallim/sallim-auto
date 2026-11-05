@@ -160,6 +160,46 @@ def hook_shade():
     return HOOK_SHADE
 
 
+VIDEO_FPS = 30
+VIDEO_Y = 200  # 세로 화면에서 원본(가로) 영상이 놓이는 위쪽 자리
+
+
+def vertical_clip(src: Path, out: Path, start: float, dur: float):
+    """가로 제품 영상 → 1080x1920 세로 조각 (흐린 배경 + 위쪽에 원본 영상, 소리 없음)"""
+    fc = (f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=28:4,eq=brightness=-0.06[bg];"
+          f"[0:v]scale={W}:-2[fg];[bg][fg]overlay=0:{VIDEO_Y}")
+    subprocess.run([FFMPEG, "-y", "-loglevel", "error", "-ss", str(start), "-t", str(dur), "-i", str(src),
+                    "-filter_complex", fc, "-r", str(VIDEO_FPS), "-an", "-c:v", "libx264", "-crf", "16", str(out)], check=True)
+
+
+class VideoSource:
+    """영상 장면: 렌더링이 앞으로만 가므로 프레임을 차례로 읽고, 끝나면 마지막 프레임을 계속 보여 준다"""
+    def __init__(self, path):
+        self.path = Path(path)
+        self.proc = None
+        self.idx = -1
+        self.img = None
+
+    def frame(self, lt: float) -> Image.Image:
+        want = max(0, int(lt * VIDEO_FPS))
+        if self.proc is None and self.img is None:
+            self.proc = subprocess.Popen([FFMPEG, "-loglevel", "error", "-i", str(self.path), "-f", "rawvideo",
+                                          "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-"], stdout=subprocess.PIPE)
+        while self.idx < want and self.proc is not None:
+            buf = self.proc.stdout.read(W * H * 3)
+            if len(buf) < W * H * 3:
+                self.proc.wait()
+                self.proc = None
+                break
+            self.img = Image.frombytes("RGB", (W, H), buf)
+            self.idx += 1
+        return self.img if self.img is not None else Image.new("RGB", (W, H), INK)
+
+
+def is_video(x) -> bool:
+    return isinstance(x, (str, Path)) and str(x).lower().endswith(".mp4")
+
+
 class Scene:
     def __init__(self, start, dur):
         self.start, self.dur = start, dur
@@ -171,7 +211,7 @@ class Scene:
 # ---------- 장면 준비 ----------
 def build(post: dict, photos=None):
     # 장면별 사진 목록 [훅, 1장, 2장, …]. 맞는 사진이 없는 장면은 None → 그 장면만 사진 없이
-    photos = [Image.open(x) if x else None for x in (photos or [])]
+    photos = [(VideoSource(x) if is_video(x) else Image.open(x)) if x else None for x in (photos or [])]
     d = ImageDraw.Draw(Image.new("RGB", (10, 10)))
     scenes = []
     t = 0.0
@@ -187,7 +227,8 @@ def build(post: dict, photos=None):
         f_hook = card_font("Black", 104)
         h_lines = wrap(d, hook_text, f_hook, TEXT_W - 40)
     lh = int(f_hook.size * 1.28)
-    y = 640
+    hook_video = has_photo and isinstance(photos[0], VideoSource)
+    y = 960 if hook_video else 640  # 영상 훅은 위쪽에 영상이 있어서 글을 아래로
     hook_lines = []
     for line in h_lines:
         hook_lines.append((text_layer(line, f_hook, INK), LEFT, y))
@@ -197,7 +238,8 @@ def build(post: dict, photos=None):
     title_lines = [outlined(s, f_title, t_col) if has_photo else text_layer(s, f_title, t_col) for s in wrap(d, post["title"] if post.get("hook") else post.get("subtitle", ""), f_title, TEXT_W)]
     hook = Scene(t, HOOK_BEATS * BEAT)
     hook.lines, hook.lh, hook.title, hook.title_y = hook_lines, lh, title_lines, y + 50
-    hook.photo = cover(photos[0], int(W * 1.18), int(H * 1.18)) if has_photo else None
+    hook.video = photos[0] if hook_video else None
+    hook.photo = cover(photos[0], int(W * 1.18), int(H * 1.18)) if has_photo and not hook_video else None
     scenes.append(("hook", hook))
     t += hook.dur
 
@@ -214,9 +256,10 @@ def build(post: dict, photos=None):
         sc.num = text_layer(str(i), card_font("Black", 96), INK)
         sc.photo = None
         sc.full = None
-        if ph is not None and TUTORIAL:
+        sc.video = ph if isinstance(ph, VideoSource) else None
+        if ph is not None and (TUTORIAL or sc.video):
             # 따라하기 스타일(2026-11-02): 사진이 화면 전체 + 가운데 아주 큰 흰 글씨(검은 테두리) + 빨간 동그라미
-            sc.full = cover(ph, int(W * 1.12), int(H * 1.12))
+            sc.full = ph if sc.video else cover(ph, int(W * 1.12), int(H * 1.12))
             f_cap = card_font("Black", 124)
             sc.cap = [big_outline(s, f_cap) for s in wrap(d, sl["head"], f_cap, W - 2 * LEFT)]
             f_sub = card_font("Bold", 58)
@@ -247,7 +290,10 @@ def build(post: dict, photos=None):
 # ---------- 그리기 ----------
 def draw_hook(fr, sc, lt):
     d = ImageDraw.Draw(fr)
-    if sc.photo is not None:
+    if getattr(sc, "video", None) is not None:
+        fr.paste(sc.video.frame(lt), (0, 0))
+        fr.alpha_composite(hook_shade())
+    elif sc.photo is not None:
         # 첫 프레임부터 움직임: 1.5초 동안 빠르게 줌아웃 → 이후 아주 천천히
         p = 1 - 0.85 * ease_out_cubic(lt / 1.5) - 0.15 * (lt / sc.dur)
         fr.paste(kenburns(sc.photo, W, H, max(0.0, p), zoom=0.18, pan=(0.0, 0.0)), (0, 0))
@@ -283,7 +329,10 @@ def red_circle(fr, circ, p):
 
 def draw_tutorial(fr, sc, lt):
     """따라하기 스타일 장면: 전체 화면 사진 → 빨간 동그라미 → 가운데 큰 자막"""
-    fr.paste(kenburns(sc.full, W, H, lt / sc.dur, zoom=0.08, pan=(0.0, 0.0)), (0, 0))
+    if getattr(sc, "video", None) is not None:
+        fr.paste(sc.video.frame(lt), (0, 0))
+    else:
+        fr.paste(kenburns(sc.full, W, H, lt / sc.dur, zoom=0.08, pan=(0.0, 0.0)), (0, 0))
     shade = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     ImageDraw.Draw(shade).rectangle((0, int(H * 0.52), W, int(H * 0.86)), fill=(0, 0, 0, 70))
     fr.alpha_composite(shade)

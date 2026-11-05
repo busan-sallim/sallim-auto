@@ -120,6 +120,18 @@ def photos_by_pick(stem: str, picks: list) -> list:
         if not pid:
             out.append(None)
             continue
+        if str(pid).startswith("video:"):  # 업체 제공 제품 영상 (product_videos/<원고>.mp4) → 그 장면 길이만큼 세로 조각
+            name, start = pid[6:].split("@")
+            src = ROOT / "product_videos" / f"{name}.mp4"
+            if not src.exists():
+                print(f"[장면 {i}] 제품 영상 product_videos/{name}.mp4 가 없어서 이 장면은 사진 없이")
+                out.append(None)
+                continue
+            import reel
+            f = folder / f"{i:02d}.mp4"
+            reel.vertical_clip(src, f, float(start), 8.0)
+            out.append(f)
+            continue
         if str(pid).startswith("product:"):  # 저장소의 제품 사진 (product_photos/<원고>.jpg|png)
             src = next((f for f in (ROOT / "product_photos").glob(f"{pid[8:]}.*")
                         if f.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")), None)
