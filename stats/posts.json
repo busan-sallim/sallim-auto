@@ -22,7 +22,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-06"
+    "updated": "2026-11-07"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -40,14 +40,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 222,
+      "views": 224,
       "likes": 5,
       "replies": 2,
       "reposts": 1,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-11-06",
+    "updated": "2026-11-07",
     "comments_todo": 0
   },
   "003_laundry": {
@@ -73,7 +73,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-06",
+    "updated": "2026-11-07",
     "comments_todo": 0
   },
   "004_window_condensation": {
@@ -99,7 +99,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-06",
+    "updated": "2026-11-07",
     "comments_todo": 0
   },
   "005_padding_wash": {
@@ -118,14 +118,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 66,
+      "views": 68,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-06",
+    "updated": "2026-11-07",
     "comments_todo": 0
   },
   "006_humidifier": {
@@ -151,7 +151,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-06",
+    "updated": "2026-11-07",
     "comments_todo": 0
   },
   "007_fleece_blanket": {
@@ -170,14 +170,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 84,
+      "views": 87,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 2
     },
-    "updated": "2026-11-06",
+    "updated": "2026-11-07",
     "comments_todo": 0
   },
   "008_microwave": {
@@ -204,7 +204,7 @@
       "shares": 1
     },
     "comments_todo": 0,
-    "updated": "2026-11-06"
+    "updated": "2026-11-07"
   },
   "009_sink_drain": {
     "date": "2026-10-30",
@@ -222,7 +222,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 119,
+      "views": 120,
       "likes": 2,
       "replies": 1,
       "reposts": 0,
@@ -230,7 +230,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-06"
+    "updated": "2026-11-07"
   },
   "010_cutting_board": {
     "date": "2026-10-31",
@@ -256,7 +256,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-06"
+    "updated": "2026-11-07"
   },
   "011_gas_stove": {
     "date": "2026-11-01",
@@ -282,7 +282,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-06"
+    "updated": "2026-11-07"
   },
   "012_knit": {
     "date": "2026-11-02",
@@ -290,8 +290,8 @@
     "title": "니트 줄어들고 늘어나는 건 빨래 방법 탓이에요",
     "has_link": true,
     "instagram": {
-      "views": 33,
-      "reach": 10,
+      "views": 35,
+      "reach": 11,
       "likes": 2,
       "comments": 1,
       "saved": 0,
@@ -308,7 +308,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-06"
+    "updated": "2026-11-07"
   },
   "013_closet_season": {
     "date": "2026-11-03",
@@ -316,8 +316,8 @@
     "title": "여름옷 넣을 때, 그냥 넣으면 내년에 누레져요",
     "has_link": true,
     "instagram": {
-      "views": 25,
-      "reach": 8,
+      "views": 27,
+      "reach": 9,
       "likes": 3,
       "comments": 0,
       "saved": 0,
@@ -326,7 +326,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 7,
+      "views": 8,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -334,7 +334,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-06"
+    "updated": "2026-11-07"
   },
   "014_shoe_cabinet": {
     "date": "2026-11-04",
@@ -342,8 +342,8 @@
     "title": "신발장 냄새, 방향제로는 안 빠져요",
     "has_link": false,
     "instagram": {
-      "views": 23,
-      "reach": 8,
+      "views": 26,
+      "reach": 9,
       "likes": 3,
       "comments": 0,
       "saved": 0,
@@ -360,7 +360,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-06"
+    "updated": "2026-11-07"
   },
   "015_silicone_mold": {
     "date": "2026-11-05",
@@ -368,8 +368,8 @@
     "title": "욕실 실리콘 까만 곰팡이, 붙여 두면 빠져요",
     "has_link": false,
     "instagram": {
-      "views": 12,
-      "reach": 3,
+      "views": 19,
+      "reach": 8,
       "likes": 0,
       "comments": 0,
       "saved": 0,
@@ -378,7 +378,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 70,
+      "views": 74,
       "likes": 0,
       "replies": 1,
       "reposts": 0,
@@ -386,6 +386,24 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-06"
+    "updated": "2026-11-07"
+  },
+  "016_washer_gasket": {
+    "date": "2026-11-06",
+    "tag": "세탁",
+    "title": "드럼세탁기 냄새, 고무패킹 안쪽을 보세요",
+    "has_link": true,
+    "instagram": {
+      "views": 19,
+      "reach": 6,
+      "likes": 2,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 2,
+      "follows": 0
+    },
+    "comments_todo": 0,
+    "updated": "2026-11-07"
   }
 }
