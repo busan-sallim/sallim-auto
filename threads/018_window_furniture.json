@@ -1,0 +1,22 @@
+{
+  "text": "겨울에 옷장 뒤 벽에 곰팡이가 생긴다면 가구 위치를 보세요.\n\n바깥벽에 딱 붙이면 뒤에 습기가 갇혀요.\n5~10cm만 띄워 두세요.\n\n우리 집 옷장, 지금 벽에 딱 붙어 있나요?",
+  "image": "out/004_window_condensation/4.jpg",
+  "topic": "겨울살림",
+  "source": "004_window_condensation",
+  "review": {
+    "date": "2026-11-06",
+    "by": "claude",
+    "real_method": "통과",
+    "legal": "통과",
+    "safe": "통과",
+    "common_practice": "통과",
+    "note": "카드 원본(이미 검수·발행)의 내용만 스레드용으로 줄여 씀. 4대 항목 통과, 락스 혼합 경고 포함, 신원 정보 없음, 질문은 개인정보 안 물음",
+    "hash": "19166ec0769efb0f"
+  },
+  "final_check": {
+    "date": "2026-11-06",
+    "by": "claude",
+    "note": "사진(해당 카드 장)과 글 내용 일치 확인, 500자 이내",
+    "hash": "19166ec0769efb0f"
+  }
+}

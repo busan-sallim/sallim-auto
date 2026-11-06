@@ -128,6 +128,48 @@ def problems(post: dict, need_final: bool = True) -> list[str]:
     return out
 
 
+def threads_problems(post: dict, root: Path = ROOT) -> list[str]:
+    """스레드 전용 글(threads/) 자동 안전망 — 막는 것만"""
+    out = []
+    for key, name in (("review", "검수"), ("final_check", "최종 확인")):
+        rv = post.get(key) or {}
+        if not rv:
+            out.append(f"{name} 도장 없음")
+        elif rv.get("hash") != digest(post):
+            out.append(f"{name} 뒤에 내용이 바뀜 (다시 확인 필요)")
+    rv = post.get("review") or {}
+    for key, name in CRITERIA.items():
+        if rv and rv.get(key) != "통과":
+            out.append(f"검수 미통과: {name}")
+    text = post.get("text", "")
+    whole = text.replace("부산여자 살림코칭", "")
+    for w in IDENTITY_WORDS:
+        if w in whole:
+            out.append(f"신원 노출 위험 단어: {w}")
+    for w in HYPE_WORDS:
+        if w in whole:
+            out.append(f"과장·효능 표현: {w}")
+    for sent in re.split(r"(?<=[.!?요])\s+|\n", text):
+        if any(c in sent for c in CHLORINE) and any(d in sent for d in DANGER_PARTNERS):
+            if not any(k in sent for k in WARN_WORDS):
+                out.append("위험한 세제 조합이 경고 없이 나옴: " + sent[:40])
+    # 첫 줄 수수료 문구(링크 글) + 주제 태그까지 합쳐 500자 (스레드 공식 제한)
+    n = len(text.strip()) + len(post.get("topic", "")) + 3 + (75 if post.get("link") else 0)
+    if n > 500:
+        out.append(f"글이 너무 길어요 (약 {n}자, 500자까지)")
+    imgs = post.get("images") or ([post["image"]] if post.get("image") else [])
+    if not imgs:
+        out.append("사진 없음 (노출 기준: 사진 1장 이상)")
+    for i in imgs:
+        if not (root / i).exists():
+            out.append(f"사진 파일 없음: {i}")
+    if post.get("link") and not re.match(r"^https://(link\.)?coupang\.com/", post["link"]):
+        out.append("링크가 쿠팡 파트너스 주소가 아님")
+    if post.get("link") and not post.get("product"):
+        out.append("링크 글인데 제품 이름(product)이 없음")
+    return out
+
+
 def warnings(post: dict, stem: str, log: dict) -> list[str]:
     """발행은 막지 않지만 메일로 알려 줄 것"""
     out = []
@@ -166,7 +208,7 @@ def main():
     bad = 0
     for p in sorted((ROOT / "content").glob("*.json")):
         rec = log.get(p.stem, {})
-        if rec.get("instagram") and rec.get("threads"):
+        if rec.get("instagram"):
             continue
         probs = problems(json.loads(p.read_text(encoding="utf-8")))
         print(("❌ " if probs else "✅ ") + p.stem + ("" if not probs else " — " + " / ".join(probs)))
@@ -189,7 +231,10 @@ def stamp(path: str, note: str, final: bool = False):
     rec["note"] = note
     post[key] = rec
     rec["hash"] = digest(post)
-    probs = problems(post, need_final=final)
+    if "text" in post:  # 스레드 전용 글
+        probs = [x for x in threads_problems(post) if final or "최종 확인" not in x]
+    else:
+        probs = problems(post, need_final=final)
     if probs:
         sys.exit(f"자동 안전망에 걸렸어요: {probs}")
     p.write_text(json.dumps(post, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

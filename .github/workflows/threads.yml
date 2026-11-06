@@ -1,0 +1,87 @@
+name: 스레드 따로 발행 (하루 3번)
+
+# 2026-11-06 사용자 확정: 스레드는 인스타와 따로, 노출 극대화 방식
+#   아침 09시대 · 점심 13시대 = threads/ 스레드 전용 글 (사진 1장 + 짧은 글 + 질문)
+#   밤 21시대 = 그날 인스타 카드뉴스를 스레드용 글로 캐러셀 발행, 쿠팡 링크는 첫 댓글
+# 깃허브 예약은 늦거나 빠질 때가 많아서 슬롯마다 여러 번 깨운다. 먼저 도는 한 번만 올리고 나머지는 건너뜀.
+# (시간은 영국 기준 → 한국 +9시간)
+on:
+  schedule:
+    - cron: "43 0 * * *"    # 09:43 아침
+    - cron: "13 1 * * *"    # 10:13
+    - cron: "43 1 * * *"    # 10:43
+    - cron: "13 4 * * *"    # 13:13 점심
+    - cron: "43 4 * * *"    # 13:43
+    - cron: "13 5 * * *"    # 14:13
+    - cron: "13 12 * * *"   # 21:13 밤 (카드뉴스 20:30 발행 뒤)
+    - cron: "43 12 * * *"   # 21:43
+    - cron: "13 13 * * *"   # 22:13
+    - cron: "13 14 * * *"   # 23:13 (마지막 기회)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run = 미리보기만 / check = 답글 권한 확인만 / publish = 지금 슬롯에 실제 발행"
+        type: choice
+        options: [dry-run, check, publish]
+        default: dry-run
+      slot:
+        description: "auto = 지금 시간 슬롯 / morning / lunch / night"
+        type: choice
+        options: [auto, morning, lunch, night]
+        default: auto
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish             # 카드뉴스 발행·통계와 겹치지 않게 줄 세우기
+  cancel-in-progress: false
+
+jobs:
+  threads:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      IDENTITY_WORDS: ${{ secrets.IDENTITY_WORDS }}
+      THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: 답글 권한 확인만
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'check'
+        run: python scripts/publish_threads.py --check
+
+      - name: 미리보기
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'dry-run'
+        run: python scripts/publish_threads.py --dry-run --slot "${{ inputs.slot }}"
+
+      - name: 스레드 발행
+        if: github.event_name == 'schedule' || inputs.mode == 'publish'
+        run: |
+          git pull -q origin "${GITHUB_REF_NAME}"   # 방금 올라간 카드 이미지까지 받기
+          python scripts/publish_threads.py --slot "${{ inputs.slot || 'auto' }}"
+
+      - name: 발행 기록 저장
+        if: always() && (github.event_name == 'schedule' || inputs.mode == 'publish')
+        run: |
+          git config user.name "sallim-bot"
+          git config user.email "sallim-bot@users.noreply.github.com"
+          git add threads_published.json published.json
+          git commit -m "스레드 발행 기록: $(TZ=Asia/Seoul date '+%F %H:%M')" || exit 0
+          git pull --rebase -q origin "${GITHUB_REF_NAME}"
+          git push
+
+      - name: 남은 스레드 글 확인 (7개 미만이면 경고 메일)
+        if: always() && github.event_name == 'schedule'
+        run: |
+          n=$(python scripts/publish_threads.py --queue)
+          echo "대기 중인 스레드 전용 글: ${n}개"
+          if [ -f warnings.txt ]; then echo "::warning::$(cat warnings.txt)"; fi
+          if [ -f skipped.txt ]; then echo "::error::검수에 걸린 스레드 글:"; cat skipped.txt; exit 1; fi
+          if [ "$n" -lt 7 ]; then echo "::error::스레드 전용 글이 ${n}개밖에 안 남았어요. 새 글을 넣어 주세요."; exit 1; fi

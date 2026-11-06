@@ -166,6 +166,28 @@ def collect():
                 problems.append(f"{stem} 댓글 확인: {e}")
         row["updated"] = today.isoformat()
 
+    # 스레드 전용 글(threads/, 2026-11-06부터) — 카드뉴스 스레드 글은 위에서 이미 셈
+    tlog_path = ROOT / "threads_published.json"
+    tlog = json.loads(tlog_path.read_text(encoding="utf-8")) if tlog_path.exists() else {}
+    for name, rec in tlog.items():
+        if rec.get("kind") != "own" or not (th and rec.get("id")):
+            continue
+        date = dt.date.fromisoformat(rec.get("date", today.isoformat()))
+        key = "T:" + name
+        if (today - date).days > RECENT_DAYS and key in posts:
+            continue
+        tf = ROOT / "threads" / f"{name}.json"
+        meta = json.loads(tf.read_text(encoding="utf-8")) if tf.exists() else {}
+        row = posts.setdefault(key, {})
+        row.update({"date": rec.get("date"), "tag": "스레드전용·" + meta.get("topic", ""),
+                    "title": meta.get("text", "").split("\n")[0][:40], "has_link": bool(meta.get("link")),
+                    "slot": rec.get("slot")})
+        try:
+            row["threads"] = media_insights(TH_API, rec["id"], TH_METRICS, th)
+        except Exception as e:
+            problems.append(f"{name} threads: {e}")
+        row["updated"] = today.isoformat()
+
     # 팔로워 수 + 스레드 링크 클릭(최근 7일)
     ig_f = th_f = ""
     clicks = []

@@ -1,7 +1,8 @@
-"""인스타·스레드에 카드뉴스 올리기
+"""인스타에 카드뉴스 올리기 (2026-11-06부터 스레드는 따로: scripts/publish_threads.py)
 
 순서: 아직 안 올린 원고 1개 고르기 → (이미지는 워크플로가 미리 만들어 깃허브에 올려 둠)
-      → 인스타 캐러셀 발행 → 스레드 캐러셀 발행 → published.json 에 기록
+      → 인스타 캐러셀 발행 → published.json 에 기록
+      → 같은 카드의 스레드 글은 밤 9시 무렵 publish_threads.py 가 스레드용 글로 따로 올린다
 
 토큰은 깃허브 '비밀 보관함(Secrets)'에서 환경변수로만 받는다. 코드·파일에 절대 적지 않는다.
   IG_TOKEN       인스타 토큰
@@ -55,24 +56,21 @@ def in_window() -> bool:
 
 
 def published_today() -> bool:
-    """오늘(한국 날짜) 인스타나 스레드에 이미 올린 원고가 있는지"""
-    return any(r.get("date") == today_kst() and (r.get("instagram") or r.get("threads"))
+    """오늘(한국 날짜) 인스타에 이미 올린 카드뉴스가 있는지"""
+    return any(r.get("date") == today_kst() and r.get("instagram")
                for r in load_log().values())
 
 
 def next_post() -> Path | None:
-    """content 폴더에서 파일 이름 순서대로, 두 곳 모두 올라가지 않았고 검수를 통과한 첫 원고.
+    """content 폴더에서 파일 이름 순서대로, 인스타에 안 올라갔고 검수를 통과한 첫 원고.
     검수에 걸린 원고는 건너뛰고 skipped.txt 에 이유를 적는다."""
     log = load_log()
     skipped = []
     found = None
     for p in sorted((ROOT / "content").glob("*.json")):
         rec = log.get(p.stem, {})
-        if rec.get("instagram") and rec.get("threads"):
+        if rec.get("instagram"):
             continue
-        if rec.get("instagram") or rec.get("threads"):
-            found = p  # 한쪽만 올라간 원고는 마저 올린다 (이미 검수 통과해서 발행된 것)
-            break
         probs = problems(json.loads(p.read_text(encoding="utf-8")))
         if probs:
             skipped.append(f"{p.stem}: " + " / ".join(probs))
@@ -129,7 +127,7 @@ def build_text(post: dict, for_threads: bool) -> str:
         if for_threads:
             parts.append(f"👉 {name} 보러 가기\n{post['link']}")
         else:
-            parts.append(f"👉 {name} 링크는 스레드(@busan_sallim) 같은 게시물에 있어요")
+            parts.append(f"👉 {name} 링크는 스레드(@busan_sallim) 같은 글 첫 댓글에 있어요")
     # 인스타 공식: '보내기(공유)'가 팔로워 아닌 사람에게 닿는 가장 강한 신호 → 보내기 안내 한 줄 (문장 돌려쓰기)
     sends = ["📤 이 살림 팁이 필요한 가족·친구에게 보내 주세요", "📤 같이 사는 사람에게 슬쩍 보내 두세요",
              "📤 살림 같이 하는 친구한테 공유해 주세요", "📤 필요한 분께 보내 주면 저장보다 오래 남아요"]
@@ -245,13 +243,9 @@ def main():
             print("인스타 발행 완료")
         except Exception as e:  # 한쪽이 실패해도 다른 쪽은 올린다
             errors.append(f"인스타 실패: {e}")
-    if not rec.get("threads"):
-        try:
-            rec["threads"] = post_threads(urls, th_text)
-            print("스레드 발행 완료")
-        except Exception as e:
-            errors.append(f"스레드 실패: {e}")
-    rec["date"] = today_kst()
+    # 스레드는 따로 발행 (publish_threads.py, 밤 슬롯) — 여기서는 올리지 않는다
+    if rec.get("instagram") and not rec.get("date"):
+        rec["date"] = today_kst()
     save_log(log)
     if errors:
         print("\n".join(errors))

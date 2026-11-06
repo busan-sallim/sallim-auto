@@ -1,0 +1,24 @@
+{
+  "text": "여름옷, 한 번 입은 거라도 빨아서 넣으세요.\n눈에 안 보이는 땀과 피지가 1년 동안 누런 얼룩이 돼요.\n\n완전히 말린 다음 넣고, 수납함마다 제습제를 하나씩 두면 좋아요.\n\n옷장 계절 정리 벌써 끝냈어요?",
+  "image": "out/013_closet_season/2.jpg",
+  "topic": "옷장정리",
+  "source": "013_closet_season",
+  "link": "https://link.coupang.com/a/h54ISR5DBA",
+  "product": "옷장 제습제",
+  "review": {
+    "date": "2026-11-06",
+    "by": "claude",
+    "real_method": "통과",
+    "legal": "통과",
+    "safe": "통과",
+    "common_practice": "통과",
+    "note": "카드 원본(이미 검수·발행)의 내용만 스레드용으로 줄여 씀. 4대 항목 통과, 락스 혼합 경고 포함, 신원 정보 없음, 질문은 개인정보 안 물음",
+    "hash": "15592f3efa2cd2f3"
+  },
+  "final_check": {
+    "date": "2026-11-06",
+    "by": "claude",
+    "note": "사진(해당 카드 장)과 글 내용 일치 확인, 500자 이내",
+    "hash": "15592f3efa2cd2f3"
+  }
+}

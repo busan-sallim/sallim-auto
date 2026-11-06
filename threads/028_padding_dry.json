@@ -1,0 +1,22 @@
+{
+  "text": "집에서 빤 패딩이 납작해졌다면 말리는 법을 바꿔 보세요.\n\n그늘에 평평하게 눕혀 말리면서 중간중간 손으로 툭툭 두드려 주면 뭉친 털이 다시 살아나요.\n\n패딩 말릴 때 어떻게 하세요?",
+  "image": "out/005_padding_wash/5.jpg",
+  "topic": "패딩세탁",
+  "source": "005_padding_wash",
+  "review": {
+    "date": "2026-11-06",
+    "by": "claude",
+    "real_method": "통과",
+    "legal": "통과",
+    "safe": "통과",
+    "common_practice": "통과",
+    "note": "카드 원본(이미 검수·발행)의 내용만 스레드용으로 줄여 씀. 4대 항목 통과, 락스 혼합 경고 포함, 신원 정보 없음, 질문은 개인정보 안 물음",
+    "hash": "5ed93a1ffef6e3bc"
+  },
+  "final_check": {
+    "date": "2026-11-06",
+    "by": "claude",
+    "note": "사진(해당 카드 장)과 글 내용 일치 확인, 500자 이내",
+    "hash": "5ed93a1ffef6e3bc"
+  }
+}
