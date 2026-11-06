@@ -139,9 +139,21 @@ def photos_by_pick(stem: str, picks: list) -> list:
                 print(f"[장면 {i}] 제품 사진 product_photos/{pid[8:]}.jpg 가 없어서 이 장면은 사진 없이")
                 out.append(None)
                 continue
-            from PIL import Image
+            from PIL import Image, ImageFilter
             f = folder / f"{i:02d}.jpg"
-            Image.open(src).convert("RGB").save(f, quality=92)
+            im = Image.open(src).convert("RGB")
+            if im.width > im.height * 1.05:
+                # 가로 제품 사진은 꽉 채우면 제품이 잘려서 안 보임 → 세로 화면에 사진 전체(위쪽) + 같은 사진을 흐리게 깐 배경
+                import reel
+                W, H = reel.W, reel.H
+                k = max(W / im.width, H / im.height)
+                bg = im.resize((int(im.width * k) + 1, int(im.height * k) + 1))
+                bg = bg.crop(((bg.width - W) // 2, (bg.height - H) // 2, (bg.width - W) // 2 + W, (bg.height - H) // 2 + H))
+                bg = Image.blend(bg.filter(ImageFilter.GaussianBlur(40)), Image.new("RGB", (W, H), (0, 0, 0)), 0.15)
+                fg = im.resize((W, int(im.height * W / im.width)))
+                bg.paste(fg, (0, reel.VIDEO_Y))
+                im = bg
+            im.save(f, quality=92)
             out.append(f)
             continue
         u = pixabay_by_id(pid)

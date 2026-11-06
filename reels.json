@@ -136,6 +136,27 @@
         "dusting ceiling fan",
         "electrician ceiling"
       ]
+    },
+    "104_kimchi_mat": {
+      "date": "2026-11-06",
+      "sha": "2b597fde5c38bff4",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        "out/104_kimchi_mat/photos/00.jpg",
+        "out/104_kimchi_mat/photos/01.jpg",
+        null,
+        "out/104_kimchi_mat/photos/03.jpg",
+        null,
+        "out/104_kimchi_mat/photos/05.jpg"
+      ],
+      "queries": [
+        "kimchi making",
+        "making kimchi cabbage",
+        "measuring tape",
+        "napa cabbage kimchi",
+        "washing kitchen mat",
+        "drying mat"
+      ]
     }
   },
   "approved": {
@@ -168,6 +189,12 @@
       "sha": "5d8015fda796306a",
       "by": "claude",
       "memo": "훅=업체 영상(흰 실링팬 회전), 1=p2 침실, 2=업체 영상, 3=p3 천장, 4=p1 확대, 5=사진 없음. 상표 큰 로고·얼굴 없음, 글과 화면 맞음. 사용자 요청으로 즉시 발행"
+    },
+    "104_kimchi_mat": {
+      "date": "2026-11-06",
+      "sha": "2b597fde5c38bff4",
+      "by": "claude",
+      "memo": "훅=p3 양념 담긴 매트, 1=p2 원형 매트, 2=-, 3=p3, 4=-, 5=p1 접은 매트. 가로 제품 사진은 흐린 배경 위에 전체가 보이게. 상표·얼굴 없음"
     }
   }
 }
