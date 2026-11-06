@@ -157,6 +157,27 @@
         "washing kitchen mat",
         "drying mat"
       ]
+    },
+    "108_flush_ceiling_fan": {
+      "date": "2026-11-06",
+      "sha": "bd6d7e67987c33ba",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        "out/108_flush_ceiling_fan/photos/00.jpg",
+        "out/108_flush_ceiling_fan/photos/01.jpg",
+        "out/108_flush_ceiling_fan/photos/02.mp4",
+        "out/108_flush_ceiling_fan/photos/03.jpg",
+        "out/108_flush_ceiling_fan/photos/04.jpg",
+        null
+      ],
+      "queries": [
+        "living room ceiling fan",
+        "ceiling fan white",
+        "ceiling fan spinning",
+        "ceiling fan black",
+        "measuring ceiling height",
+        "ceiling fan cleaning"
+      ]
     }
   },
   "approved": {

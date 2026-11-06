@@ -142,8 +142,8 @@ def photos_by_pick(stem: str, picks: list) -> list:
             from PIL import Image, ImageFilter
             f = folder / f"{i:02d}.jpg"
             im = Image.open(src).convert("RGB")
-            if im.width > im.height * 1.05:
-                # 가로 제품 사진은 꽉 채우면 제품이 잘려서 안 보임 → 세로 화면에 사진 전체(위쪽) + 같은 사진을 흐리게 깐 배경
+            if im.width > im.height * 0.75:
+                # 가로·정사각 제품 사진은 꽉 채우면 제품이 잘려서 안 보임 → 세로 화면에 사진 전체(위쪽) + 같은 사진을 흐리게 깐 배경
                 import reel
                 W, H = reel.W, reel.H
                 k = max(W / im.width, H / im.height)
