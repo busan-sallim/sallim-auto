@@ -4,5 +4,11 @@
     "date": "2026-11-07",
     "slot": "lunch",
     "kind": "own"
+  },
+  "002_board_split": {
+    "id": "18131895094694476",
+    "date": "2026-11-08",
+    "slot": "lunch",
+    "kind": "own"
   }
 }
