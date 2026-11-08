@@ -22,7 +22,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -40,14 +40,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 226,
+      "views": 228,
       "likes": 5,
       "replies": 2,
       "reposts": 1,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "comments_todo": 0
   },
   "003_laundry": {
@@ -73,7 +73,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "comments_todo": 0
   },
   "004_window_condensation": {
@@ -99,7 +99,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "comments_todo": 0
   },
   "005_padding_wash": {
@@ -118,14 +118,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 68,
+      "views": 69,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "comments_todo": 0
   },
   "006_humidifier": {
@@ -134,8 +134,8 @@
     "title": "가습기, 물만 갈아 주면 된다고 생각했다면",
     "has_link": false,
     "instagram": {
-      "views": 29,
-      "reach": 9,
+      "views": 32,
+      "reach": 10,
       "likes": 2,
       "comments": 0,
       "saved": 0,
@@ -151,7 +151,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "comments_todo": 0
   },
   "007_fleece_blanket": {
@@ -170,14 +170,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 91,
+      "views": 93,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 2
     },
-    "updated": "2026-11-08",
+    "updated": "2026-11-09",
     "comments_todo": 0
   },
   "008_microwave": {
@@ -204,7 +204,7 @@
       "shares": 1
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "009_sink_drain": {
     "date": "2026-10-30",
@@ -230,7 +230,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "010_cutting_board": {
     "date": "2026-10-31",
@@ -256,7 +256,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "011_gas_stove": {
     "date": "2026-11-01",
@@ -282,7 +282,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "012_knit": {
     "date": "2026-11-02",
@@ -308,7 +308,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "013_closet_season": {
     "date": "2026-11-03",
@@ -334,7 +334,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "014_shoe_cabinet": {
     "date": "2026-11-04",
@@ -360,7 +360,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "015_silicone_mold": {
     "date": "2026-11-05",
@@ -378,7 +378,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 75,
+      "views": 77,
       "likes": 0,
       "replies": 1,
       "reposts": 0,
@@ -386,7 +386,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "016_washer_gasket": {
     "date": "2026-11-06",
@@ -394,8 +394,8 @@
     "title": "드럼세탁기 냄새, 고무패킹 안쪽을 보세요",
     "has_link": true,
     "instagram": {
-      "views": 27,
-      "reach": 8,
+      "views": 30,
+      "reach": 9,
       "likes": 3,
       "comments": 0,
       "saved": 0,
@@ -404,7 +404,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "017_tumbler": {
     "date": "2026-11-07",
@@ -412,17 +412,17 @@
     "title": "텀블러에서 쉰 냄새 날 때, 뚜껑을 분해해 보세요",
     "has_link": false,
     "instagram": {
-      "views": 22,
-      "reach": 5,
-      "likes": 0,
+      "views": 28,
+      "reach": 8,
+      "likes": 1,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 0,
+      "total_interactions": 1,
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
   },
   "T:001_bath_citric": {
     "date": "2026-11-07",
@@ -431,13 +431,29 @@
     "has_link": false,
     "slot": "lunch",
     "threads": {
-      "views": 10,
+      "views": 12,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-08"
+    "updated": "2026-11-09"
+  },
+  "T:002_board_split": {
+    "date": "2026-11-08",
+    "tag": "스레드전용·주방살림",
+    "title": "생고기·생선 도마랑 채소·과일 도마, 나눠 쓰고 있나요?",
+    "has_link": false,
+    "slot": "lunch",
+    "threads": {
+      "views": 24,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-09"
   }
 }
