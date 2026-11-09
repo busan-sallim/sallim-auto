@@ -22,7 +22,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -40,14 +40,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 228,
+      "views": 231,
       "likes": 5,
       "replies": 2,
       "reposts": 1,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-11-09",
+    "updated": "2026-11-10",
     "comments_todo": 0
   },
   "003_laundry": {
@@ -73,7 +73,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-09",
+    "updated": "2026-11-10",
     "comments_todo": 0
   },
   "004_window_condensation": {
@@ -99,7 +99,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-09",
+    "updated": "2026-11-10",
     "comments_todo": 0
   },
   "005_padding_wash": {
@@ -125,7 +125,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-09",
+    "updated": "2026-11-10",
     "comments_todo": 0
   },
   "006_humidifier": {
@@ -151,7 +151,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-09",
+    "updated": "2026-11-10",
     "comments_todo": 0
   },
   "007_fleece_blanket": {
@@ -170,14 +170,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 93,
+      "views": 95,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 2
     },
-    "updated": "2026-11-09",
+    "updated": "2026-11-10",
     "comments_todo": 0
   },
   "008_microwave": {
@@ -204,7 +204,7 @@
       "shares": 1
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "009_sink_drain": {
     "date": "2026-10-30",
@@ -230,7 +230,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "010_cutting_board": {
     "date": "2026-10-31",
@@ -256,7 +256,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "011_gas_stove": {
     "date": "2026-11-01",
@@ -282,7 +282,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "012_knit": {
     "date": "2026-11-02",
@@ -308,7 +308,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "013_closet_season": {
     "date": "2026-11-03",
@@ -334,7 +334,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "014_shoe_cabinet": {
     "date": "2026-11-04",
@@ -342,7 +342,7 @@
     "title": "신발장 냄새, 방향제로는 안 빠져요",
     "has_link": false,
     "instagram": {
-      "views": 27,
+      "views": 34,
       "reach": 10,
       "likes": 3,
       "comments": 0,
@@ -360,7 +360,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "015_silicone_mold": {
     "date": "2026-11-05",
@@ -368,8 +368,8 @@
     "title": "욕실 실리콘 까만 곰팡이, 붙여 두면 빠져요",
     "has_link": false,
     "instagram": {
-      "views": 20,
-      "reach": 8,
+      "views": 22,
+      "reach": 9,
       "likes": 1,
       "comments": 0,
       "saved": 0,
@@ -378,7 +378,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 77,
+      "views": 78,
       "likes": 0,
       "replies": 1,
       "reposts": 0,
@@ -386,7 +386,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "016_washer_gasket": {
     "date": "2026-11-06",
@@ -394,8 +394,8 @@
     "title": "드럼세탁기 냄새, 고무패킹 안쪽을 보세요",
     "has_link": true,
     "instagram": {
-      "views": 30,
-      "reach": 9,
+      "views": 33,
+      "reach": 10,
       "likes": 3,
       "comments": 0,
       "saved": 0,
@@ -404,7 +404,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "017_tumbler": {
     "date": "2026-11-07",
@@ -412,17 +412,17 @@
     "title": "텀블러에서 쉰 냄새 날 때, 뚜껑을 분해해 보세요",
     "has_link": false,
     "instagram": {
-      "views": 28,
-      "reach": 8,
-      "likes": 1,
+      "views": 36,
+      "reach": 10,
+      "likes": 2,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 1,
+      "total_interactions": 2,
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "T:001_bath_citric": {
     "date": "2026-11-07",
@@ -438,7 +438,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
   },
   "T:002_board_split": {
     "date": "2026-11-08",
@@ -454,6 +454,131 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-09"
+    "updated": "2026-11-10"
+  },
+  "R:101_boil_over_lid": {
+    "date": "2026-11-02",
+    "tag": "릴스·신기한 살림템",
+    "title": "라면 끓일 때마다 넘친다면?",
+    "has_link": true,
+    "instagram": {
+      "views": 134,
+      "reach": 124,
+      "likes": 4,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 4,
+      "ig_reels_avg_watch_time": 2582
+    },
+    "threads": {
+      "views": 8,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-10"
+  },
+  "R:102_spin_scrubber": {
+    "date": "2026-11-03",
+    "tag": "릴스·신기한 살림템",
+    "title": "욕실 청소, 손목 그만 쓰세요",
+    "has_link": true,
+    "instagram": {
+      "views": 91,
+      "reach": 86,
+      "likes": 2,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 2779
+    },
+    "threads": {
+      "views": 5,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-10"
+  },
+  "R:103_bag_sealer": {
+    "date": "2026-11-05",
+    "tag": "릴스·신기한 살림템",
+    "title": "과자 봉지 집게 대신 이거",
+    "has_link": true,
+    "instagram": {
+      "views": 132,
+      "reach": 123,
+      "likes": 0,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "ig_reels_avg_watch_time": 2713
+    },
+    "threads": {
+      "views": 3,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-10"
+  },
+  "R:107_ceiling_fan": {
+    "date": "2026-11-05",
+    "tag": "릴스·계절 살림템",
+    "title": "겨울에 실링팬 거꾸로 돌려요",
+    "has_link": true,
+    "instagram": {
+      "views": 157,
+      "reach": 142,
+      "likes": 2,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 2728
+    },
+    "threads": {
+      "views": 4,
+      "likes": 1,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-10"
+  },
+  "R:104_kimchi_mat": {
+    "date": "2026-11-09",
+    "tag": "릴스·김장철 살림템",
+    "title": "김장하고 거실 바닥 닦느라 지쳤다면",
+    "has_link": true,
+    "instagram": {
+      "views": 131,
+      "reach": 123,
+      "likes": 1,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 3173
+    },
+    "threads": {
+      "views": 15,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-10"
   }
 }
