@@ -31,6 +31,9 @@ KST = dt.timezone(dt.timedelta(hours=9))
 
 # 인스타 피드(캐러셀) 게시물에서 받을 수 있는 숫자 (impressions 는 2024년 이후 폐지 → views 사용)
 IG_METRICS = ["views", "reach", "likes", "comments", "saved", "shares", "total_interactions", "follows"]
+# 릴스: 위 숫자 + 평균 시청 시간(밀리초). 지원 안 되는 숫자는 media_insights 가 하나씩 빼고 다시 부름
+REEL_METRICS = ["views", "reach", "likes", "comments", "saved", "shares", "total_interactions",
+                "ig_reels_avg_watch_time"]
 TH_METRICS = ["views", "likes", "replies", "reposts", "quotes", "shares"]
 RECENT_DAYS = 30  # 이보다 오래된 글은 숫자가 거의 안 바뀌어서 다시 안 부른다
 
@@ -186,6 +189,31 @@ def collect():
             row["threads"] = media_insights(TH_API, rec["id"], TH_METRICS, th)
         except Exception as e:
             problems.append(f"{name} threads: {e}")
+        row["updated"] = today.isoformat()
+
+    # 릴스 (reels.json, 2026-11-09 주간 점검에서 추가 — 그전엔 릴스 숫자를 안 모았음)
+    rlog_path = ROOT / "reels.json"
+    rlog = (json.loads(rlog_path.read_text(encoding="utf-8")) if rlog_path.exists() else {}).get("posts", {})
+    for name, rec in rlog.items():
+        if not str(rec.get("instagram", "")).isdigit():
+            continue  # 기록 누락 등 숫자 아이디가 없는 건 건너뜀
+        date = dt.date.fromisoformat(rec.get("date", today.isoformat()))
+        key = "R:" + name
+        if (today - date).days > RECENT_DAYS and key in posts:
+            continue
+        mf = next((p for p in (ROOT / "reels_content" / f"{name}.json", ROOT / "content" / f"{name}.json")
+                   if p.exists()), None)
+        meta = json.loads(mf.read_text(encoding="utf-8")) if mf else {}
+        row = posts.setdefault(key, {})
+        row.update({"date": rec.get("date"), "tag": "릴스·" + meta.get("tag", ""),
+                    "title": meta.get("hook") or meta.get("title", ""), "has_link": bool(meta.get("link"))})
+        for pname, api, metrics, tok in (("instagram", IG_API, REEL_METRICS, ig), ("threads", TH_API, TH_METRICS, th)):
+            if not (tok and str(rec.get(pname, "")).isdigit()):
+                continue
+            try:
+                row[pname] = media_insights(api, rec[pname], metrics, tok)
+            except Exception as e:
+                problems.append(f"{key} {pname}: {e}")
         row["updated"] = today.isoformat()
 
     # 팔로워 수 + 스레드 링크 클릭(최근 7일)

@@ -111,6 +111,26 @@ jobs:
           git commit -m "발행 기록: ${{ steps.pick.outputs.stem }}" || true
           git push
 
+      # 2026-11-09 주간 점검: 깃허브 예약이 5~6시간씩 늦게 돌아 스레드 밤 슬롯(21~24시)이 한 번도 안 나감
+      #   → 카드뉴스를 올린 이 실행이 21:05까지 기다렸다가 같은 카드를 스레드 밤 글로 올린다 (시간·횟수는 그대로)
+      #   이미 밤 슬롯을 올렸으면 프로그램이 알아서 건너뜀. 실패해도 카드 발행 결과엔 영향 없음
+      - name: 스레드 밤 글 (오늘 카드 → 스레드, 21시대)
+        if: success() && steps.pick.outputs.stem != '' && !inputs.dry_run
+        continue-on-error: true
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+        run: |
+          now=$(date +%s)
+          target=$(TZ=Asia/Seoul date -d "$(TZ=Asia/Seoul date +%F) 21:05" +%s)
+          wait=$((target - now))
+          if [ "$wait" -gt 0 ] && [ "$wait" -lt 3600 ]; then echo "21:05까지 ${wait}초 기다려요"; sleep "$wait"; fi
+          git pull -q --rebase origin "${GITHUB_REF_NAME}"
+          python scripts/publish_threads.py --slot night
+          git add threads_published.json published.json
+          git commit -m "스레드 발행 기록: $(TZ=Asia/Seoul date '+%F %H:%M')" || exit 0
+          git pull --rebase -q origin "${GITHUB_REF_NAME}"
+          git push
+
       - name: 검수 알림 (걸린 원고·경고가 있으면 실패 메일)
         if: always()
         run: |
