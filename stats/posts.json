@@ -22,7 +22,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -40,14 +40,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 231,
+      "views": 232,
       "likes": 5,
       "replies": 2,
       "reposts": 1,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-11-10",
+    "updated": "2026-11-11",
     "comments_todo": 0
   },
   "003_laundry": {
@@ -73,7 +73,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10",
+    "updated": "2026-11-11",
     "comments_todo": 0
   },
   "004_window_condensation": {
@@ -99,7 +99,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10",
+    "updated": "2026-11-11",
     "comments_todo": 0
   },
   "005_padding_wash": {
@@ -125,7 +125,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10",
+    "updated": "2026-11-11",
     "comments_todo": 0
   },
   "006_humidifier": {
@@ -151,7 +151,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10",
+    "updated": "2026-11-11",
     "comments_todo": 0
   },
   "007_fleece_blanket": {
@@ -177,7 +177,7 @@
       "quotes": 0,
       "shares": 2
     },
-    "updated": "2026-11-10",
+    "updated": "2026-11-11",
     "comments_todo": 0
   },
   "008_microwave": {
@@ -204,7 +204,7 @@
       "shares": 1
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "009_sink_drain": {
     "date": "2026-10-30",
@@ -230,7 +230,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "010_cutting_board": {
     "date": "2026-10-31",
@@ -256,7 +256,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "011_gas_stove": {
     "date": "2026-11-01",
@@ -282,7 +282,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "012_knit": {
     "date": "2026-11-02",
@@ -308,7 +308,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "013_closet_season": {
     "date": "2026-11-03",
@@ -334,7 +334,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "014_shoe_cabinet": {
     "date": "2026-11-04",
@@ -352,7 +352,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 14,
+      "views": 15,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -360,7 +360,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "015_silicone_mold": {
     "date": "2026-11-05",
@@ -378,7 +378,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 78,
+      "views": 80,
       "likes": 0,
       "replies": 1,
       "reposts": 0,
@@ -386,7 +386,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "016_washer_gasket": {
     "date": "2026-11-06",
@@ -404,7 +404,15 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11",
+    "threads": {
+      "views": 27,
+      "likes": 0,
+      "replies": 1,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    }
   },
   "017_tumbler": {
     "date": "2026-11-07",
@@ -412,7 +420,7 @@
     "title": "텀블러에서 쉰 냄새 날 때, 뚜껑을 분해해 보세요",
     "has_link": false,
     "instagram": {
-      "views": 36,
+      "views": 38,
       "reach": 10,
       "likes": 2,
       "comments": 0,
@@ -422,7 +430,15 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-10"
+    "updated": "2026-11-11",
+    "threads": {
+      "views": 44,
+      "likes": 1,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    }
   },
   "T:001_bath_citric": {
     "date": "2026-11-07",
@@ -431,14 +447,14 @@
     "has_link": false,
     "slot": "lunch",
     "threads": {
-      "views": 12,
+      "views": 15,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "T:002_board_split": {
     "date": "2026-11-08",
@@ -447,14 +463,14 @@
     "has_link": false,
     "slot": "lunch",
     "threads": {
-      "views": 24,
+      "views": 27,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "R:101_boil_over_lid": {
     "date": "2026-11-02",
@@ -479,7 +495,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "R:102_spin_scrubber": {
     "date": "2026-11-03",
@@ -504,7 +520,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "R:103_bag_sealer": {
     "date": "2026-11-05",
@@ -522,14 +538,14 @@
       "ig_reels_avg_watch_time": 2713
     },
     "threads": {
-      "views": 3,
+      "views": 4,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "R:107_ceiling_fan": {
     "date": "2026-11-05",
@@ -544,17 +560,17 @@
       "saved": 0,
       "shares": 0,
       "total_interactions": 2,
-      "ig_reels_avg_watch_time": 2728
+      "ig_reels_avg_watch_time": 2725
     },
     "threads": {
-      "views": 4,
+      "views": 6,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
   },
   "R:104_kimchi_mat": {
     "date": "2026-11-09",
@@ -562,23 +578,66 @@
     "title": "김장하고 거실 바닥 닦느라 지쳤다면",
     "has_link": true,
     "instagram": {
-      "views": 131,
-      "reach": 123,
+      "views": 132,
+      "reach": 124,
       "likes": 1,
       "comments": 0,
       "saved": 0,
       "shares": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 3173
+      "ig_reels_avg_watch_time": 3171
     },
     "threads": {
-      "views": 15,
+      "views": 17,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-10"
+    "updated": "2026-11-11"
+  },
+  "018_towel": {
+    "date": "2026-11-10",
+    "tag": "빨래",
+    "title": "수건이 뻣뻣하고 냄새 나면 유연제부터 빼세요",
+    "has_link": false,
+    "instagram": {
+      "views": 7,
+      "reach": 4,
+      "likes": 0,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "follows": 0
+    },
+    "comments_todo": 0,
+    "updated": "2026-11-11"
+  },
+  "R:108_flush_ceiling_fan": {
+    "date": "2026-11-10",
+    "tag": "릴스·계절 살림템",
+    "title": "천장 낮은 집도 실링팬 돼요?",
+    "has_link": true,
+    "instagram": {
+      "views": 108,
+      "reach": 104,
+      "likes": 0,
+      "comments": 1,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2189
+    },
+    "threads": {
+      "views": 12,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-11"
   }
 }
