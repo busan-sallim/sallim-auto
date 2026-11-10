@@ -1,1 +1,2 @@
 105_vegetable_chopper
+pick=0=0,1=-,2=2,3=-,4=0
