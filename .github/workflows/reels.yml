@@ -1,22 +1,11 @@
 name: 릴스 발행
 
 on:
-  # 발행: 주 3회 (살림하는 주부 생활 시간에 맞춤) 화 오전 10:27 · 목 낮 12:27 · 일 밤 21:27
-  # 깃허브 예약은 늦거나 빠질 때가 있어 30분 간격으로 4번 기회를 주고, 하루 한 번만 올린다.
-  # (시간은 영국 기준 → 한국 +9시간, 세 요일 모두 한국과 같은 날)  ※ 클로드가 전날 밤 승인한 영상만 올린다
+  # 발행: 매일 1개. 하루 한 번만 올린다.  ※ 클로드가 승인한 영상만 올린다
   schedule:
-    - cron: "27 1 * * 2"     # 화 10:27
-    - cron: "57 1 * * 2"     # 화 10:57
-    - cron: "27 2 * * 2"     # 화 11:27
-    - cron: "57 2 * * 2"     # 화 11:57 (마지막 기회)
-    - cron: "27 3 * * 4"     # 목 12:27
-    - cron: "57 3 * * 4"     # 목 12:57
-    - cron: "27 4 * * 4"     # 목 13:27
-    - cron: "57 4 * * 4"     # 목 13:57 (마지막 기회)
-    - cron: "27 12 * * 0"    # 일 21:27
-    - cron: "57 12 * * 0"    # 일 21:57
-    - cron: "27 13 * * 0"    # 일 22:27
-    - cron: "57 13 * * 0"    # 일 22:57 (마지막 기회)
+    # 2026-11-10 클로드 운영 결정: 릴스 주 3회 → 매일 1개 (릴스 도달 글당 약 125명 = 카드뉴스의 12배)
+    # 깃허브 예약이 3~8시간씩 늦게 와서 시각 지정 대신 한국 10~22시 매시간 깨우고, 오늘 안 올렸으면 승인된 영상 1개를 올림
+    - cron: "27 1-13 * * *"
   workflow_dispatch:
     inputs:
       stem:
@@ -84,12 +73,14 @@ jobs:
             [ -z "$s" ] && [ "$m" = "publish" ] && s=$(python scripts/publish_reel.py --next-approved)
             [ -z "$s" ] && s=$(python scripts/publish_reel.py --pick)
             echo "stem=$s" >> "$GITHUB_OUTPUT"; echo "mode=$m" >> "$GITHUB_OUTPUT"
+          elif [ "$(TZ=Asia/Seoul date +%-H)" -lt 10 ] || [ "$(TZ=Asia/Seoul date +%-H)" -ge 23 ]; then
+            echo "한국 시간 10~23시에만 올려요(예약이 늦게 도착함)."; echo "stem=" >> "$GITHUB_OUTPUT"; echo "mode=skip" >> "$GITHUB_OUTPUT"
           elif python scripts/publish_reel.py --made-today; then
             echo "오늘은 이미 릴스를 올렸어요."; echo "stem=" >> "$GITHUB_OUTPUT"; echo "mode=skip" >> "$GITHUB_OUTPUT"
           else
             s=$(python scripts/publish_reel.py --next-approved)
             if [ -z "$s" ]; then
-              echo "::error::클로드가 승인한 릴스가 없어서 오늘은 올리지 않아요."; echo "stem=" >> "$GITHUB_OUTPUT"; echo "mode=none" >> "$GITHUB_OUTPUT"
+              echo "::warning::클로드가 승인한 릴스가 아직 없어요(한 시간 뒤 다시 확인)."; echo "stem=" >> "$GITHUB_OUTPUT"; echo "mode=none" >> "$GITHUB_OUTPUT"
             else
               echo "stem=$s" >> "$GITHUB_OUTPUT"; echo "mode=publish" >> "$GITHUB_OUTPUT"
             fi
@@ -157,6 +148,7 @@ jobs:
           git commit -m "릴스 발행 기록: ${{ steps.plan.outputs.stem }}" || true
           git pull --rebase -q && git push
 
-      - name: 승인된 릴스가 없을 때 알림 메일
+      - name: 승인된 릴스가 없을 때 알림 메일 (밤 21시 이후 한 번만 = 오늘 릴스 빠짐)
         if: steps.plan.outputs.mode == 'none'
-        run: exit 1
+        run: |
+          [ "$(TZ=Asia/Seoul date +%-H)" -ge 21 ] && { echo "::error::오늘 승인된 릴스가 없어 빠졌어요."; exit 1; } || true
