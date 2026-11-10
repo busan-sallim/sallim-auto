@@ -6,17 +6,26 @@ name: 스레드 따로 발행 (하루 3번)
 # 깃허브 예약은 늦거나 빠질 때가 많아서 슬롯마다 여러 번 깨운다. 먼저 도는 한 번만 올리고 나머지는 건너뜀.
 # (시간은 영국 기준 → 한국 +9시간)
 on:
+  # 2026-11-10: 깃허브 예약이 3~8시간씩 늦어 '시간대' 방식이 거의 매번 건너뜀
+  #   → 한국 7시~23시 매시간 깨우고, 프로그램이 '오늘 3개 미만 + 마지막 글 2시간 반 지남'일 때만 1개 올림
   schedule:
-    - cron: "43 0 * * *"    # 09:43 아침
-    - cron: "13 1 * * *"    # 10:13
-    - cron: "43 1 * * *"    # 10:43
-    - cron: "13 4 * * *"    # 13:13 점심
-    - cron: "43 4 * * *"    # 13:43
-    - cron: "13 5 * * *"    # 14:13
-    - cron: "13 12 * * *"   # 21:13 밤 (카드뉴스 20:30 발행 뒤)
-    - cron: "43 12 * * *"   # 21:43
-    - cron: "13 13 * * *"   # 22:13
-    - cron: "13 14 * * *"   # 23:13 (마지막 기회)
+    - cron: "23 22 * * *"
+    - cron: "23 23 * * *"
+    - cron: "23 0 * * *"
+    - cron: "23 1 * * *"
+    - cron: "23 2 * * *"
+    - cron: "23 3 * * *"
+    - cron: "23 4 * * *"
+    - cron: "23 5 * * *"
+    - cron: "23 6 * * *"
+    - cron: "23 7 * * *"
+    - cron: "23 8 * * *"
+    - cron: "23 9 * * *"
+    - cron: "23 10 * * *"
+    - cron: "23 11 * * *"
+    - cron: "23 12 * * *"
+    - cron: "23 13 * * *"
+    - cron: "23 14 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -52,6 +61,15 @@ jobs:
           python-version: "3.12"
 
       - run: pip install -r requirements.txt
+
+      - name: 프리텐다드 글꼴 받기 (카드 검사에 필요)
+        run: |
+          curl -sSL -o /tmp/pretendard.zip https://github.com/orioncactus/pretendard/releases/download/v1.3.9/Pretendard-1.3.9.zip
+          unzip -q -o /tmp/pretendard.zip -d /tmp/pretendard
+          mkdir -p fonts
+          for w in Black Bold Medium; do
+            cp "$(find /tmp/pretendard -name "Pretendard-$w.otf" | head -1)" fonts/
+          done
 
       - name: 답글 권한 확인만
         if: github.event_name == 'workflow_dispatch' && inputs.mode == 'check'

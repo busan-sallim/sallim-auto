@@ -50,9 +50,17 @@ def today_kst() -> str:
 
 
 def in_window() -> bool:
-    """예약(대비용) 실행이 발행해도 되는 시간: 한국 시간 저녁 8시~밤 11시 59분.
-    깃허브 예약이 크게 늦어 새벽·아침에 도는 경우엔 올리지 않는다 (2026-10-31 새벽 2시 발행 사고)"""
-    return datetime.datetime.now(ZoneInfo("Asia/Seoul")).hour >= 20
+    """예약(대비용) 실행이 발행해도 되는 시간 (한국 시간).
+    - 기본: 저녁 6시~자정
+    - 어제 몫을 못 올렸으면(깃허브 예약이 몇 시간씩 늦어 빠진 날) 아침 7시부터 바로 올린다 (2026-11-10, 3일 연속 누락 사고)
+    - 새벽 0~7시는 절대 안 올림 (2026-10-31 새벽 2시 발행 사고)"""
+    now = datetime.datetime.now(ZoneInfo("Asia/Seoul"))
+    if now.hour < 7:
+        return False
+    if now.hour >= 18:
+        return True
+    yday = (now - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+    return not any(r.get("date") == yday and r.get("instagram") for r in load_log().values())
 
 
 def published_today() -> bool:

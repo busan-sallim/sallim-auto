@@ -58,17 +58,32 @@ def save(path: Path, data: dict):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+DAY_MAX = 3          # 하루 최대 3개
+GAP_H = 2.5          # 글 사이 최소 간격 (시간)
+NAMES = ["morning", "lunch", "night"]
+
+
+def today_posts() -> list[dict]:
+    today = now().strftime("%Y-%m-%d")
+    return [r for r in load(TLOG).values() if r.get("date") == today]
+
+
 def current_slot() -> str | None:
-    h = now().hour
-    for name, (a, b) in SLOTS.items():
-        if a <= h < b:
-            return name
-    return None
+    """2026-11-10: 깃허브 예약이 3~8시간씩 늦게 와서 '정해진 시간대' 방식은 거의 매번 건너뜀
+    → 한국 시간 7시~자정 사이에 오늘 3개가 안 됐고, 마지막 글에서 2시간 반이 지났으면 올린다"""
+    if now().hour < 7:
+        return None
+    posts = today_posts()
+    if len(posts) >= DAY_MAX:
+        return None
+    last = max((r.get("at", 0) for r in posts), default=0)
+    if last and time.time() - last < GAP_H * 3600:
+        return None
+    return NAMES[len(posts)]
 
 
 def slot_done(slot: str) -> bool:
-    today = now().strftime("%Y-%m-%d")
-    return any(r.get("date") == today and r.get("slot") == slot for r in load(TLOG).values())
+    return len(today_posts()) >= DAY_MAX or any(r.get("slot") == slot for r in today_posts())
 
 
 # ---------- 글 고르기 ----------
@@ -170,9 +185,9 @@ def post_reply(parent: str, text: str, tok: str) -> str:
 
 
 # ---------- 실행 ----------
-def plan(slot: str):
+def plan(slot: str, auto_card: bool = False):
     """(이름, 종류, 원고, 본문, 사진 주소들의 저장소 경로, 링크, 제품)"""
-    if slot == "night":
+    if slot == "night" or auto_card:
         stem = next_card()
         if stem:
             post = json.loads((ROOT / "content" / f"{stem}.json").read_text(encoding="utf-8"))
@@ -207,13 +222,13 @@ def main():
 
     slot = current_slot() if a.slot == "auto" else a.slot
     if not slot:
-        print("지금은 스레드 발행 시간대(9~12시·13~16시·21~24시)가 아니에요. 건너뜁니다.")
+        print(f"지금은 안 올려요 (오늘 {len(today_posts())}개 발행, 하루 3개·2시간 반 간격·아침 7시~자정).")
         return
     if not a.dry_run and slot_done(slot):
         print(f"오늘 {slot} 슬롯은 이미 발행했어요. 건너뜁니다.")
         return
 
-    pl = plan(slot)
+    pl = plan(slot, auto_card=(a.slot == "auto"))
     if not pl:
         print(f"::warning::스레드에 올릴 글이 없어요 ({slot}). threads 폴더에 새 글을 넣어 주세요.")
         sys.exit(1)
@@ -249,7 +264,7 @@ def main():
         pid = post_images(urls, text, tok)
     else:
         pid = publish_container({"media_type": "TEXT", "text": text}, tok)
-    rec = {"id": pid, "date": now().strftime("%Y-%m-%d"), "slot": slot, "kind": kind}
+    rec = {"id": pid, "date": now().strftime("%Y-%m-%d"), "slot": slot, "kind": kind, "at": int(time.time())}
     tlog = load(TLOG)
     tlog[name] = rec
     save(TLOG, tlog)
