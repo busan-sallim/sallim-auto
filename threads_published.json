@@ -32,5 +32,12 @@
     "slot": "morning",
     "kind": "card",
     "at": 1794362413
+  },
+  "003_microwave_steam": {
+    "id": "18132882610690840",
+    "date": "2026-11-11",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1794379488
   }
 }
