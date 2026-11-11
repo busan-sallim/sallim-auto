@@ -48,5 +48,11 @@
     "soft sponge",
     "cleaning brush"
   ],
-  "cover_query": "air fryer"
+  "cover_query": "air fryer",
+  "final_check": {
+    "date": "2026-11-11",
+    "by": "claude",
+    "note": "렌더 6장 모두 확인: 글자 넘침 없음, 전원 차단·물 직접 금지 안전 문구 있음, 코팅 보호 내용 사실, 계절 무관, 링크 없음",
+    "hash": "b6cbcf7dee881765"
+  }
 }

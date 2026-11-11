@@ -10,7 +10,7 @@
     },
     {
       "head": "10분 보글보글",
-      "body": "약불로 10분 끓이면 탄 자국이 들뜨기 시작해요."
+      "body": "약불로 10분 끓이면 탄 자국이 들뜨기 시작해요. 거품이 넘칠 수 있으니 자리를 비우지 마세요."
     },
     {
       "head": "식힌 뒤 나무주걱",
@@ -31,14 +31,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-30",
+    "date": "2026-11-11",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
-    "hash": "edaea56a2b8550d1"
+    "note": "2장에 끓일 때 넘침·과열 주의 안전 문구 추가. 베이킹소다 끓이기는 널리 쓰는 방법, 알루미늄·양은 변색 경고, 식힌 뒤 작업, 과장 없음, 맞춤법 확인",
+    "hash": "0e3b5dbd83cf2158"
   },
   "photo": "cooking pot",
   "photos": [
@@ -48,5 +48,11 @@
     "wooden spatula",
     "aluminum pot"
   ],
-  "cover_query": "cooking pot"
+  "cover_query": "cooking pot",
+  "final_check": {
+    "date": "2026-11-11",
+    "by": "claude",
+    "note": "수정 후 3장 다시 확인: 두 줄로 넘침 없음. 나머지 장 동일, 안전 문구·알루미늄 경고 확인",
+    "hash": "0e3b5dbd83cf2158"
+  }
 }
