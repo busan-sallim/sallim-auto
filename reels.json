@@ -215,6 +215,27 @@
         "minced onion bowl",
         "kitchen brush cleaning"
       ]
+    },
+    "106_gap_brush": {
+      "date": "2026-11-11",
+      "sha": "c1f9e0fea794ba99",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        "out/106_gap_brush/photos/00.jpg",
+        null,
+        "out/106_gap_brush/photos/02.jpg",
+        null,
+        "out/106_gap_brush/photos/04.jpg",
+        "out/106_gap_brush/photos/05.jpg"
+      ],
+      "queries": [
+        "window frame dust",
+        "window track",
+        "vacuum cleaner window",
+        "window track cleaning",
+        "cleaning sponge",
+        "window autumn"
+      ]
     }
   },
   "approved": {
