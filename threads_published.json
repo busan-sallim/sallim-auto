@@ -46,5 +46,12 @@
     "slot": "night",
     "kind": "own",
     "at": 1794389466
+  },
+  "019_meat_freeze": {
+    "id": "17924529327452670",
+    "date": "2026-11-12",
+    "slot": "morning",
+    "kind": "card",
+    "at": 1794452989
   }
 }
