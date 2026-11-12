@@ -48,5 +48,11 @@
     "bedding sunlight balcony",
     "unmade bed morning"
   ],
-  "cover_query": "bed linen"
+  "cover_query": "bed linen",
+  "final_check": {
+    "date": "2026-11-12",
+    "by": "claude",
+    "note": "카드 6장 직접 확인: 넘침 없음, 60도 세탁은 라벨 확인 조건 포함, 햇볕만으론 부족 내용은 널리 알려진 정보, 겨울 침구 계절 맞음",
+    "hash": "5980758057f452b6"
+  }
 }

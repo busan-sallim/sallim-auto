@@ -48,5 +48,11 @@
     "bathroom drain cover",
     "clogged drain water"
   ],
-  "cover_query": "shower drain bathroom"
+  "cover_query": "shower drain bathroom",
+  "final_check": {
+    "date": "2026-11-12",
+    "by": "claude",
+    "note": "카드 6장 직접 확인: 글자 넘침 없음, 수수료 문구 표지 위·마무리 장, 배수구 관리 일반 생활 정보, 11월 무관 주제 적합. 쿠팡 링크는 세션에서 접속 불가해 발행 때 자동 확인에 맡김",
+    "hash": "ea0b9aeb0a5d35c8"
+  }
 }
