@@ -53,5 +53,12 @@
     "slot": "morning",
     "kind": "card",
     "at": 1794452989
+  },
+  "005_window_air": {
+    "id": "17983721153912851",
+    "date": "2026-11-12",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1794468309
   }
 }
