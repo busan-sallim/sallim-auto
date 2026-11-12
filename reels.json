@@ -242,6 +242,27 @@
         "cleaning sponge",
         "window autumn"
       ]
+    },
+    "109_kimchi_container": {
+      "date": "2026-11-12",
+      "sha": "99efccb309b9fce7",
+      "music": "atlasaudio-happy-ukulele-617574.mp3",
+      "photos": [
+        "out/109_kimchi_container/photos/00.jpg",
+        "out/109_kimchi_container/photos/01.jpg",
+        "out/109_kimchi_container/photos/02.jpg",
+        "out/109_kimchi_container/photos/03.jpg",
+        null,
+        null
+      ],
+      "queries": [
+        "kimchi container",
+        "rubber gasket lid",
+        "rice water bowl",
+        "baking soda water",
+        "plastic container kitchen",
+        "containers drying sun"
+      ]
     }
   },
   "approved": {
