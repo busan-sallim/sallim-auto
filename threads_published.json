@@ -75,5 +75,12 @@
     "slot": "morning",
     "kind": "own",
     "at": 1794537679
+  },
+  "007_laundry_detergent": {
+    "id": "17991240429084702",
+    "date": "2026-11-13",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1794553021
   }
 }
