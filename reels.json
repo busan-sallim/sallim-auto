@@ -269,6 +269,27 @@
         "plastic container kitchen",
         "containers drying sun"
       ]
+    },
+    "110_washer_overload": {
+      "date": "2026-11-13",
+      "sha": "f9c79869990be233",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        "out/110_washer_overload/photos/00.jpg",
+        "out/110_washer_overload/photos/01.jpg",
+        "out/110_washer_overload/photos/02.jpg",
+        "out/110_washer_overload/photos/03.jpg",
+        "out/110_washer_overload/photos/04.jpg",
+        "out/110_washer_overload/photos/05.jpg"
+      ],
+      "queries": [
+        "washing machine full laundry",
+        "front load washer drum",
+        "laundry in washer",
+        "comforter blanket",
+        "laundry detergent",
+        "washing machine"
+      ]
     }
   },
   "approved": {
