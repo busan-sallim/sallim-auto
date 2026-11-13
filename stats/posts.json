@@ -22,7 +22,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "002_fridge": {
     "date": "2026-10-24",
@@ -40,14 +40,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 242,
+      "views": 244,
       "likes": 5,
       "replies": 2,
       "reposts": 1,
       "quotes": 0,
       "shares": 1
     },
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "comments_todo": 0
   },
   "003_laundry": {
@@ -73,7 +73,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "comments_todo": 0
   },
   "004_window_condensation": {
@@ -92,14 +92,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 114,
+      "views": 115,
       "likes": 2,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "comments_todo": 0
   },
   "005_padding_wash": {
@@ -118,14 +118,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 69,
+      "views": 70,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "comments_todo": 0
   },
   "006_humidifier": {
@@ -151,7 +151,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "comments_todo": 0
   },
   "007_fleece_blanket": {
@@ -170,14 +170,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 98,
+      "views": 99,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 2
     },
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "comments_todo": 0
   },
   "008_microwave": {
@@ -204,7 +204,7 @@
       "shares": 1
     },
     "comments_todo": 0,
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "009_sink_drain": {
     "date": "2026-10-30",
@@ -230,7 +230,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "010_cutting_board": {
     "date": "2026-10-31",
@@ -256,7 +256,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "011_gas_stove": {
     "date": "2026-11-01",
@@ -282,7 +282,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "012_knit": {
     "date": "2026-11-02",
@@ -308,7 +308,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "013_closet_season": {
     "date": "2026-11-03",
@@ -334,7 +334,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "014_shoe_cabinet": {
     "date": "2026-11-04",
@@ -360,7 +360,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "015_silicone_mold": {
     "date": "2026-11-05",
@@ -386,7 +386,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "016_washer_gasket": {
     "date": "2026-11-06",
@@ -394,8 +394,8 @@
     "title": "드럼세탁기 냄새, 고무패킹 안쪽을 보세요",
     "has_link": true,
     "instagram": {
-      "views": 37,
-      "reach": 10,
+      "views": 39,
+      "reach": 11,
       "likes": 3,
       "comments": 0,
       "saved": 0,
@@ -404,7 +404,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "threads": {
       "views": 31,
       "likes": 0,
@@ -430,7 +430,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "threads": {
       "views": 50,
       "likes": 1,
@@ -447,14 +447,14 @@
     "has_link": false,
     "slot": "lunch",
     "threads": {
-      "views": 15,
+      "views": 16,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "T:002_board_split": {
     "date": "2026-11-08",
@@ -470,7 +470,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "R:101_boil_over_lid": {
     "date": "2026-11-02",
@@ -478,14 +478,14 @@
     "title": "라면 끓일 때마다 넘친다면?",
     "has_link": true,
     "instagram": {
-      "views": 136,
-      "reach": 124,
+      "views": 137,
+      "reach": 125,
       "likes": 4,
       "comments": 0,
       "saved": 0,
       "shares": 0,
       "total_interactions": 4,
-      "ig_reels_avg_watch_time": 2721
+      "ig_reels_avg_watch_time": 2718
     },
     "threads": {
       "views": 8,
@@ -495,7 +495,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "R:102_spin_scrubber": {
     "date": "2026-11-03",
@@ -520,7 +520,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "R:103_bag_sealer": {
     "date": "2026-11-05",
@@ -528,14 +528,14 @@
     "title": "과자 봉지 집게 대신 이거",
     "has_link": true,
     "instagram": {
-      "views": 136,
-      "reach": 124,
+      "views": 137,
+      "reach": 125,
       "likes": 1,
       "comments": 0,
       "saved": 0,
       "shares": 0,
       "total_interactions": 1,
-      "ig_reels_avg_watch_time": 2990
+      "ig_reels_avg_watch_time": 2975
     },
     "threads": {
       "views": 4,
@@ -545,7 +545,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "R:107_ceiling_fan": {
     "date": "2026-11-05",
@@ -570,7 +570,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "R:104_kimchi_mat": {
     "date": "2026-11-09",
@@ -595,7 +595,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "018_towel": {
     "date": "2026-11-10",
@@ -603,7 +603,7 @@
     "title": "수건이 뻣뻣하고 냄새 나면 유연제부터 빼세요",
     "has_link": false,
     "instagram": {
-      "views": 34,
+      "views": 36,
       "reach": 10,
       "likes": 1,
       "comments": 0,
@@ -613,7 +613,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "threads": {
       "views": 6,
       "likes": 0,
@@ -646,7 +646,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "019_meat_freeze": {
     "date": "2026-11-11",
@@ -664,7 +664,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13",
+    "updated": "2026-11-14",
     "threads": {
       "views": 123,
       "likes": 0,
@@ -688,7 +688,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "T:004_fridge_door": {
     "date": "2026-11-11",
@@ -704,7 +704,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "R:105_vegetable_chopper": {
     "date": "2026-11-11",
@@ -712,14 +712,14 @@
     "title": "양파 다지다 눈물 그만",
     "has_link": true,
     "instagram": {
-      "views": 123,
-      "reach": 116,
+      "views": 125,
+      "reach": 118,
       "likes": 2,
       "comments": 3,
       "saved": 0,
       "shares": 0,
       "total_interactions": 5,
-      "ig_reels_avg_watch_time": 2261
+      "ig_reels_avg_watch_time": 2266
     },
     "threads": {
       "views": 4,
@@ -729,7 +729,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "020_draft_window": {
     "date": "2026-11-12",
@@ -737,8 +737,8 @@
     "title": "창문 틈새 바람, 뽁뽁이만 붙여서는 부족해요",
     "has_link": true,
     "instagram": {
-      "views": 10,
-      "reach": 3,
+      "views": 26,
+      "reach": 7,
       "likes": 0,
       "comments": 0,
       "saved": 0,
@@ -755,7 +755,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "T:005_window_air": {
     "date": "2026-11-12",
@@ -764,14 +764,14 @@
     "has_link": false,
     "slot": "lunch",
     "threads": {
-      "views": 21,
+      "views": 22,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
   },
   "R:106_gap_brush": {
     "date": "2026-11-12",
@@ -779,14 +779,14 @@
     "title": "창틀 먼지, 면봉으로 파고 있나요?",
     "has_link": true,
     "instagram": {
-      "views": 85,
-      "reach": 76,
+      "views": 88,
+      "reach": 78,
       "likes": 0,
       "comments": 0,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 2509
+      "ig_reels_avg_watch_time": 2492
     },
     "threads": {
       "views": 11,
@@ -796,6 +796,97 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-13"
+    "updated": "2026-11-14"
+  },
+  "021_airfryer": {
+    "date": "2026-11-13",
+    "tag": "주방 청소",
+    "title": "에어프라이어 바스켓, 철수세미 쓰면 안 돼요",
+    "has_link": false,
+    "instagram": {
+      "views": 10,
+      "reach": 3,
+      "likes": 0,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 0,
+      "follows": 0
+    },
+    "comments_todo": 0,
+    "updated": "2026-11-14"
+  },
+  "T:006_fleece_shade": {
+    "date": "2026-11-13",
+    "tag": "스레드전용·이불빨래",
+    "title": "극세사 이불, 강한 햇볕에 말리면 색이 바래고 거칠어질 수 있어요.",
+    "has_link": false,
+    "slot": "morning",
+    "threads": {
+      "views": 8,
+      "likes": 1,
+      "replies": 1,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-14"
+  },
+  "T:007_laundry_detergent": {
+    "date": "2026-11-13",
+    "tag": "스레드전용·빨래",
+    "title": "빨래에서 쉰내 날 때 세제를 더 넣으면 오히려 심해져요.",
+    "has_link": false,
+    "slot": "lunch",
+    "threads": {
+      "views": 16,
+      "likes": 1,
+      "replies": 1,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-14"
+  },
+  "T:008_bleach_nomix": {
+    "date": "2026-11-13",
+    "tag": "스레드전용·욕실청소",
+    "title": "락스 쓰는 날엔 다른 세제는 쉬게 해 주세요.",
+    "has_link": false,
+    "slot": "night",
+    "threads": {
+      "views": 13,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-14"
+  },
+  "R:109_kimchi_container": {
+    "date": "2026-11-13",
+    "tag": "릴스·김장철 살림",
+    "title": "김치통 냄새, 씻어도 남죠?",
+    "has_link": false,
+    "instagram": {
+      "views": 113,
+      "reach": 104,
+      "likes": 2,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 2,
+      "ig_reels_avg_watch_time": 5888
+    },
+    "threads": {
+      "views": 5,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-14"
   }
 }
