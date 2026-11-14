@@ -48,5 +48,11 @@
     "clothes standing drawer",
     "drawer organizer boxes"
   ],
-  "cover_query": "folded clothes drawer"
+  "cover_query": "folded clothes drawer",
+  "final_check": {
+    "date": "2026-11-14",
+    "by": "claude",
+    "note": "6장 직접 확인: 글자 넘침·잘림 없음, 맞춤법·띄어쓰기 이상 없음, 덜어내기→세워 접기→상자 칸막이 모두 널리 쓰는 정리법, 과장·신원·링크 없음, 계절 무관",
+    "hash": "5686208d44c2529a"
+  }
 }
