@@ -296,6 +296,27 @@
         "laundry detergent",
         "washing machine"
       ]
+    },
+    "111_hot_pack": {
+      "date": "2026-11-14",
+      "sha": "c211a39e8a3e5623",
+      "music": "atlasaudio-happy-ukulele-617574.mp3",
+      "photos": [
+        "out/111_hot_pack/photos/00.jpg",
+        "out/111_hot_pack/photos/01.jpg",
+        "out/111_hot_pack/photos/02.jpg",
+        "out/111_hot_pack/photos/03.jpg",
+        "out/111_hot_pack/photos/04.jpg",
+        "out/111_hot_pack/photos/05.jpg"
+      ],
+      "queries": [
+        "feet bed blanket",
+        "warm clothes sweater",
+        "sleeping bed blanket",
+        "hands holding warm",
+        "elderly hands",
+        "cold running water tap"
+      ]
     }
   },
   "approved": {
