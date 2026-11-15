@@ -124,5 +124,12 @@
     "slot": "lunch",
     "kind": "own",
     "at": 1794725301
+  },
+  "012_closet_dehumid": {
+    "id": "18122474663083647",
+    "date": "2026-11-15",
+    "slot": "night",
+    "kind": "own",
+    "at": 1794735153
   }
 }
