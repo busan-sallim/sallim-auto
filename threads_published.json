@@ -117,5 +117,12 @@
     "slot": "morning",
     "kind": "card",
     "at": 1794708025
+  },
+  "011_humidifier_water": {
+    "id": "18380542327209965",
+    "date": "2026-11-15",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1794725301
   }
 }
