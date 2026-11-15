@@ -1,2 +1,1 @@
-111_hot_pack
-pick=0=4,1=0,2=3,3=5,4=2,5=1
+112_rice_storage
