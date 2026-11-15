@@ -323,6 +323,27 @@
         "elderly hands",
         "cold running water tap"
       ]
+    },
+    "112_rice_storage": {
+      "date": "2026-11-15",
+      "sha": "f2fbf94075ca347d",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        "out/112_rice_storage/photos/00.jpg",
+        "out/112_rice_storage/photos/01.jpg",
+        "out/112_rice_storage/photos/02.jpg",
+        "out/112_rice_storage/photos/03.jpg",
+        null,
+        null
+      ],
+      "queries": [
+        "rice bag kitchen",
+        "rice in container",
+        "under sink cabinet",
+        "refrigerator vegetable drawer",
+        "rice grains",
+        "washing container"
+      ]
     }
   },
   "approved": {
