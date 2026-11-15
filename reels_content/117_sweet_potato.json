@@ -1,0 +1,55 @@
+{
+  "tag": "주방 살림",
+  "hook": "고구마 냉장고 넣지 마세요",
+  "title": "고구마는 냉장고보다 서늘한 실내예요",
+  "subtitle": "추위에 약해서 금방 상해요",
+  "slides": [
+    {
+      "head": "추위에 약해요",
+      "body": "고구마는 너무 찬 곳에 오래 두면 냉해를 입어 속이 검게 변하고 쉽게 상해요."
+    },
+    {
+      "head": "서늘한 실내에",
+      "body": "겨울 베란다는 너무 추워요. 난방이 덜 닿는 현관 쪽처럼 서늘한 실내가 좋아요."
+    },
+    {
+      "head": "신문지에 싸서",
+      "body": "몇 개씩 신문지에 싸서 상자에 담으면 습기를 잡아 줘요."
+    },
+    {
+      "head": "씻지 말고 그대로",
+      "body": "흙은 그대로 두고 먹기 직전에 씻어요. 물기가 남으면 빨리 상해요."
+    },
+    {
+      "head": "다친 건 먼저",
+      "body": "긁히거나 무른 고구마는 골라내서 먼저 먹어요."
+    }
+  ],
+  "caption": "고구마 한 박스 사서 냉장고에 넣으셨어요?\n고구마는 추위에 약해서 냉장고보다 서늘한 실내가 맞아요.\n\n💬 고구마는 찐 거, 군 거 중에 뭐가 좋아요?\n저장해두고 고구마 사는 날 꺼내 보세요 🧺",
+  "hashtags": [
+    "고구마보관",
+    "겨울간식",
+    "주방살림",
+    "살림팁"
+  ],
+  "link": "",
+  "photos": [
+    "sweet potatoes",
+    "sweet potatoes pile",
+    "sweet potato cut inside",
+    "cardboard box storage",
+    "sweet potato newspaper",
+    "sweet potatoes with soil",
+    "sweet potato basket"
+  ],
+  "review": {
+    "date": "2026-11-15",
+    "by": "claude",
+    "real_method": "통과",
+    "legal": "통과",
+    "safe": "통과",
+    "common_practice": "통과",
+    "note": "4대 기준 통과: 널리 알려진 생활 방법, 과장·효능 표현 없음, 열·전기·칼·화상·화학 안전 문구, 신원 정보 없음, 해시태그 4개, 맞춤법 확인",
+    "hash": "00a9fcd63b72bdee"
+  }
+}
