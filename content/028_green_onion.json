@@ -48,5 +48,11 @@
     "food container paper towel",
     "frozen chopped vegetables"
   ],
-  "cover_query": "green onions"
+  "cover_query": "green onions",
+  "final_check": {
+    "date": "2026-11-16",
+    "by": "claude",
+    "note": "6장 모두 열어 봄. 글자 넘침·맞춤법 이상 없음, 대파 보관법 일반 정보(냉장 1~2주·냉동), 링크 없음",
+    "hash": "df9fa72c1bfe5771"
+  }
 }
