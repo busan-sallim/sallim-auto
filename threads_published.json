@@ -153,5 +153,12 @@
     "slot": "night",
     "kind": "own",
     "at": 1794822712
+  },
+  "024_bedding_mite": {
+    "id": "17925952749449429",
+    "date": "2026-11-17",
+    "slot": "morning",
+    "kind": "card",
+    "at": 1794867529
   }
 }
