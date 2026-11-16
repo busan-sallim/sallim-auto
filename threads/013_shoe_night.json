@@ -4,19 +4,25 @@
   "topic": "현관정리",
   "source": "014_shoe_cabinet",
   "review": {
-    "date": "2026-11-06",
+    "date": "2026-11-16",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "카드 원본(이미 검수·발행)의 내용만 스레드용으로 줄여 씀. 4대 항목 통과, 락스 혼합 경고 포함, 신원 정보 없음, 질문은 개인정보 안 물음",
-    "hash": "bb9cfc828bc53680"
+    "note": "4대 기준 재확인(본문 그대로, 사진만 같은 카드의 관련 장 추가해 캐러셀로): 실제 방법·법·안전(017 락스+식초 경고 유지)·대중성 통과, 글자 수 500자 이내",
+    "hash": "21b6e18a1e3da2b0"
   },
+  "images": [
+    "out/014_shoe_cabinet/2.jpg",
+    "out/014_shoe_cabinet/3.jpg",
+    "out/014_shoe_cabinet/4.jpg",
+    "out/014_shoe_cabinet/5.jpg"
+  ],
   "final_check": {
-    "date": "2026-11-06",
+    "date": "2026-11-16",
     "by": "claude",
-    "note": "사진(해당 카드 장)과 글 내용 일치 확인, 500자 이내",
-    "hash": "bb9cfc828bc53680"
+    "note": "사진 장마다 열어 확인: 본문 내용과 같은 카드의 해당·관련 장, 글자 잘림 없음, 신원 정보 없음",
+    "hash": "21b6e18a1e3da2b0"
   }
 }
