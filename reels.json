@@ -350,6 +350,27 @@
         "rice grains",
         "washing container"
       ]
+    },
+    "113_fridge_fill": {
+      "date": "2026-11-16",
+      "sha": "94f9dc6803578b35",
+      "music": "atlasaudio-happy-ukulele-617574.mp3",
+      "photos": [
+        null,
+        "out/113_fridge_fill/photos/01.jpg",
+        null,
+        "out/113_fridge_fill/photos/03.jpg",
+        "out/113_fridge_fill/photos/04.jpg",
+        "out/113_fridge_fill/photos/05.jpg"
+      ],
+      "queries": [
+        "full refrigerator",
+        "refrigerator shelves food",
+        "refrigerator inside",
+        "freezer frozen food",
+        "hot soup pot",
+        "refrigerator door open"
+      ]
     }
   },
   "approved": {
