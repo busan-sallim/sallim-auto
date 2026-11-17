@@ -160,5 +160,12 @@
     "slot": "morning",
     "kind": "card",
     "at": 1794867529
+  },
+  "015_padding_softener": {
+    "id": "17899082730415464",
+    "date": "2026-11-17",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1794890202
   }
 }
