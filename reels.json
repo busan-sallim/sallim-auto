@@ -377,6 +377,27 @@
         "hot soup pot",
         "refrigerator door open"
       ]
+    },
+    "114_knife_sharpener": {
+      "date": "2026-11-17",
+      "sha": "dbcd321bc3e43a04",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        "out/114_knife_sharpener/photos/00.jpg",
+        "out/114_knife_sharpener/photos/01.jpg",
+        "out/114_knife_sharpener/photos/02.jpg",
+        "out/114_knife_sharpener/photos/03.jpg",
+        "out/114_knife_sharpener/photos/04.jpg",
+        "out/114_knife_sharpener/photos/05.jpg"
+      ],
+      "queries": [
+        "kitchen knife cutting tomato",
+        "dull kitchen knife",
+        "knife sharpener",
+        "knife sharpening kitchen",
+        "ceramic knife",
+        "kitchen knife washing"
+      ]
     }
   },
   "approved": {
