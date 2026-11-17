@@ -167,5 +167,12 @@
     "slot": "lunch",
     "kind": "own",
     "at": 1794890202
+  },
+  "016_microwave_wipe": {
+    "id": "18137689066639836",
+    "date": "2026-11-17",
+    "slot": "night",
+    "kind": "own",
+    "at": 1794902847
   }
 }
