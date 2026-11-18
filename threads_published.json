@@ -181,5 +181,12 @@
     "slot": "morning",
     "kind": "card",
     "at": 1794954559
+  },
+  "017_drain_baking": {
+    "id": "18085770911523311",
+    "date": "2026-11-18",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1794973564
   }
 }
