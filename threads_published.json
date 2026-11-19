@@ -202,5 +202,12 @@
     "slot": "morning",
     "kind": "card",
     "at": 1795039445
+  },
+  "019_board_stand": {
+    "id": "18098584448148241",
+    "date": "2026-11-19",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1795059562
   }
 }
