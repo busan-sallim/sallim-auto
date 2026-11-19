@@ -1,2 +1,1 @@
-114_knife_sharpener
-pick=0=7,1=3,2=3,3=p,4=p,5=0
+115_lint_remover
