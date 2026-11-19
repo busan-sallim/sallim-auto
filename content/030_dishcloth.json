@@ -48,5 +48,11 @@
     "oxygen bleach powder",
     "kitchen towels stack"
   ],
-  "cover_query": "kitchen towel"
+  "cover_query": "kitchen towel",
+  "final_check": {
+    "date": "2026-11-19",
+    "by": "claude",
+    "note": "카드 6장 직접 확인: 표지·마무리 수수료 문구 있음, 과탄산 40~60도·고무장갑·밀폐 통 금지 안전 문구 있음, 글자 넘침 없음",
+    "hash": "39e54bba4a1dbddd"
+  }
 }

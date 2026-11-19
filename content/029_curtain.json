@@ -48,5 +48,11 @@
     "laundry mesh bag",
     "curtains hanging window"
   ],
-  "cover_query": "curtains living room"
+  "cover_query": "curtains living room",
+  "final_check": {
+    "date": "2026-11-19",
+    "by": "claude",
+    "note": "카드 6장 직접 확인: 글자 넘침 없음, 라벨 확인·고리 빼기·세탁망·짧은 탈수 후 레일 건조 모두 일반 세탁 상식, 연말 대청소 시기 맞음",
+    "hash": "6beedbea69cbe029"
+  }
 }
