@@ -431,6 +431,29 @@
         "lint remover",
         "fabric shaver"
       ]
+    },
+    "116_heater_dust": {
+      "date": "2026-11-20",
+      "sha": "e316176a9e11c7ef",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        null,
+        "out/116_heater_dust/photos/01.jpg",
+        "out/116_heater_dust/photos/02.jpg",
+        "out/116_heater_dust/photos/03.jpg",
+        "out/116_heater_dust/photos/04.jpg",
+        "out/116_heater_dust/photos/05.jpg",
+        "out/116_heater_dust/photos/06.jpg"
+      ],
+      "queries": [
+        "electric space heater",
+        "dusty heater grille",
+        "unplugging power plug",
+        "vacuum cleaner brush nozzle",
+        "dry cloth wiping",
+        "open window winter",
+        "curtain near heater"
+      ]
     }
   },
   "approved": {
