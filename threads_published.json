@@ -245,5 +245,12 @@
     "slot": "morning",
     "kind": "card",
     "at": 1795231055
+  },
+  "023_fleece_softener": {
+    "id": "18128915452920176",
+    "date": "2026-11-21",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1795245913
   }
 }
