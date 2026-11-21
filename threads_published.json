@@ -252,5 +252,12 @@
     "slot": "lunch",
     "kind": "own",
     "at": 1795245913
+  },
+  "024_humidifier_cleaner": {
+    "id": "17967796098214852",
+    "date": "2026-11-21",
+    "slot": "night",
+    "kind": "own",
+    "at": 1795260506
   }
 }
