@@ -266,5 +266,12 @@
     "slot": "morning",
     "kind": "card",
     "at": 1795314043
+  },
+  "025_silicone_bleach": {
+    "id": "17892776835469173",
+    "date": "2026-11-22",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1795331103
   }
 }
