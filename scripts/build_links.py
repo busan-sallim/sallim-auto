@@ -84,6 +84,9 @@ def build() -> Path:
          text-decoration:none; padding:13px; border-radius:10px; font-size:16px; }}
   .btn:active {{ transform:translateY(1px); }}
   .empty {{ color:var(--soft); text-align:center; padding:40px 8px; }}
+  .tarot {{ display:block; margin:0 0 16px; padding:16px; border-radius:14px; background:#15123f; color:#ead39f;
+           font-weight:800; text-decoration:none; font-size:16px; text-align:center; }}
+  .tarot span {{ display:block; font-size:13px; color:#f3ead7; font-weight:600; margin-top:4px; }}
   footer {{ margin-top:32px; color:var(--soft); font-size:12px; text-align:center; }}
 </style>
 </head>
@@ -95,6 +98,7 @@ def build() -> Path:
       <h1>부산여자 살림코칭</h1>
       <p class="sub">카드뉴스에 나온 제품을 모아 뒀어요 · <a href="https://www.instagram.com/busan_sallim/">@busan_sallim</a></p>
     </header>
+  <a class="tarot" href="https://haedaltarot.com/" target="_blank" rel="noopener">🌙 살림하다 쉬어 갈 땐, 오늘의 타로 한 장<span>하루 1번 무료 · 해달타로 →</span></a>
     <ul>{body}
     </ul>
     <footer>가격·재고는 쿠팡에서 바뀔 수 있어요.</footer>
