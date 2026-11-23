@@ -105,6 +105,7 @@
   ③ `python scripts/publish_reel.py --sheet <원고>` → `out/<원고>/reel_sheet.jpg` 를 **열어 보고** 장면마다 사진과 글이 맞는지 다시 확인
   ④ 맞으면 `python scripts/publish_reel.py --approve <원고> "확인 메모"` → reels.json 커밋·푸시. 안 맞으면 ②부터 다시 (최대 2번, 그래도 안 맞으면 승인하지 않음)
   ④-1 릴스 전용 원고는 승인 전에 `python scripts/check.py --final reels_content/파일.json "확인 메모"` 도 찍는다
+  ④-2 (2026-11-23 운영 결정) 승인된 영상을 늘 하루치 더(2개) 쌓아 둔다. 밤 준비가 한 번 빠져도 다음 날 릴스가 안 빠지게 (11/19·11/22 누락 원인)
   ⑤ 예약(한국 10~22시 매시간, 하루 1개)이 **승인된 영상만** 인스타 릴스·스레드에 올림 (영상 지문 sha 와 묶여 있어 다시 만들면 다시 승인 필요). 승인된 게 없으면 실패 메일
 - `scripts/reel.py` 영상 만들기 (1080x1920 60fps, 첫 1초 훅, 쿠팡 링크 글은 처음 3.6초 '유료 광고 포함'), `.github/workflows/reels.yml`, 비밀 보관함 `PIXABAY_KEY`
 - 미리보기만: `reel_preview.txt` 에 원고 이름(+ `track=2` 처럼 곡 번호)을 적어 올리면 `docs/preview/` 에 영상만 만든다
