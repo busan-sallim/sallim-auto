@@ -1,0 +1,24 @@
+{
+  "text": "실내 빨래 쉰내 날 땐 바람부터 만들어 주세요.\n\n선풍기나 제습기를 켜 두면 빨리 마르고 냄새도 덜해요. 빨래 물이 닿지 않게 떨어뜨려 두세요.\n\n세탁 끝나고 탈수만 한 번 더 돌려도 훨씬 빨리 말라요.\n\n겨울 빨래, 어디에 널어요?",
+  "image": "out/027_indoor_drying/4.jpg",
+  "topic": "빨래",
+  "source": "027_indoor_drying",
+  "link": "https://link.coupang.com/a/h5460LEDi8",
+  "product": "제습기",
+  "review": {
+    "date": "2026-11-23",
+    "by": "claude",
+    "real_method": "통과",
+    "legal": "통과",
+    "safe": "통과",
+    "common_practice": "통과",
+    "note": "카드 원본(이미 검수·발행) 내용만 스레드용으로 줄여 씀. 실제 방법·법·안전(락스+산성 경고, 전원·열·압력 주의)·대중성 통과, 신원 정보 없음, 과장 없음, 질문은 개인정보 안 물음, 계절 맞음(겨울), 최근 글과 각도 다름",
+    "hash": "ccd1040bcfcbb08d"
+  },
+  "final_check": {
+    "date": "2026-11-23",
+    "by": "claude",
+    "note": "사진(해당 카드 장)과 글 내용 일치 확인, 500자 이내, 사진 1장",
+    "hash": "ccd1040bcfcbb08d"
+  }
+}
