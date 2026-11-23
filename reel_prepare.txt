@@ -1,2 +1,1 @@
-116_heater_dust
-pick=0=-,1=1,2=0,3=2,4=0,5=7,6=2
+117_sweet_potato
