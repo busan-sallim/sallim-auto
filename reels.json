@@ -460,6 +460,28 @@
         "open window winter",
         "curtain near heater"
       ]
+    },
+    "117_sweet_potato": {
+      "date": "2026-11-23",
+      "sha": "902fb983d286652c",
+      "music": "atlasaudio-happy-ukulele-617574.mp3",
+      "photos": [
+        "out/117_sweet_potato/photos/00.jpg",
+        "out/117_sweet_potato/photos/01.jpg",
+        null,
+        "out/117_sweet_potato/photos/03.jpg",
+        "out/117_sweet_potato/photos/04.jpg",
+        "out/117_sweet_potato/photos/05.jpg"
+      ],
+      "queries": [
+        "sweet potatoes",
+        "sweet potatoes pile",
+        "sweet potato cut inside",
+        "cardboard box storage",
+        "sweet potato newspaper",
+        "sweet potatoes with soil",
+        "sweet potato basket"
+      ]
     }
   },
   "approved": {
