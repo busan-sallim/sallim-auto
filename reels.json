@@ -488,6 +488,27 @@
         "sweet potatoes with soil",
         "sweet potato basket"
       ]
+    },
+    "118_dish_rack": {
+      "date": "2026-11-24",
+      "sha": "04431b0d5898ec59",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        null,
+        "out/118_dish_rack/photos/01.jpg",
+        "out/118_dish_rack/photos/02.jpg",
+        "out/118_dish_rack/photos/03.jpg",
+        "out/118_dish_rack/photos/04.jpg",
+        null
+      ],
+      "queries": [
+        "dish drying rack kitchen",
+        "dish rack drip tray",
+        "pouring water sink",
+        "scrub brush washing",
+        "drying kitchen tray",
+        "plates on drying rack"
+      ]
     }
   },
   "approved": {
