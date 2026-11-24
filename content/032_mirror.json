@@ -48,5 +48,11 @@
     "wiping mirror",
     "foggy mirror"
   ],
-  "cover_query": "bathroom mirror"
+  "cover_query": "bathroom mirror",
+  "final_check": {
+    "date": "2026-11-24",
+    "by": "claude",
+    "note": "6장 모두 열어 봄: 글자 넘침 없음, 맞춤법 OK, 세제 섞기 없음, 겨울 김서림 내용 계절 적합, 링크 없음",
+    "hash": "e227aab3f317c57b"
+  }
 }
