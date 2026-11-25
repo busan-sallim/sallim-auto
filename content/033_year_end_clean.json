@@ -2,7 +2,7 @@
   "tag": "대청소",
   "title": "연말 대청소, 순서만 지키면 두 번 일 안 해요",
   "cover_title": "대청소를 두 번 하게 되는 이유",
-  "subtitle": "하루에 끝내는 대청소 순서",
+  "subtitle": "두 번 일 안 하는 대청소 순서",
   "slides": [
     {
       "head": "위에서 아래로",
@@ -35,14 +35,14 @@
   ],
   "link": "",
   "review": {
-    "date": "2026-10-30",
+    "date": "2026-11-25",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "표지 큰 문구(cover_title)·캡션 댓글 질문 추가 검수: 내용과 일치, 과장·효능 표현 없음, 개인정보 묻지 않음, 맞춤법 확인",
-    "hash": "624b1f87cc9fde2c"
+    "note": "부제를 4장(하루 한 공간)과 맞게 수정, 사실·안전·표현 이상 없음",
+    "hash": "5bede06b3bfc1443"
   },
   "photo": "cleaning supplies",
   "photos": [
@@ -53,5 +53,11 @@
     "mopping floor",
     "garbage bag"
   ],
-  "cover_query": "cleaning supplies"
+  "cover_query": "cleaning supplies",
+  "final_check": {
+    "date": "2026-11-25",
+    "by": "claude",
+    "note": "7장 모두 열어 봄, 넘침·맞춤법·계절(연말) 이상 없음",
+    "hash": "5bede06b3bfc1443"
+  }
 }
