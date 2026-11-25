@@ -339,5 +339,12 @@
     "slot": "lunch",
     "kind": "own",
     "at": 1795582637
+  },
+  "033_towel_softener": {
+    "id": "17882611347651509",
+    "date": "2026-11-26",
+    "slot": "morning",
+    "kind": "own",
+    "at": 1795646312
   }
 }
