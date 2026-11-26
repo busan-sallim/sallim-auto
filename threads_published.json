@@ -346,5 +346,12 @@
     "slot": "morning",
     "kind": "own",
     "at": 1795646312
+  },
+  "034_meat_portion": {
+    "id": "18087807227373187",
+    "date": "2026-11-26",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1795666391
   }
 }
