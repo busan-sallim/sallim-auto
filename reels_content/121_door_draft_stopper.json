@@ -14,7 +14,7 @@
     },
     {
       "head": "길이 재서 자르기",
-      "body": "문 너비를 재고 맞게 잘라요. 가위나 칼을 쓸 땐 손 조심해요."
+      "body": "문 너비만큼 자를 땐 가위·칼에 손 다치지 않게 조심해요."
     },
     {
       "head": "닦고 말린 뒤 붙이기",
@@ -34,15 +34,22 @@
   ],
   "link": "",
   "product": "문 하단 바람막이(붙이는 문풍지)",
-  "photos": ["white door floor", "white interior door floor", "weather stripping", "measuring tape", "wiping cloth cleaning", "white interior door"],
+  "photos": [
+    "white door floor",
+    "white interior door floor",
+    "weather stripping",
+    "measuring tape",
+    "wiping cloth cleaning",
+    "white interior door"
+  ],
   "review": {
-    "date": "2026-11-15",
+    "date": "2026-11-26",
     "by": "claude",
     "real_method": "통과",
     "legal": "통과",
     "safe": "통과",
     "common_practice": "통과",
-    "note": "4대 기준 통과: 널리 알려진 생활 방법, 과장·효능 표현 없음, 열·전기·칼·화상·화학 안전 문구, 신원 정보 없음, 해시태그 4개, 맞춤법 확인",
-    "hash": "5e90fe42b0772b34"
+    "note": "3장 칼·가위 안전 문구를 첫 문장에 넣어 영상 자막에도 보이게 수정. 실제 쓰는 방법·과장 없음·신원 없음 확인",
+    "hash": "d000dfe704c9d8bd"
   }
 }
