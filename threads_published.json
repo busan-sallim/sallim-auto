@@ -368,5 +368,12 @@
     "slot": "morning",
     "kind": "card",
     "at": 1795732131
+  },
+  "036_airfryer_steel": {
+    "id": "18087777674715639",
+    "date": "2026-11-27",
+    "slot": "lunch",
+    "kind": "own",
+    "at": 1795753203
   }
 }
