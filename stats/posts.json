@@ -170,14 +170,14 @@
       "follows": 0
     },
     "threads": {
-      "views": 138,
+      "views": 139,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 2
     },
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "comments_todo": 0
   },
   "008_microwave": {
@@ -204,7 +204,7 @@
       "shares": 1
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "009_sink_drain": {
     "date": "2026-10-30",
@@ -230,7 +230,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "010_cutting_board": {
     "date": "2026-10-31",
@@ -256,7 +256,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "011_gas_stove": {
     "date": "2026-11-01",
@@ -282,7 +282,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "012_knit": {
     "date": "2026-11-02",
@@ -308,7 +308,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "013_closet_season": {
     "date": "2026-11-03",
@@ -334,7 +334,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "014_shoe_cabinet": {
     "date": "2026-11-04",
@@ -360,7 +360,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "015_silicone_mold": {
     "date": "2026-11-05",
@@ -386,7 +386,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "016_washer_gasket": {
     "date": "2026-11-06",
@@ -404,7 +404,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 32,
       "likes": 0,
@@ -430,7 +430,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 52,
       "likes": 1,
@@ -454,7 +454,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:002_board_split": {
     "date": "2026-11-08",
@@ -470,7 +470,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:101_boil_over_lid": {
     "date": "2026-11-02",
@@ -495,7 +495,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:102_spin_scrubber": {
     "date": "2026-11-03",
@@ -520,7 +520,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:103_bag_sealer": {
     "date": "2026-11-05",
@@ -545,7 +545,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:107_ceiling_fan": {
     "date": "2026-11-05",
@@ -570,7 +570,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:104_kimchi_mat": {
     "date": "2026-11-09",
@@ -595,7 +595,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "018_towel": {
     "date": "2026-11-10",
@@ -613,7 +613,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 6,
       "likes": 0,
@@ -646,7 +646,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "019_meat_freeze": {
     "date": "2026-11-11",
@@ -664,7 +664,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 125,
       "likes": 0,
@@ -688,7 +688,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:004_fridge_door": {
     "date": "2026-11-11",
@@ -704,7 +704,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:105_vegetable_chopper": {
     "date": "2026-11-11",
@@ -729,7 +729,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "020_draft_window": {
     "date": "2026-11-12",
@@ -755,7 +755,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:005_window_air": {
     "date": "2026-11-12",
@@ -771,7 +771,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:106_gap_brush": {
     "date": "2026-11-12",
@@ -796,7 +796,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "021_airfryer": {
     "date": "2026-11-13",
@@ -814,7 +814,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 70,
       "likes": 0,
@@ -831,14 +831,14 @@
     "has_link": false,
     "slot": "morning",
     "threads": {
-      "views": 8,
+      "views": 9,
       "likes": 0,
       "replies": 1,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:007_laundry_detergent": {
     "date": "2026-11-13",
@@ -854,7 +854,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:008_bleach_nomix": {
     "date": "2026-11-13",
@@ -870,7 +870,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:109_kimchi_container": {
     "date": "2026-11-13",
@@ -895,7 +895,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "022_burnt_pot": {
     "date": "2026-11-14",
@@ -913,7 +913,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 89,
       "likes": 0,
@@ -937,7 +937,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:010_knit_pill": {
     "date": "2026-11-14",
@@ -953,7 +953,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:110_washer_overload": {
     "date": "2026-11-14",
@@ -978,7 +978,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "023_bath_drain": {
     "date": "2026-11-15",
@@ -986,8 +986,8 @@
     "title": "욕실 배수구 막힘, 뚫어뻥 전에 이것부터",
     "has_link": true,
     "instagram": {
-      "views": 35,
-      "reach": 10,
+      "views": 39,
+      "reach": 11,
       "likes": 2,
       "comments": 0,
       "saved": 0,
@@ -996,7 +996,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 9,
       "likes": 0,
@@ -1020,7 +1020,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:012_closet_dehumid": {
     "date": "2026-11-15",
@@ -1036,7 +1036,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:111_hot_pack": {
     "date": "2026-11-15",
@@ -1061,7 +1061,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "024_bedding_mite": {
     "date": "2026-11-16",
@@ -1087,7 +1087,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:013_shoe_night": {
     "date": "2026-11-16",
@@ -1103,7 +1103,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:014_bath_squeegee": {
     "date": "2026-11-16",
@@ -1119,7 +1119,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:112_rice_storage": {
     "date": "2026-11-16",
@@ -1144,7 +1144,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "025_drawer": {
     "date": "2026-11-17",
@@ -1152,8 +1152,8 @@
     "title": "서랍 정리, 눕히지 말고 세워 보세요",
     "has_link": false,
     "instagram": {
-      "views": 29,
-      "reach": 11,
+      "views": 30,
+      "reach": 12,
       "likes": 0,
       "comments": 0,
       "saved": 0,
@@ -1162,7 +1162,7 @@
       "follows": 0
     },
     "threads": {
-      "views": 34,
+      "views": 35,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
@@ -1170,7 +1170,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:015_padding_softener": {
     "date": "2026-11-17",
@@ -1179,14 +1179,14 @@
     "has_link": false,
     "slot": "lunch",
     "threads": {
-      "views": 79,
+      "views": 82,
       "likes": 1,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:016_microwave_wipe": {
     "date": "2026-11-17",
@@ -1202,7 +1202,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:113_fridge_fill": {
     "date": "2026-11-17",
@@ -1227,7 +1227,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "026_toilet": {
     "date": "2026-11-18",
@@ -1253,7 +1253,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:017_drain_baking": {
     "date": "2026-11-18",
@@ -1269,7 +1269,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:018_window_furniture": {
     "date": "2026-11-18",
@@ -1278,14 +1278,14 @@
     "has_link": false,
     "slot": "night",
     "threads": {
-      "views": 40,
+      "views": 41,
       "likes": 1,
       "replies": 1,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:114_knife_sharpener": {
     "date": "2026-11-18",
@@ -1310,7 +1310,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "027_indoor_drying": {
     "date": "2026-11-19",
@@ -1336,7 +1336,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:019_board_stand": {
     "date": "2026-11-19",
@@ -1352,7 +1352,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:020_laundry_tub": {
     "date": "2026-11-19",
@@ -1368,7 +1368,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "028_green_onion": {
     "date": "2026-11-20",
@@ -1376,7 +1376,7 @@
     "title": "대파 한 단, 이렇게 두면 끝까지 다 먹어요",
     "has_link": false,
     "instagram": {
-      "views": 31,
+      "views": 34,
       "reach": 12,
       "likes": 4,
       "comments": 0,
@@ -1386,7 +1386,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 69,
       "likes": 0,
@@ -1410,7 +1410,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:022_gas_trivet": {
     "date": "2026-11-20",
@@ -1426,7 +1426,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:115_lint_remover": {
     "date": "2026-11-20",
@@ -1451,7 +1451,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "029_curtain": {
     "date": "2026-11-21",
@@ -1469,7 +1469,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 8,
       "likes": 0,
@@ -1486,14 +1486,14 @@
     "has_link": false,
     "slot": "lunch",
     "threads": {
-      "views": 24,
+      "views": 25,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:024_humidifier_cleaner": {
     "date": "2026-11-21",
@@ -1509,7 +1509,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:116_heater_dust": {
     "date": "2026-11-21",
@@ -1534,7 +1534,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "030_dishcloth": {
     "date": "2026-11-22",
@@ -1552,7 +1552,7 @@
       "follows": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "threads": {
       "views": 0,
       "likes": 0,
@@ -1569,14 +1569,14 @@
     "has_link": false,
     "slot": "lunch",
     "threads": {
-      "views": 118,
+      "views": 119,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:026_shoe_soda": {
     "date": "2026-11-22",
@@ -1592,7 +1592,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:027_knit_flat": {
     "date": "2026-11-23",
@@ -1608,7 +1608,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:028_padding_dry": {
     "date": "2026-11-23",
@@ -1624,7 +1624,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:029_closet_wash": {
     "date": "2026-11-24",
@@ -1640,7 +1640,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:030_drain_cover": {
     "date": "2026-11-24",
@@ -1656,7 +1656,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:117_sweet_potato": {
     "date": "2026-11-23",
@@ -1681,7 +1681,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "031_rice_cooker": {
     "date": "2026-11-25",
@@ -1707,7 +1707,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:031_washer_door": {
     "date": "2026-11-24",
@@ -1723,7 +1723,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:032_tumbler_ring": {
     "date": "2026-11-25",
@@ -1739,7 +1739,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:033_towel_softener": {
     "date": "2026-11-26",
@@ -1748,14 +1748,14 @@
     "has_link": false,
     "slot": "morning",
     "threads": {
-      "views": 2,
+      "views": 3,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:118_dish_rack": {
     "date": "2026-11-25",
@@ -1763,14 +1763,14 @@
     "title": "건조대 물받이 보셨어요?",
     "has_link": false,
     "instagram": {
-      "views": 119,
-      "reach": 109,
+      "views": 122,
+      "reach": 110,
       "likes": 0,
       "comments": 0,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 3017
+      "ig_reels_avg_watch_time": 3039
     },
     "threads": {
       "views": 4,
@@ -1780,7 +1780,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "032_mirror": {
     "date": "2026-11-26",
@@ -1788,17 +1788,17 @@
     "title": "거울 얼룩, 세제 많이 쓰면 더 남아요",
     "has_link": false,
     "instagram": {
-      "views": 9,
-      "reach": 2,
-      "likes": 0,
+      "views": 29,
+      "reach": 8,
+      "likes": 1,
       "comments": 0,
       "saved": 0,
       "shares": 0,
-      "total_interactions": 0,
+      "total_interactions": 1,
       "follows": 0
     },
     "threads": {
-      "views": 3,
+      "views": 11,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
@@ -1806,7 +1806,7 @@
       "shares": 0
     },
     "comments_todo": 0,
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:034_meat_portion": {
     "date": "2026-11-26",
@@ -1822,7 +1822,7 @@
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "T:035_draft_find": {
     "date": "2026-11-26",
@@ -1831,14 +1831,14 @@
     "has_link": true,
     "slot": "night",
     "threads": {
-      "views": 14,
+      "views": 17,
       "likes": 0,
       "replies": 1,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
   },
   "R:119_coated_pan": {
     "date": "2026-11-26",
@@ -1846,23 +1846,106 @@
     "title": "코팅팬, 이거 하면 벗겨져요",
     "has_link": false,
     "instagram": {
-      "views": 136,
-      "reach": 119,
+      "views": 140,
+      "reach": 121,
       "likes": 0,
       "comments": 0,
       "saved": 0,
       "shares": 0,
       "total_interactions": 0,
-      "ig_reels_avg_watch_time": 3830
+      "ig_reels_avg_watch_time": 4147
     },
     "threads": {
-      "views": 13,
+      "views": 15,
       "likes": 0,
       "replies": 0,
       "reposts": 0,
       "quotes": 0,
       "shares": 0
     },
-    "updated": "2026-11-27"
+    "updated": "2026-11-28"
+  },
+  "033_year_end_clean": {
+    "date": "2026-11-27",
+    "tag": "대청소",
+    "title": "연말 대청소, 순서만 지키면 두 번 일 안 해요",
+    "has_link": false,
+    "instagram": {
+      "views": 18,
+      "reach": 6,
+      "likes": 1,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "follows": 0
+    },
+    "threads": {
+      "views": 24,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "comments_todo": 0,
+    "updated": "2026-11-28"
+  },
+  "T:036_airfryer_steel": {
+    "date": "2026-11-27",
+    "tag": "스레드전용·주방청소",
+    "title": "에어프라이어 바스켓, 철수세미로 닦지 마세요.",
+    "has_link": false,
+    "slot": "lunch",
+    "threads": {
+      "views": 6,
+      "likes": 0,
+      "replies": 1,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-28"
+  },
+  "T:037_pot_boil": {
+    "date": "2026-11-27",
+    "tag": "스레드전용·주방청소",
+    "title": "냄비 탄 자국, 수세미로 박박 긁지 마세요.",
+    "has_link": false,
+    "slot": "night",
+    "threads": {
+      "views": 42,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-28"
+  },
+  "R:120_wrap_microwave": {
+    "date": "2026-11-27",
+    "tag": "릴스·주방 살림",
+    "title": "랩 씌워 데울 때 이것 조심",
+    "has_link": false,
+    "instagram": {
+      "views": 112,
+      "reach": 106,
+      "likes": 1,
+      "comments": 0,
+      "saved": 0,
+      "shares": 0,
+      "total_interactions": 1,
+      "ig_reels_avg_watch_time": 2667
+    },
+    "threads": {
+      "views": 12,
+      "likes": 0,
+      "replies": 0,
+      "reposts": 0,
+      "quotes": 0,
+      "shares": 0
+    },
+    "updated": "2026-11-28"
   }
 }
