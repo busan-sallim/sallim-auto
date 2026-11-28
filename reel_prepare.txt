@@ -1,1 +1,2 @@
 123_heater_laundry
+pick=0=0,1=4,2=2,3=7,4=4
