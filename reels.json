@@ -617,6 +617,25 @@
         "moisture absorber box",
         "clothes hanging closet"
       ]
+    },
+    "123_heater_laundry": {
+      "date": "2026-11-28",
+      "sha": "67d691453c71b8cb",
+      "music": "ikoliks-children-ukulele-upbeat-positive-pop-rock-622115.mp3",
+      "photos": [
+        "out/123_heater_laundry/photos/00.jpg",
+        "out/123_heater_laundry/photos/01.jpg",
+        "out/123_heater_laundry/photos/02.jpg",
+        "out/123_heater_laundry/photos/03.jpg",
+        "out/123_heater_laundry/photos/04.jpg"
+      ],
+      "queries": [
+        "laundry drying rack indoor",
+        "electric heater",
+        "drying rack room",
+        "switching off heater",
+        "fan drying clothes"
+      ]
     }
   },
   "approved": {
